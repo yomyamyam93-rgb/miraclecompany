@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>미라클컴퍼니 리뉴얼 시안</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap">
+<style>
+@font-face{font-family:"Pretendard";src:url("PretendardVariable.woff2") format("woff2-variations"),url("PretendardVariable.woff2") format("woff2");font-weight:45 920;font-style:normal;font-display:swap}
+:root{
+  --bg:#FFFFFF;--bg2:#F4F4F4;--ink:#111111;--muted:#6B6B6B;--line:#E3E3E3;
+  --font:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --disp:"Montserrat","Pretendard",sans-serif;
+  --gut:clamp(20px,3vw,40px);--w:1840px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{margin:0;line-height:1.25;letter-spacing:-.03em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.wrap{max-width:var(--w);margin:0 auto;padding-inline:var(--gut)}
+.page{display:none}.page.on{display:block}
+.band{padding-block:clamp(80px,9vw,150px)}
+.band.grey{background:var(--bg2)}
+.band.black{background:#000;color:#fff}
+.band.black .muted{color:#9A9A9A}
+.muted{color:var(--muted)}
+.lead{font-size:clamp(16px,1.15vw,19px);color:var(--muted);line-height:1.8;max-width:640px}
+.band.black .lead{color:#BDBDBD}
+.note{font-size:14px;color:var(--muted);margin-top:28px}
+
+/* 버튼 */
+.pill{display:inline-flex;align-items:center;padding:15px 32px;border-radius:999px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;font-family:var(--font);white-space:nowrap}
+.pill.black{background:#111;color:#fff}
+.pill.white{background:#fff;color:#111}
+.pill.line{border-color:currentColor}
+.pill:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.more{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.more::after{content:"→"}
+
+/* 섹션 머리글: 왼쪽 번호+영문+한글, 오른쪽 설명 */
+.sh{display:block;margin-bottom:clamp(40px,5vw,80px)}
+.sh .lead{margin-top:22px;max-width:760px}
+.sh .num{font-family:var(--disp);font-weight:700;font-size:clamp(48px,6vw,104px);line-height:.9;letter-spacing:-.05em}
+.sh .en{font-family:var(--disp);font-weight:700;font-size:clamp(18px,1.8vw,30px);letter-spacing:.02em;text-transform:uppercase;margin-top:14px}
+.sh h2{font-size:clamp(28px,3vw,48px);font-weight:700;margin-top:20px}
+.sh h2 .thin{font-weight:300}
+
+/* 상단 */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:32px;height:88px}
+.logo img{height:32px;width:auto}
+.menu{display:flex;gap:4px;margin-left:auto}
+.menu a{padding:10px 18px;font-size:16px;font-weight:500}
+.menu a.on{font-weight:700;text-decoration:underline;text-underline-offset:8px}
+.nav .pill{padding:11px 22px;font-size:14px}
+@media (max-width:900px){.nav .wrap{height:auto;flex-wrap:wrap;padding-block:12px;gap:10px}.logo img{height:26px}.menu{margin-left:0;width:100%;overflow-x:auto;gap:0}.menu a{white-space:nowrap;padding:8px 12px}.nav .pill{margin-left:auto}}
+
+/* 히어로 (검정) */
+.hero{background:#000;color:#fff;position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(72px,8vw,128px)}
+.hero .wm{position:absolute;right:-1vw;bottom:-5vw;font-family:var(--disp);font-weight:700;font-size:clamp(120px,22vw,360px);line-height:1;letter-spacing:-.06em;color:#121212;white-space:nowrap;pointer-events:none;user-select:none}
+.hero .en{font-family:var(--disp);font-weight:700;font-size:clamp(48px,8.5vw,140px);line-height:.95;letter-spacing:-.04em;text-transform:uppercase}
+.hero h1{font-size:clamp(20px,2vw,30px);font-weight:600;margin-top:36px;line-height:1.5;max-width:720px}
+.hero .sub{color:#9A9A9A;font-size:15px;margin-top:14px}
+.hero .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.hero .pill.line{color:#fff}
+.strip3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(56px,6vw,96px)}
+@media (max-width:760px){.strip3{grid-template-columns:1fr}}
+.strip3 figure{margin:0;position:relative;aspect-ratio:3/4;overflow:hidden;background:#1A1A1A}
+.strip3 img{width:100%;height:100%;object-fit:cover}
+.strip3 figcaption{position:absolute;left:22px;bottom:20px;color:#fff;font-size:14px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.strip3 figcaption b{display:block;font-family:var(--disp);font-size:24px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px;text-transform:uppercase}
+
+/* 서브 페이지 상단 (검정) */
+.subhero{background:#000;color:#fff}
+.subhero .wrap{padding-block:clamp(64px,7vw,110px)}
+.subhero .en{font-family:var(--disp);font-weight:700;font-size:clamp(40px,6vw,96px);line-height:.95;letter-spacing:-.04em;text-transform:uppercase}
+.subhero h1{font-size:clamp(20px,2vw,30px);font-weight:600;margin-top:28px;line-height:1.5;max-width:760px}
+.subhero .lead{color:#BDBDBD;margin-top:14px}
+
+/* 2단: 글 + 사진 */
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,6vw,140px);align-items:start}
+.split.eq{grid-template-columns:1fr 1fr}
+@media (max-width:900px){.split,.split.eq{grid-template-columns:1fr}}
+.photo{aspect-ratio:3/4;overflow:hidden;background:var(--bg2)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.frame{border:1px solid var(--line);background:#fff}
+.frame .bar{height:28px;background:var(--bg2);display:flex;align-items:center;gap:6px;padding-left:12px;border-bottom:1px solid var(--line)}
+.frame .bar i{width:8px;height:8px;border-radius:50%;background:#C9C9C9;display:block}
+.frame img{width:100%;height:auto}
+
+/* 상품 목록 (큰 글씨 두 줄) */
+.biglist{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,3vw,64px);border-top:1px solid var(--ink);margin-top:36px}
+@media (max-width:640px){.biglist{grid-template-columns:1fr}}
+.biglist a{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);font-size:clamp(18px,1.4vw,24px);font-weight:700;letter-spacing:-.02em}
+.biglist a small{margin-left:auto;font-family:var(--disp);font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em}
+.ic{width:40px;height:40px;border-radius:10px;background:var(--ink);color:var(--bg);display:grid;place-items:center;flex:none}
+.ic svg{width:21px;height:21px;fill:currentColor;stroke:none}
+
+/* 카드 격자 (성과·서비스) */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media (max-width:1300px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.cards{grid-template-columns:1fr}}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1100px){.cards.c3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.cards.c3{grid-template-columns:1fr}}
+.card{border:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column}
+.card .frame{border:0;border-bottom:1px solid var(--line)}
+.card .body{padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card .tag{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-size:clamp(19px,1.4vw,22px);font-weight:700}
+.card p{color:var(--muted);font-size:15px}
+.card .stat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.card .stat b{display:block;font-family:var(--disp);font-size:clamp(28px,2.2vw,40px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.card .stat span{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+.card dl{margin:auto 0 0;padding-top:14px;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
+.card dt{color:var(--muted)}.card dd{margin:0}
+
+/* 항목 나열 (상단 선) */
+.items{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,4vw,64px) clamp(24px,3vw,48px)}
+.items.c4{grid-template-columns:repeat(4,1fr)}
+.items.c5{grid-template-columns:repeat(5,1fr)}
+@media (max-width:1100px){.items.c4,.items.c5{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.items,.items.c4,.items.c5{grid-template-columns:1fr}}
+.items>div{border-top:1px solid var(--ink);padding-top:22px}
+.band.black .items>div{border-color:#3A3A3A}
+.items b{display:block;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.items h3{font-size:clamp(18px,1.3vw,22px);margin-bottom:8px}
+.items p{color:var(--muted);font-size:15.5px}
+.band.black .items p{color:#9A9A9A}
+.items big{display:block;font-family:var(--disp);font-size:clamp(40px,4vw,72px);font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:12px}
+.items big small{font-size:.4em;font-weight:700;margin-left:4px;font-family:var(--font)}
+
+/* 후기 */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,4vw,72px)}
+@media (max-width:900px){.quotes{grid-template-columns:1fr}}
+.quotes .av{width:72px;height:72px;border-radius:50%;object-fit:cover;margin-bottom:22px}
+.quotes p{font-size:17px;line-height:1.75}
+.quotes .who{margin-top:20px;font-size:14px;color:var(--muted)}
+.quotes .who b{display:block;color:var(--ink);font-weight:700}
+
+/* 로고 */
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+@media (max-width:900px){.logos{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:540px){.logos{grid-template-columns:repeat(2,1fr)}}
+.logos span{border:1px solid var(--line);background:#fff;aspect-ratio:4/3;display:block;overflow:hidden}
+.logos img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.7}
+
+/* 맞춤 제안: 단계 */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:clamp(40px,5vw,72px)}
+@media (max-width:1100px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
+.steps>div{border-top:1px solid var(--ink);padding-top:20px}
+.steps b{display:block;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--muted);margin-bottom:12px;text-transform:uppercase}
+.steps h3{font-size:20px;margin-bottom:8px}
+.steps p{color:var(--muted);font-size:15.5px}
+.combo{margin-top:clamp(40px,5vw,72px);padding-top:26px;border-top:1px solid var(--ink);display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between}
+.combo b{display:block;font-family:var(--disp);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.combo p{font-size:clamp(17px,1.3vw,21px);font-weight:600}
+.list{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:16px}
+.list li{padding-left:18px;position:relative}
+.list li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:var(--ink)}
+
+/* 회사 */
+.map{aspect-ratio:21/7;max-width:100%;background:var(--bg2);display:grid;place-items:center;color:var(--muted);font-size:14px}
+.addr{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:22px;font-size:15px}
+.addr b{font-family:var(--disp);font-size:12px;letter-spacing:.08em;color:var(--muted);margin-right:10px}
+
+/* 문의 */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,3vw,56px);align-items:start}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:600px){.form{grid-template-columns:1fr}}
+.form label{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:700}
+.form input,.form select,.form textarea{font-family:var(--font);font-size:15px;padding:14px 16px;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--ink);width:100%}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--ink)}
+.form textarea{min-height:140px;resize:vertical}
+.form .full{grid-column:1/-1}
+
+/* 마무리 (검정) */
+.cta{background:#000;color:#fff;position:relative;overflow:hidden}
+.cta .wrap{position:relative;z-index:1;padding-block:clamp(96px,11vw,180px)}
+.cta .wm{position:absolute;left:-1vw;bottom:-5vw;font-family:var(--disp);font-weight:700;font-size:clamp(120px,22vw,360px);line-height:1;letter-spacing:-.06em;color:#121212;white-space:nowrap;pointer-events:none}
+.cta .en{font-family:var(--disp);font-weight:700;font-size:clamp(36px,6vw,100px);line-height:.95;letter-spacing:-.04em;text-transform:uppercase}
+.cta h2{font-size:clamp(18px,1.6vw,24px);font-weight:600;margin-top:28px;line-height:1.6}
+.cta p{color:#BDBDBD;margin-top:8px}
+.cta .act{margin-top:36px}
+
+footer{background:#000;color:#9A9A9A;padding-block:56px 36px;font-size:14px;border-top:1px solid #1E1E1E}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr .8fr;gap:40px}
+@media (max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){footer .cols{grid-template-columns:1fr}}
+footer img{height:30px;width:auto;margin-bottom:16px}
+footer .slogan{color:#fff;font-weight:700;font-size:16px;line-height:1.5}
+footer h4{margin:0 0 12px;font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.1em;color:#6B6B6B}
+footer dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 14px}
+footer dt{color:#6B6B6B}footer dd{margin:0;color:#D6D6D6}
+footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+footer ul a{color:#D6D6D6}
+footer .bottom{margin-top:44px;padding-top:18px;border-top:1px solid #1E1E1E;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:12.5px;color:#6B6B6B}
+
+.stepsv{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--ink)}
+.stepsv li{display:grid;grid-template-columns:96px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+@media (max-width:560px){.stepsv li{grid-template-columns:1fr;gap:6px}}
+.stepsv b{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:4px}
+.stepsv h4{font-size:18px;font-weight:700;margin-bottom:4px}
+.stepsv p{color:var(--muted);font-size:15px}
+.split .sticky{position:sticky;top:110px}
+.split h3.t{font-size:22px;margin-bottom:6px}
+.split h3.t+.list{margin-top:12px}
+
+/* 후기 롤링 */
+.carousel{position:relative;overflow:hidden}
+.carousel .track{display:flex;gap:clamp(24px,3vw,64px);transition:transform .7s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.carousel .track.noanim{transition:none}
+.carousel .track{gap:clamp(16px,1.5vw,28px)}
+.carousel .q{flex:0 0 calc((100% - 2*clamp(16px,1.5vw,28px))/3);min-width:0;background:#fff;border-radius:0;padding:clamp(28px,2.4vw,44px);display:flex;flex-direction:column}
+.carousel .q p{flex:1}
+@media (max-width:1000px){.carousel .q{flex-basis:calc((100% - clamp(16px,1.5vw,28px))/2)}}
+@media (max-width:640px){.carousel .q{flex-basis:100%}}
+.carousel .av{width:60px;height:60px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin-bottom:22px}
+.carousel p{font-size:17px;line-height:1.75}
+.carousel .who{margin-top:20px;font-size:14px;color:var(--muted)}
+.carousel .who b{display:block;color:var(--ink);font-weight:700}
+.cnav{display:flex;gap:10px;justify-content:flex-end;margin-top:40px}
+.cnav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:18px;cursor:pointer;font-family:var(--font)}
+.cnav button:hover{background:var(--ink);color:var(--bg)}
+
+/* 카드 이미지 높이 통일 */
+.card .frame img{width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;object-position:top}
+/* 상품 목록 옆 사진: 목록 높이에 맞춤 */
+.split.fill{align-items:stretch}
+.split.fill .photo{aspect-ratio:auto;height:100%;min-height:480px}
+
+/* 맞춤 제안: 보는 구성 */
+.ohead{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,110px);align-items:center;margin-bottom:clamp(48px,6vw,96px)}
+@media (max-width:900px){.ohead{grid-template-columns:1fr}}
+.ohead .lead{margin-top:20px;max-width:560px}
+.olabel{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.worries{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:clamp(48px,6vw,96px)}
+@media (max-width:800px){.worries{grid-template-columns:1fr}}
+.worries div{background:var(--bg2);padding:36px 30px;font-size:clamp(18px,1.5vw,23px);font-weight:700;line-height:1.45;letter-spacing:-.02em;min-height:160px;display:flex;align-items:flex-end}
+.band.grey .worries div{background:var(--bg)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+@media (max-width:1000px){.timeline{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.timeline{grid-template-columns:1fr}}
+.timeline>div{position:relative;padding-top:26px;border-top:2px solid var(--ink)}
+.timeline>div::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.timeline .n{font-family:var(--disp);font-size:clamp(40px,4vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.timeline .w{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 0 12px}
+.timeline h4{font-size:19px;font-weight:700;margin:0 0 6px}
+.timeline p{color:var(--muted);font-size:15px}
+.chips{margin-top:clamp(48px,6vw,96px);padding-top:28px;border-top:1px solid var(--ink);display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center;justify-content:space-between}
+.chips .set{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips .set span{background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px}
+.chips .set em{font-style:normal;font-family:var(--disp);font-weight:700;color:var(--muted)}
+
+/* 상품 타일 3x3 */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.tiles{grid-template-columns:1fr}}
+.tiles a{display:flex;flex-direction:column;gap:18px;padding:32px 30px 30px;background:var(--bg2);min-height:220px;transition:background .2s,color .2s}
+.tiles a:hover{background:var(--ink);color:var(--bg)}
+.tiles a:hover .ic{background:var(--bg);color:var(--ink)}
+.tiles a:hover p,.tiles a:hover small{color:inherit;opacity:.8}
+.tiles .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tiles small{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+.tiles h3{font-size:clamp(20px,1.5vw,24px);font-weight:700;margin-top:auto}
+.tiles p{color:var(--muted);font-size:15px}
+
+/* 맞춤 제안 다듬기 */
+.olabel{font-family:var(--font);font-size:22px;font-weight:700;letter-spacing:-.02em;text-transform:none;color:var(--ink);margin-bottom:22px}
+.worries div{background:#111;color:#fff;padding:32px 30px;min-height:200px;display:flex;flex-direction:column;justify-content:center;gap:16px;position:relative;font-size:clamp(19px,1.5vw,24px)}
+.band.grey .worries div{background:#111}
+.worries div::before{content:"0" counter(w);counter-increment:w;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.1em;color:#8A8A8A;position:absolute;top:22px;left:30px}
+.worries{counter-reset:w}
+.timeline .w{display:none}
+.timeline h4{margin-top:14px}
+
+/* 맞춤 제안 단순화 */
+.checks{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:17px;font-weight:600;line-height:1.5}
+.checks li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;background:var(--ink);border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+
+/* 맞춤 제안: 섹션 구분과 추천 구성 강조 */
+.osec{background:var(--bg)}
+.osec+.osec .wrap{border-top:3px solid var(--ink);padding-top:clamp(64px,7vw,120px)}
+
+/* 문의 띠 통일 */
+.cta .en{font-size:clamp(14px,1vw,16px);letter-spacing:.14em;color:#9A9A9A;text-transform:uppercase}
+.cta h2{font-size:clamp(28px,3vw,48px);font-weight:700;margin-top:18px;line-height:1.25}
+.cta p{color:#BDBDBD;margin-top:20px;font-size:clamp(15px,1.1vw,18px);line-height:1.8}
+.cta .wrap{padding-block:clamp(88px,10vw,160px);text-align:center}
+.cta .act{justify-content:center;display:flex}
+
+/* 띠는 화면 끝까지: 상위 폭 제한과 무관하게 뷰포트 너비로 확장 */
+html,body{width:100%;max-width:none}
+.nav,.hero,.subhero,.band,.cta,footer{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.nav{position:sticky}
+
+/* 맞춤 제안: 제안서 표 */
+.sheet{border-top:2px solid var(--ink);margin-top:clamp(40px,5vw,72px)}
+.sheet .row{display:grid;grid-template-columns:220px 1fr;gap:24px clamp(24px,4vw,80px);padding:clamp(28px,3vw,44px) 0;border-bottom:1px solid var(--line);align-items:start}
+@media (max-width:800px){.sheet .row{grid-template-columns:1fr;gap:14px}}
+.sheet .lbl{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.sheet .lbl small{display:block;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-top:6px}
+.sheet .checks{margin:0;gap:12px}
+.sheet .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media (max-width:1100px){.sheet .steps4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.sheet .steps4{grid-template-columns:1fr}}
+.sheet .steps4 b{display:block;font-family:var(--disp);font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:12px}
+.sheet .steps4 h4{font-size:18px;font-weight:700;margin:0 0 6px}
+.sheet .steps4 p{color:var(--muted);font-size:15px}
+.sheet .recorow{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;font-size:clamp(18px,1.4vw,22px);font-weight:700;letter-spacing:-.02em}
+.sheet .recorow em{font-style:normal;color:var(--muted);font-weight:400;margin:0 8px}
+.ohead{margin-bottom:0}
+
+/* 선 제거, 여백으로 구분 */
+.sheet{border-top:0;margin-top:clamp(32px,4vw,56px)}
+.sheet .row{border-bottom:0;padding:clamp(18px,2vw,28px) 0}
+.osec+.osec .wrap{border-top:0;padding-top:0}
+.osec{padding-block:clamp(56px,6vw,96px)}
+
+/* 맞춤 제안: 제목에 체크 합치기, 배경으로 구분 */
+.ohead .checks{margin-top:34px}
+.ohead .checks li{font-size:17px}
+.plan-t{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:clamp(40px,5vw,72px) 0 24px}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media (max-width:1100px){.steps4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.steps4{grid-template-columns:1fr}}
+.steps4 b{display:block;font-family:var(--disp);font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:12px}
+.steps4 h4{font-size:18px;font-weight:700;margin:0 0 6px}
+.steps4 p{color:var(--muted);font-size:15px}
+.osec.alt{background:var(--bg2)}
+
+#p-about .sh .en{margin-top:0}
+
+.map{position:relative;display:block;aspect-ratio:auto;background:var(--bg2);overflow:hidden}
+.map img{width:100%;height:auto;display:block}
+.map span{position:absolute;right:16px;bottom:16px;background:#111;color:#fff;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px}
+
+.mapwrap.live .fallback{display:none}
+.mapwrap .root_daum_roughmap{min-height:0}
+
+/* 성과 카드 정렬 */
+.cards .card h3{min-height:2.6em;line-height:1.3}
+.cards .card .stat{margin-top:auto;padding-top:14px}
+.cards .card .body{min-height:230px}
+
+.items .ic{margin-bottom:18px}
+.ic.lg{width:48px;height:48px;border-radius:12px}.ic.lg svg{width:26px;height:26px}
+
+/* ===== 모바일 최적화 ===== */
+@media (max-width:900px){
+  .nav .wrap{height:auto;flex-wrap:wrap;padding-block:12px 0;gap:0;row-gap:8px}
+  .logo{order:1}.logo img{height:26px}
+  .nav .pill{order:2;margin-left:auto;padding:9px 16px;font-size:13px}
+  .menu{order:3;width:calc(100% + 2*var(--gut));margin:0 calc(-1*var(--gut));padding:0 calc(var(--gut) - 10px);overflow-x:auto;scrollbar-width:none;gap:0}
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{white-space:nowrap;padding:10px 10px 12px;font-size:15px}
+  .menu a.on{text-underline-offset:6px}
+}
+@media (max-width:760px){
+  .strip3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;width:calc(100% + 2*var(--gut));margin-left:calc(-1*var(--gut));padding:0 var(--gut) 4px;scrollbar-width:none}
+  .strip3::-webkit-scrollbar{display:none}
+  .strip3 figure{flex:0 0 74%;scroll-snap-align:start;aspect-ratio:4/5}
+  .strip3 figcaption{left:16px;bottom:14px}.strip3 figcaption b{font-size:20px}
+}
+@media (max-width:640px){
+  body{font-size:16px;line-height:1.7}
+  .band{padding-block:64px}
+  .sh{margin-bottom:36px}.sh .lead{margin-top:14px}.sh h2{margin-top:12px}.sh .en{margin-top:8px}
+  .hero .wrap{padding-block:56px 48px}.hero .en{font-size:clamp(44px,13vw,60px)}.hero h1{margin-top:24px;font-size:19px}.hero .act{margin-top:28px}
+  .hero .act .pill,.cta .pill{width:100%;justify-content:center}
+  .strip3{margin-top:44px}
+  .subhero .wrap{padding-block:56px 48px}.subhero .en{font-size:clamp(36px,11vw,52px)}.subhero h1{margin-top:18px;font-size:19px}
+  .tiles{gap:10px}
+  .tiles a{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;column-gap:16px;row-gap:2px;padding:18px 18px;min-height:0;align-items:center}
+  .tiles .top{grid-row:1/3;justify-content:flex-start}.tiles .top small{display:none}
+  .tiles h3{font-size:17px;margin-top:0}.tiles p{font-size:14px;line-height:1.5}
+  .cards{gap:32px}.cards .card h3{min-height:0}.cards .card .body{min-height:0}
+  .items{gap:36px}.items>div{padding-top:18px}.items .ic{margin-bottom:14px}.ic.lg{width:42px;height:42px}
+  .carousel p{font-size:16px}.carousel .q{padding:24px}.cnav{margin-top:28px;justify-content:center}
+  .logos{gap:10px}.logos span{aspect-ratio:16/10}
+  .cta .wrap{padding-block:72px}.cta .en{font-size:clamp(36px,11vw,52px)}.cta h2{margin-top:18px}.cta p{font-size:15px}.cta .act{margin-top:28px}
+  .wm{display:none}
+  footer{padding-block:44px 28px}footer .cols{gap:28px}footer .bottom{margin-top:32px;flex-direction:column;gap:6px}
+  .ohead{gap:28px}.checks li{font-size:16px}.plan-t{font-size:19px;margin:36px 0 18px}
+  .steps4{gap:20px}.steps4 b{font-size:24px;margin-bottom:8px}
+  .contact{gap:40px}.form input,.form select,.form textarea{font-size:16px}
+  .form .pill,.side .act .pill{width:100%;justify-content:center}
+  .addr{gap:8px 24px;font-size:14px}
+  .mapwrap .root_daum_roughmap,.mapwrap .root_daum_roughmap .wrap_map{height:300px!important}
+}
+
+/* 성과 카드: 검정 카드 한 장 안에 캡처+글 */
+.cards:not(.c3) .card{border:0;background:#fff;color:var(--ink);border-radius:0;padding:8px 8px 0;overflow:hidden}
+.cards:not(.c3) .card .frame{border:1px solid var(--line);border-radius:0;overflow:hidden;background:#fff}
+.cards:not(.c3) .card .frame .bar{border-bottom:1px solid var(--line)}
+.cards:not(.c3) .card .body{background:transparent;padding:26px 22px 30px}
+.cards:not(.c3) .card .tag,.cards:not(.c3) .card p,.cards:not(.c3) .card .stat span{color:var(--muted)}
+@media (max-width:640px){.cards:not(.c3) .card{padding:6px 6px 0}.cards:not(.c3) .card .body{padding:22px 16px 26px}}
+
+/* 진행 순서: 박스 4개 + 추천 구성 바 */
+.plan-t{margin-bottom:16px}
+.steps4{gap:8px}
+.steps4>div{background:var(--bg2);padding:26px 26px 28px;position:relative}
+.osec.alt .steps4>div{background:#fff}
+.steps4 b{font-size:14px;letter-spacing:.06em;color:var(--muted);margin-bottom:34px}
+.steps4 b::before{content:"STEP ";}
+.steps4 h4{font-size:19px;margin-bottom:8px}
+@media (max-width:640px){
+  .steps4{gap:8px}.steps4>div{padding:20px 20px 22px}.steps4 b{margin-bottom:18px}
+}
+
+
+
+
+/* 추천 구성: 체크 목록과 같은 줄 형식 */
+.recoline{display:flex;gap:12px;align-items:flex-start;margin:22px 0 0;font-size:17px;font-weight:600;line-height:1.5}
+.recoline i{flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:#E5322D;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 3.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.8l6.1-.7z'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.recoline span{color:#E5322D;font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.1em;margin-right:10px;line-height:26px}
+.recoline b{font-weight:700}
+.ohead .act{margin-top:30px}
+@media (max-width:640px){.recoline{font-size:16px}.ohead .act .pill{width:100%;justify-content:center}}
+
+/* 맞춤 제안 이미지: 테두리 없이, 조금 작게 */
+.ohead .pic{width:100%}
+.ohead .pic img{width:100%;height:auto;display:block}
+
+/* 서비스 A: 검색 노출은 줄 단위로, 이미지 비율 그대로 */
+.rows{display:flex;flex-direction:column;gap:16px}
+.rows .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,96px);align-items:center;background:var(--bg2);padding:clamp(28px,3.2vw,56px)}
+.rows .txt{display:flex;flex-direction:column;gap:10px}
+.rows .txt .tag{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rows .txt h3{font-size:clamp(22px,1.8vw,30px);font-weight:700}
+.rows .txt p{color:var(--muted);font-size:16px;max-width:560px}
+.rows .txt dl{margin:14px 0 0;padding-top:16px;border-top:1px solid #D9D9D9;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:15px;max-width:560px}
+.rows .txt dt{color:var(--muted)}.rows .txt dd{margin:0}
+.rows .pic img{width:100%;height:auto;max-height:560px;object-fit:cover;object-position:top;border:1px solid var(--line);display:block;background:#fff}
+@media (max-width:900px){.rows .row{grid-template-columns:1fr;gap:20px;padding:20px}.rows .pic{order:-1}.rows .pic img{max-height:none}}
+@media (max-width:640px){.rows{gap:12px}.rows .txt h3{font-size:21px}}
+
+.cards.c3 .card{background:#fff;border:0}
+.cards.c3 .card .body{padding:34px 32px 36px}
+
+.card .stat b{white-space:nowrap}
+
+/* 회사소개 팀: 흰 박스 + 아이콘 */
+.items.team{gap:12px}
+.items.team>div{background:#fff;border-top:0;padding:32px 30px 34px}
+.items.team .ic{margin-bottom:26px}
+.items.team p{font-size:15px}
+@media (max-width:640px){.items.team>div{padding:24px 22px 26px}.items.team .ic{margin-bottom:18px}}
+
+/* 서비스 진행 과정: 어두운 박스 + 큰 번호 */
+.items.proc{gap:12px}
+.items.proc>div{background:#1A1A1A;border-top:0;padding:30px 28px 32px}
+.items.proc .n{display:block;font-family:var(--disp);font-size:clamp(36px,3vw,52px);font-weight:700;letter-spacing:-.04em;line-height:1;color:#fff;margin-bottom:28px}
+.items.proc b{color:#8A8A8A}
+.items.proc p{font-size:15px}
+@media (max-width:640px){.items.proc>div{padding:22px 22px 24px}.items.proc .n{margin-bottom:16px}}
+
+
+/* 문의: 검정 연락처 패널 */
+.side{background:#111;color:#fff;padding:clamp(32px,3.4vw,56px);height:100%;display:flex;flex-direction:column}
+.side .cap{display:block;font-family:var(--disp);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8A8A8A;margin-bottom:22px}
+.side h3{font-size:clamp(18px,1.4vw,22px);font-weight:600;line-height:1.55;letter-spacing:-.02em;margin:0 0 36px}
+.side dl{margin:0 0 auto;padding-top:24px;border-top:1px solid #333;display:grid;grid-template-columns:auto 1fr;gap:12px 20px;font-size:15px}
+.side dt{color:#8A8A8A}.side dd{margin:0;color:#E6E6E6}
+.side .ways{margin-top:44px}
+.side .ways .cap{font-family:var(--font);font-size:13px;letter-spacing:0;text-transform:none;color:#8A8A8A;margin-bottom:14px}
+.soc{display:flex;gap:10px}
+.soc a{width:46px;height:46px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;transition:background .2s,color .2s}
+.soc a:hover{background:#333;color:#fff}
+.soc svg{width:22px;height:22px;fill:currentColor}
+@media (max-width:900px){.side{height:auto}}
+
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-place" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
+  <symbol id="i-blog" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>
+  <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M20 3H4v10a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-3h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 5h-2V5h2v3zM2 21h18v-2H2v2z"/></symbol>
+  <symbol id="i-review" viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></symbol>
+  <symbol id="i-qna" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26A1.96 1.96 0 0 0 14 9a2 2 0 0 0-4 0H8a4 4 0 0 1 8 0c0 .88-.36 1.68-.93 2.25z"/></symbol>
+  <symbol id="i-news" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></symbol>
+  <symbol id="i-sns" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM9.5 16.5v-9l7 4.5-7 4.5z"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></symbol>
+  <symbol id="i-nocharge" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 0 1-6.32-12.9L16.9 18.32A7.96 7.96 0 0 1 12 20zm6.32-3.1L7.1 5.68A8 8 0 0 1 18.32 16.9z"/></symbol>
+  <symbol id="i-report" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05A4.2 4.2 0 0 1 17 16.5V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
+  <symbol id="i-tune" viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
+  <symbol id="i-design" viewBox="0 0 24 24"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34a1 1 0 0 0-1.41 0L9 12.25 11.75 15l8.96-8.96a1 1 0 0 0 0-1.41z"/></symbol>
+  <symbol id="i-kakao" viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.86 5.31 4.66 6.72L5.5 21.5c-.08.3.26.54.52.37l4.4-2.93c.52.06 1.04.1 1.58.1 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-2.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></symbol>
+  <symbol id="i-blogn" viewBox="0 0 24 24"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-7l-4.5 3.5V18H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 4v7h4.2c1.6 0 2.6-.8 2.6-2 0-.9-.5-1.5-1.3-1.7.6-.3 1-.8 1-1.5C13.5 7.7 12.6 7 11.2 7H7zm2 1.5h1.8c.6 0 .9.3.9.7s-.3.7-.9.7H9V8.5zm0 2.6h2c.7 0 1 .3 1 .8s-.3.8-1 .8H9v-1.6z"/></symbol>
+</svg>
+
+<nav class="nav"><div class="wrap">
+  <a class="logo" href="#home" data-go="home"><img src="assets/logo.gif" alt="미라클컴퍼니"></a>
+  <div class="menu">
+    <a href="#home" data-go="home" class="on">홈</a>
+    <a href="#offer" data-go="offer">맞춤 제안</a>
+    <a href="#service" data-go="service">서비스</a>
+    <a href="#about" data-go="about">회사소개</a>
+  </div>
+  <a class="pill black" href="#contact" data-go="contact">무료 상담신청</a>
+</div></nav>
+
+<!-- ================= HOME ================= -->
+<section class="page on" id="p-home">
+  <div class="hero"><div class="wrap">
+    <div class="en">Make a<br>Miracle</div>
+    <h1>나에게는 일어날 것 같지 않은 기적을 만들어드립니다.</h1>
+    <p class="sub">종합 온라인광고대행사 주식회사 미라클컴퍼니</p>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a><a class="pill line" href="#service" data-go="service">서비스 보기</a></div>
+    <div class="strip3">
+      <figure><img src="assets/hero-brand.jpg" alt=""><figcaption><b>Brand</b>온라인 제품 · 브랜드</figcaption></figure>
+      <figure><img src="assets/hero-local.jpg" alt=""><figcaption><b>Local</b>오프라인 매장 · 지역 사업</figcaption></figure>
+      <figure><img src="assets/hero-medical.jpg" alt=""><figcaption><b>Medical</b>병의원</figcaption></figure>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">01</div><div class="en">Marketing</div><h2><span class="thin">바이럴 마케팅의</span> 모든 것을 우리 손으로</h2></div>
+      <p class="lead">미라클컴퍼니는 온라인 비즈니스 컨설팅 노하우와 통합 마케팅 역량으로 다양한 파트너사의 성장을 이끌어 가고 있습니다. 전문화된 인력을 통해 브랜드의 비전을 현실화하고, 장기적인 시장 확대와 지속적인 고객 창출을 목표로 움직입니다.</p>
+    </div>
+    <div class="tiles">
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-place"/></svg></span><small>PLACE</small></div><h3>플레이스 상위노출</h3><p>지도·플레이스 탭에서 지역 키워드 상위 고정</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-blog"/></svg></span><small>BLOG</small></div><h3>블로그 상위노출</h3><p>발행 · 건별 · 월보장, 검색 마케팅의 기본</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-cafe"/></svg></span><small>CAFE</small></div><h3>카페 상위노출</h3><p>카페 탭 상위 노출로 검색 첫 화면 점유</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-review"/></svg></span><small>REVIEW</small></div><h3>카페 후기 노출</h3><p>추천 질문에 실제 이용 후기로 노출</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-qna"/></svg></span><small>Q&amp;A</small></div><h3>지식iN 상위노출</h3><p>질문형 검색에 답변으로 노출</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-news"/></svg></span><small>PRESS</small></div><h3>언론보도</h3><p>언론사 기사 발행으로 신뢰도 확보</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-sns"/></svg></span><small>SNS</small></div><h3>SNS 광고 운영</h3><p>기획·소재 제작·운영·보고 원스톱</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-youtube"/></svg></span><small>YOUTUBE</small></div><h3>유튜브 마케팅</h3><p>채널 개설, 광고, 인플루언서 협업</p></a>
+      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-video"/></svg></span><small>VIDEO</small></div><h3>영상 제작</h3><p>자체 촬영팀, 4K · 스튜디오 · 드론</p></a>
+    </div>
+  </div></div>
+
+  <div class="band grey"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">02</div><div class="en">Results</div><h2><span class="thin">검색 첫 화면에서</span> 확인되는 성과</h2></div>
+      <p class="lead">실적은 말이 아니라 검색 첫 화면으로 보여드립니다. 키워드별 순위와 검색량, 노출 화면을 매주 리포트로 전달합니다.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-place.jpg" alt=""></div><div class="body"><span class="tag">Place · 요식업</span><h3>천안 입장 맛집, 300위 밖에서 첫 화면으로</h3><div class="stat"><div><b>첫 페이지</b><span>플레이스 노출 위치</span></div><div><b>27,400</b><span>키워드 월 검색량</span></div></div></div></div>
+      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-blog.jpg" alt=""></div><div class="body"><span class="tag">Blog · 화장품</span><h3>브랜드 검색 시 블로그 탭 최상단 고정</h3><div class="stat"><div><b>48,900</b><span>키워드 월 검색량</span></div><div><b>1위</b><span>블로그 탭 노출</span></div></div></div></div>
+      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-medical.jpg" alt=""></div><div class="body"><span class="tag">Place + Cafe · 병의원</span><h3>불당동 피부과, 지역 검색 1위와 카페 후기 노출</h3><div class="stat"><div><b>1위</b><span>플레이스 노출 순위</span></div><div><b>2개 탭</b><span>플레이스·카페 동시 노출</span></div></div></div></div>
+      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-keyword.jpg" alt=""></div><div class="body"><span class="tag">Keyword · 영양제 브랜드</span><h3>키워드 방향 설계 후 검색량이 달라졌습니다</h3><div class="stat"><div><b>1,683%</b><span>A 브랜드 검색량 증가</span></div><div><b>934%</b><span>B 브랜드 검색량 증가</span></div></div></div></div>
+    </div>
+      </div></div>
+
+  <div class="band"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">03</div><div class="en">Difference</div><h2><span class="thin">계약하면</span> 이렇게 일합니다</h2></div>
+      <p class="lead">실적을 내세우는 대신 일하는 방식으로 말씀드립니다. 여섯 가지는 계약서에 그대로 들어가는 조건입니다.</p>
+    </div>
+    <div class="items">
+      <div><span class="ic lg"><svg><use href="#i-nocharge"/></svg></span><b>No exposure, no charge</b><h3>노출이 안 된 날은 세지 않습니다</h3><p>건별은 노출된 건만, 월보장은 노출된 날만 정산합니다.</p></div>
+      <div><span class="ic lg"><svg><use href="#i-report"/></svg></span><b>Weekly report</b><h3>매주 숫자로 보고합니다</h3><p>키워드별 순위, 검색량, 유입과 노출 화면 캡처를 매주 리포트로 전달합니다.</p></div>
+      <div><span class="ic lg"><svg><use href="#i-team"/></svg></span><b>In-house</b><h3>기획부터 촬영까지 자체 제작</h3><p>외주 없이 자체 기획·디자인·촬영팀이 만들어 수정이 빠르고 비용이 투명합니다.</p></div>
+      <div><span class="ic lg"><svg><use href="#i-check"/></svg></span><b>Approve first</b><h3>게시 전에 반드시 확인받습니다</h3><p>모든 콘텐츠는 광고주 확인 후 게시합니다. 병의원은 원장님 확인과 심의 기준을 거칩니다.</p></div>
+      <div><span class="ic lg"><svg><use href="#i-person"/></svg></span><b>One manager</b><h3>전담 담당자가 끝까지 맡습니다</h3><p>담당자 한 명이 진단부터 리포트까지 책임지고, 문의에는 당일 답합니다.</p></div>
+      <div><span class="ic lg"><svg><use href="#i-tune"/></svg></span><b>Only what you need</b><h3>필요한 상품만 제안합니다</h3><p>업종과 예산에 맞는 구성만 제안합니다. 상품 하나로 시작하셔도 됩니다.</p></div>
+    </div>
+  </div></div>
+
+  <div class="band grey"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">04</div><div class="en">Clients say</div><h2>함께한 광고주의 이야기</h2></div>
+      <p class="lead">계약 후에 어떻게 달라졌는지, 광고주분들이 직접 남긴 말입니다.</p>
+    </div>
+    <div class="carousel" id="qc"><div class="track"><div class="q"><span class="av">김</span><p>플레이스 상위노출을 시작하고 두 달째부터 예약 전화가 눈에 띄게 늘었습니다. 매주 리포트가 와서 지금 무엇을 하고 있는지 알 수 있다는 점이 가장 좋았습니다.</p><div class="who"><b>김○○ 대표</b>천안 · 요식업</div></div><div class="q"><span class="av">이</span><p>의료광고 심의 때문에 걱정이 많았는데 원고 작성부터 접수까지 맡아 주셔서 진료에만 집중할 수 있었습니다. 게시 전에 항상 확인을 받는 점도 안심이 됩니다.</p><div class="who"><b>이○○ 원장</b>피부과</div></div><div class="q"><span class="av">박</span><p>대행사를 세 곳 거쳤는데 노출이 안 된 날을 빼고 정산하는 곳은 처음이었습니다. 키워드가 안 되면 바로 바꿔 주는 것도 다른 점입니다.</p><div class="who"><b>박○○ 팀장</b>건강식품 브랜드</div></div><div class="q"><span class="av">최</span><p>블로그 상위노출을 두 달 진행했더니 문의 전화의 절반이 검색으로 왔다고 답합니다. 어떤 키워드로 왔는지까지 리포트에 적혀 있어서 광고비를 어디에 쓰는지 알겠더군요.</p><div class="who"><b>최○○ 대표</b>인테리어</div></div><div class="q"><span class="av">정</span><p>플레이스 정비만 먼저 해 주셨는데 그것만으로도 지도에서 우리 가게가 보이기 시작했습니다. 억지로 상품을 늘리지 않는 점이 신뢰가 갔습니다.</p><div class="who"><b>정○○ 원장</b>한의원</div></div><div class="q"><span class="av">한</span><p>스마트스토어 신규 유입이 늘지 않아 고민이었는데 키워드를 다시 잡은 뒤 검색 유입이 꾸준히 올라갔습니다. 매주 월요일 리포트를 기다리게 됩니다.</p><div class="who"><b>한○○ 이사</b>화장품 브랜드</div></div><div class="q"><span class="av">오</span><p>카페 후기 노출 이후 "카페에서 보고 왔다"는 손님이 실제로 생겼습니다. 후기 원고를 게시 전에 보여 주고 확인받는 과정이 꼼꼼했습니다.</p><div class="who"><b>오○○ 대표</b>천안 · 카페</div></div><div class="q"><span class="av">윤</span><p>언론보도 한 건으로 기사 링크를 상세페이지와 인스타에 계속 쓰고 있습니다. 매체 선정부터 원고까지 한 번에 진행돼서 편했습니다.</p><div class="who"><b>윤○○ 대표</b>생활용품 브랜드</div></div><div class="q"><span class="av">장</span><p>유동 인구가 적은 자리라 검색으로 손님을 데려와야 했습니다. 지역 키워드 다섯 개로 시작했는데 세 달째 플레이스 첫 화면을 유지하고 있습니다.</p><div class="who"><b>장○○ 대표</b>천안 · 미용실</div></div><div class="q"><span class="av">서</span><p>영상 제작을 외부에 맡기면 수정마다 비용이 붙었는데, 촬영팀이 내부에 있어서 수정이 빠르고 추가 비용 얘기가 없었습니다.</p><div class="who"><b>서○○ 팀장</b>교육 서비스</div></div><div class="q"><span class="av">임</span><p>담당자 한 명이 처음부터 끝까지 맡아 줘서 매번 설명을 반복할 필요가 없었습니다. 카톡으로 물어보면 당일에 답이 옵니다.</p><div class="who"><b>임○○ 대표</b>포장이사</div></div><div class="q"><span class="av">조</span><p>지식iN 답변 노출이 병원 선택 단계에서 이렇게 효과가 있는지 몰랐습니다. 증상 키워드부터 지역 키워드까지 순서대로 잡아 준 설계가 좋았습니다.</p><div class="who"><b>조○○ 원장</b>정형외과</div></div><div class="q"><span class="av">강</span><p>SNS 광고를 Basic으로 작게 시작했는데 소재 제작과 보고서까지 포함돼 있어 부담이 없었습니다. 성과가 나서 Standard로 올렸습니다.</p><div class="who"><b>강○○ 대표</b>수제 디저트</div></div><div class="q"><span class="av">문</span><p>첫 달 진단 리포트만 받고 진행을 미뤘는데도 재촉이 없었습니다. 세 달 뒤에 다시 연락했을 때도 같은 담당자가 기억하고 있어서 놀랐습니다.</p><div class="who"><b>문○○ 대표</b>천안 · 학원</div></div><div class="q"><span class="av">신</span><p>같은 업계 대행사인데 실행을 맡기고 있습니다. 노출 카운팅이 정확하고 리포트가 깔끔해서 우리 광고주에게 그대로 전달합니다.</p><div class="who"><b>신○○ 팀장</b>광고 대행사</div></div></div></div>
+    <div class="cnav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></div>
+      </div></div>
+
+  <div class="band"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">05</div><div class="en">Partners</div><h2>수 많은 파트너사의 성공을 돕고 있습니다.</h2></div>
+      <p class="lead">전화 영업 없이 소개와 입소문으로 이어져 온 파트너들입니다.</p>
+    </div>
+    <div class="logos">
+      <span><img src="assets/par01.png" alt=""></span><span><img src="assets/par02.png" alt=""></span><span><img src="assets/par03.png" alt=""></span><span><img src="assets/par04.png" alt=""></span><span><img src="assets/par05.png" alt=""></span>
+      <span><img src="assets/par06.png" alt=""></span><span><img src="assets/par07.png" alt=""></span><span><img src="assets/par08.png" alt=""></span><span><img src="assets/par09.png" alt=""></span><span><img src="assets/par10.png" alt=""></span>
+    </div>
+  </div></div>
+
+  <div class="cta"><div class="wrap">
+    <div class="en">Contact</div>
+    <h2>미라클컴퍼니 문의하기</h2>
+    <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+  </div></div>
+</section>
+
+<!-- ================= OFFER ================= -->
+<section class="page" id="p-offer">
+  <div class="subhero"><div class="wrap">
+    <div class="en">Solution</div>
+    <h1>같은 비용이어도, 업종에 따라 상품 구성이 달라집니다.</h1>
+    <p class="lead">온라인 브랜드, 오프라인 매장, 병의원. 업종별 맞춤 제안과 진행 순서를 안내합니다.</p>
+  </div></div>
+
+  <div class="band osec" id="offer-online"><div class="wrap">
+    <div class="ohead">
+      <div><div class="sh" style="margin-bottom:0"><div class="num">01</div><div class="en">Online Brand</div><h2><span class="thin">제품력은 있는데</span><br>검색하면 경쟁사만 보인다면?</h2><ul class="checks"><li>재구매는 있지만 신규 고객이 늘지 않는다</li><li>광고비를 써도 어떤 키워드가 매출로 이어지는지 모른다</li><li>상세페이지와 콘텐츠를 만들 사람이 없다</li></ul><p class="recoline"><i></i><span>BEST</span><b>블로그 월보장 · 카페 후기 노출 · SNS 광고</b></p><div class="act"><a class="pill black" href="#contact" data-go="contact">이 구성으로 상담 신청</a></div></div></div>
+      <div class="pic"><img src="assets/offer-graph.jpg" alt=""></div>
+    </div>
+    <div class="plan-t">진행 순서</div>
+    <div class="steps4"><div><b>01</b><h4>구매 의도 키워드 발굴</h4><p>'○○ 추천', '○○ 효과'처럼 구매 직전 키워드를 선정합니다.</p></div><div><b>02</b><h4>블로그 상위노출 시작</h4><p>24시간 안에 노출된 건만 정산합니다.</p></div><div><b>03</b><h4>카페 후기 노출</h4><p>타깃 고객이 모인 카페에 실제 후기로 노출합니다.</p></div><div><b>04</b><h4>첫 리포트와 조정</h4><p>순위·유입 리포트를 전달하고 키워드를 교체합니다.</p></div></div>
+  </div></div>
+<div class="band osec alt" id="offer-local"><div class="wrap">
+    <div class="ohead">
+      <div><div class="sh" style="margin-bottom:0"><div class="num">02</div><div class="en">Local Business</div><h2><span class="thin">지역에서 검색하면</span><br>경쟁 매장이 먼저 보인다면?</h2><ul class="checks"><li>플레이스에서 경쟁 매장이 항상 위에 나온다</li><li>유동 인구가 적어 검색으로 손님을 모아야 한다</li><li>리뷰와 사진이 오래돼 새 손님이 망설인다</li></ul><p class="recoline"><i></i><span>BEST</span><b>플레이스 월보장 · 블로그 건별 · 카페 후기 노출</b></p><div class="act"><a class="pill black" href="#contact" data-go="contact">이 구성으로 상담 신청</a></div></div></div>
+      <div class="pic"><img src="assets/offer-local.jpg" alt=""></div>
+    </div>
+    <div class="plan-t">진행 순서</div>
+    <div class="steps4"><div><b>01</b><h4>플레이스 정비와 키워드 선정</h4><p>사진·메뉴·영업시간을 정비하고 지역 키워드 5개를 고릅니다.</p></div><div><b>02</b><h4>플레이스 상위노출 시작</h4><p>노출된 날만 카운팅해 월 단위로 정산합니다.</p></div><div><b>03</b><h4>블로그·카페 상위노출</h4><p>'천안 맛집' 같은 대형 키워드를 함께 잡습니다.</p></div><div><b>04</b><h4>지역 카페 후기 노출</h4><p>맘카페·커뮤니티의 추천 질문에 실제 방문 후기로 노출합니다.</p></div></div>
+  </div></div>
+<div class="band osec" id="offer-medical"><div class="wrap">
+    <div class="ohead">
+      <div><div class="sh" style="margin-bottom:0"><div class="num">03</div><div class="en">Medical</div><h2><span class="thin">단순 상위노출이 아니라</span> 신환으로 이어지는 병원 마케팅</h2><ul class="checks"><li>상위노출은 되는데 실제 내원으로 이어지지 않는다</li><li>환자가 검색하는 순서에 맞춰 노출하고 싶다</li><li>진료에 집중하고 마케팅은 맡기고 싶다</li></ul><p class="recoline"><i></i><span>BEST</span><b>플레이스 · 지식iN · 블로그 · 카페 후기 노출</b></p><div class="act"><a class="pill black" href="#contact" data-go="contact">이 구성으로 상담 신청</a></div></div></div>
+      <div class="pic"><img src="assets/offer-medical.jpg" alt=""></div>
+    </div>
+    <div class="plan-t">진행 순서</div>
+    <div class="steps4"><div><b>01</b><h4>증상 인지</h4><p>'무릎 아플 때' 같은 증상 검색에서 블로그·지식iN 답변으로 먼저 만납니다.</p></div><div><b>02</b><h4>해결 방법 검색</h4><p>'○○ 치료 방법' 검색에 정보성 블로그 콘텐츠로 노출합니다.</p></div><div><b>03</b><h4>병원 후보 검색</h4><p>'천안 피부과' 같은 지역 키워드를 플레이스 상위노출로 잡습니다.</p></div><div><b>04</b><h4>비교와 내원</h4><p>카페 추천 질문에 실제 후기로 노출하고 예약·전화 유입을 보고합니다.</p></div></div>
+  </div></div>
+
+  <div class="cta"><div class="wrap">
+    <div class="en">Contact</div>
+    <h2>미라클컴퍼니 문의하기</h2>
+    <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+  </div></div>
+</section>
+
+
+<!-- ================= SERVICE ================= -->
+<section class="page" id="p-service">
+  <div class="subhero"><div class="wrap">
+    <div class="en">Product</div>
+    <h1>바이럴 마케팅의 모든 것, 상품별 과금 기준까지 투명하게.</h1>
+    <p class="lead">무엇을 하는 상품인지, 비용이 어떻게 산정되는지 한 페이지에 정리했습니다.</p>
+  </div></div>
+
+  <div class="band"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">A</div><div class="en">Search Exposure</div><h2>검색 노출</h2></div>
+      <p class="lead">고객이 검색하는 바로 그 자리에 노출됩니다. 플레이스, 블로그, 카페, 지식iN, 언론보도까지 검색 결과 전체를 한 곳에서 설계하고 운영합니다.</p>
+    </div>
+    <div class="rows">
+      <div class="row"><div class="txt"><span class="tag">Place</span><h3>플레이스 상위노출</h3><p>업종·지역 키워드 검색 시 지도 첫 화면에 우리 매장을 노출합니다. 요식업과 매장형 업종의 기본 상품입니다.</p><dl><dt>과금</dt><dd>노출된 날만 집계해 월 단위 정산</dd><dt>기간</dt><dd>첫 노출까지 보통 1~2주</dd><dt>추천</dt><dd>식당·카페·미용실·병의원</dd></dl></div><div class="pic"><img src="assets/srch-place.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Blog</span><h3>블로그 상위노출</h3><p>검색 마케팅의 기본이 되는 상품입니다. 예산과 목표에 따라 발행·건별·월보장 중 선택합니다.</p><dl><dt>발행</dt><dd>포스팅 업로드 시 결제</dd><dt>건별</dt><dd>24시간 안에 노출된 건만 결제</dd><dt>월보장</dt><dd>25일 노출 보장, 미달 일수 차감</dd></dl></div><div class="pic"><img src="assets/srch-blog.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Cafe</span><h3>카페 상위노출</h3><p>카페 탭 상위에 노출합니다. 블로그와 함께 운영하면 검색 첫 화면 점유율이 높아집니다.</p><dl><dt>과금</dt><dd>건별 24시간 · 월보장 25일 기준</dd><dt>추천</dt><dd>검색량이 많은 상품·업종</dd></dl></div><div class="pic"><img src="assets/srch-cafe.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Review</span><h3>카페 후기 노출</h3><p>지역·관심사 카페의 추천 질문에 실제 이용 후기 형태로 노출합니다. 구매 직전 고객에게 가장 가까운 상품입니다.</p><dl><dt>과금</dt><dd>게시글·댓글 건별</dd><dt>원칙</dt><dd>광고 표시 규정 준수</dd><dt>추천</dt><dd>병의원, 매장, 신제품</dd></dl></div><div class="pic"><img src="assets/viral.png" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Q&amp;A</span><h3>지식iN 상위노출</h3><p>질문형 검색에 답변 형태로 노출합니다. 정보 신뢰도가 높아 병의원과 전문 서비스에 효과적입니다.</p><dl><dt>과금</dt><dd>노출 확인 후 건별</dd><dt>추천</dt><dd>병의원·법률·전문 서비스</dd></dl></div><div class="pic"><img src="assets/srch-qna.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Press</span><h3>언론보도</h3><p>언론사 기사 발행으로 뉴스 탭에 노출하고 브랜드 신뢰도를 높입니다. 발행 기사는 블로그·SNS 콘텐츠로 재활용합니다.</p><dl><dt>과금</dt><dd>매체별 건별, 발행 전 원고 확인</dd><dt>추천</dt><dd>신규 오픈, 신제품</dd></dl></div><div class="pic"><img src="assets/srch-press.jpg" alt=""></div></div>
+    </div>
+  </div></div>
+
+  <div class="band grey"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">B</div><div class="en">Content &amp; Media</div><h2>콘텐츠 · 미디어</h2></div>
+      <p class="lead">기획, 디자인, 촬영, 편집을 자체 팀이 진행합니다. 인스타그램 광고 소재부터 유튜브 채널, 4K·드론 촬영까지 외주 없이 만듭니다.</p>
+    </div>
+    <div class="cards c3">
+      <div class="card"><div class="body"><span class="tag">SNS</span><h3>SNS 광고 운영</h3><p>인스타그램·페이스북 광고를 기획부터 소재 제작, 운영, 성과 보고까지 원스톱으로 진행합니다.</p><dl><dt>Basic</dt><dd>디자이너 1인 · 콘텐츠 1개</dd><dt>Standard</dt><dd>디자이너+마케터 · 콘텐츠 5개 · 10일 운영</dd><dt>Premium</dt><dd>광고팀 · 콘텐츠 12개 · 4주 운영</dd></dl></div></div>
+      <div class="card"><div class="body"><span class="tag">YouTube</span><h3>유튜브 마케팅</h3><p>채널 개설부터 광고 집행, 인플루언서 협업까지 예산과 브랜드 콘셉트에 맞춰 기획·운영합니다.</p><dl><dt>과금</dt><dd>광고비 + 운영비 월 단위</dd><dt>추천</dt><dd>신제품 런칭, 브랜드 인지도</dd></dl></div></div>
+      <div class="card"><div class="body"><span class="tag">Video</span><h3>영상 제작</h3><p>상담, 기획, 촬영, 편집, 피드백까지 자체 촬영팀이 진행합니다. 중간 수수료가 없고 완료 후 수정도 가능합니다.</p><dl><dt>장비</dt><dd>4K · 스튜디오 · 드론</dd><dt>과금</dt><dd>프로젝트 견적</dd></dl></div></div>
+    </div>
+  </div></div>
+
+  <div class="band black"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">C</div><div class="en">Process</div><h2><span class="thin">상담부터 리포트까지,</span> 이렇게 진행합니다</h2></div>
+      <p class="lead">진단과 제안은 무료입니다. 진단만 받고 진행하지 않으셔도 됩니다.</p>
+    </div>
+    <div class="items c5 proc">
+      <div><span class="n">01</span><b>Step 1</b><h3>키워드 진단</h3><p>검색량, 현재 순위, 경쟁 현황을 리포트로 드립니다.</p></div>
+      <div><span class="n">02</span><b>Step 2</b><h3>제안과 견적</h3><p>필요한 상품만 구성해 예산과 기간을 제안합니다.</p></div>
+      <div><span class="n">03</span><b>Step 3</b><h3>콘텐츠 제작</h3><p>자체 팀이 만들고, 게시 전 확인을 받습니다.</p></div>
+      <div><span class="n">04</span><b>Step 4</b><h3>노출과 운영</h3><p>순위를 매일 점검하고 즉시 대응합니다.</p></div>
+      <div><span class="n">05</span><b>Step 5</b><h3>주간 리포트</h3><p>매주 순위와 유입을 전달하고 키워드를 조정합니다.</p></div>
+    </div>
+  </div></div>
+
+  <div class="cta"><div class="wrap">
+    <div class="en">Contact</div>
+    <h2>미라클컴퍼니 문의하기</h2>
+    <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+  </div></div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="page" id="p-about">
+  <div class="subhero"><div class="wrap">
+    <div class="en">About</div>
+    <h1>브랜드의 비전을 현실로, 파트너사의 성장을 함께합니다.</h1>
+    <p class="lead">미라클컴퍼니는 온라인 비즈니스 컨설팅 노하우와 통합 마케팅 역량으로 다양한 파트너사의 성장을 이끌어 가고 있습니다. 전문화된 인력을 통해 브랜드의 비전을 현실화하고, 장기적인 시장 확대와 지속적인 고객 창출을 목표로 움직입니다.</p>
+  </div></div>
+
+  <div class="band grey"><div class="wrap">
+    <div class="sh">
+      <div><div class="en">Team</div><h2>분야별 전담팀이 함께합니다</h2></div>
+      <p class="lead">기획, 디자인, 촬영, 운영을 한 곳에서 진행합니다. 외주를 거치지 않아 수정이 빠르고 비용이 투명합니다.</p>
+    </div>
+    <div class="items c4 team">
+      <div><span class="ic lg"><svg><use href="#i-search"/></svg></span><b>Planning</b><h3>기획</h3><p>검색량 분석, 키워드 선정, 블로그·카페·지식iN 원고</p></div>
+      <div><span class="ic lg"><svg><use href="#i-design"/></svg></span><b>Design</b><h3>디자인</h3><p>SNS 광고 소재, 상세페이지, 썸네일, 인쇄물</p></div>
+      <div><span class="ic lg"><svg><use href="#i-video"/></svg></span><b>Video</b><h3>촬영·편집</h3><p>4K·드론 촬영, 스튜디오, 편집, 유튜브 운영</p></div>
+      <div><span class="ic lg"><svg><use href="#i-report"/></svg></span><b>Operation</b><h3>운영</h3><p>매일 순위 점검, 주간 리포트, 광고주 전담</p></div>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap">
+    <div class="sh">
+      <div><div class="en">Partners</div><h2>수 많은 파트너사의 성공을 돕고 있습니다.</h2></div>
+      <p class="lead">미라클컴퍼니의 성공이 곧, 광고주의 성공입니다.</p>
+    </div>
+    <div class="logos">
+      <span><img src="assets/par01.png" alt=""></span><span><img src="assets/par02.png" alt=""></span><span><img src="assets/par03.png" alt=""></span><span><img src="assets/par04.png" alt=""></span><span><img src="assets/par05.png" alt=""></span>
+      <span><img src="assets/par06.png" alt=""></span><span><img src="assets/par07.png" alt=""></span><span><img src="assets/par08.png" alt=""></span><span><img src="assets/par09.png" alt=""></span><span><img src="assets/par10.png" alt=""></span>
+    </div>
+  </div></div>
+
+  <div class="band grey"><div class="wrap">
+    <div class="sh">
+      <div><div class="en">Location</div><h2>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</h2></div>
+      <p class="lead">충청권은 직접 방문해 상담드립니다.</p>
+    </div>
+    <div class="mapwrap">
+      <div id="daumRoughmapContainer1721991800123" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%;"></div>
+      <a class="map fallback" href="https://map.kakao.com/?q=%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EC%84%9C%EB%B6%81%EA%B5%AC%20%EC%8C%8D%EC%9A%A9%EB%8C%80%EB%A1%9C%20234" target="_blank" rel="noopener"><img src="assets/map.jpg" alt="오시는 길 지도"><span>카카오맵에서 크게 보기 →</span></a>
+    </div>
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js" onload="try{new daum.roughmap.Lander({timestamp:'1721991800123',key:'2k6y9',mapWidth:'100%',mapHeight:'420'}).render();document.querySelector('.mapwrap').classList.add('live')}catch(e){}"></script>
+    <div class="addr"><span><b>E-MAIL</b>help@miraclecompany.co.kr</span></div>
+  </div></div>
+
+  <div class="cta"><div class="wrap">
+    <div class="en">Contact</div>
+    <h2>미라클컴퍼니 문의하기</h2>
+    <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+  </div></div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="page" id="p-contact">
+  <div class="subhero"><div class="wrap">
+    <div class="en">Contact</div>
+    <h1>매출 상승, 답이 보이지 않는다면 문의하세요.</h1>
+    <p class="lead">업종과 예산에 맞는 상품 구성과 예상 마케팅 비용을 구체적으로 제안드립니다. 진단과 상담은 무료이며, 영업일 기준 2일 안에 답변드립니다.</p>
+  </div></div>
+  <div class="band"><div class="wrap contact">
+    <form class="form" id="diag-form">
+      <label for="f-biz">업체명<input id="f-biz" name="biz"></label>
+      <label for="f-type">업종<select id="f-type" name="type"><option>식당·카페</option><option>미용·뷰티</option><option>병의원</option><option>온라인 제품·브랜드</option><option>인테리어·청소·이사</option><option>기타</option></select></label>
+      <label for="f-area">지역<input id="f-area" name="area"></label>
+      <label for="f-tel">연락처<input id="f-tel" name="tel"></label>
+      <label class="full" for="f-kw">노출 희망 키워드 (선택)<input id="f-kw" name="kw"></label>
+      <label class="full" for="f-msg">현재 고민 (선택)<textarea id="f-msg" name="msg"></textarea></label>
+      <div class="full"><button class="pill black" type="submit">무료 진단 신청</button></div>
+    </form>
+    <div class="side">
+      <span class="cap">Contact</span>
+      <h3>진단 리포트는 무료입니다.<br>업종·지역 키워드 검색량과 현재 순위, 추천 상품 구성과 예상 예산을 담아 드립니다.</h3>
+      <dl><dt>이메일</dt><dd>help@miraclecompany.co.kr</dd><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></dl>
+      <div class="ways"><div class="soc">
+        <a href="#" title="카카오톡 채널"><svg><use href="#i-kakao"/></svg></a>
+        <a href="#" title="인스타그램"><svg><use href="#i-insta"/></svg></a>
+        <a href="#" title="유튜브"><svg><use href="#i-youtube"/></svg></a>
+        <a href="#" title="블로그"><svg><use href="#i-blogn"/></svg></a>
+      </div></div>
+    </div>
+  </div></div>
+</section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><img src="assets/footer-logo.png" alt="미라클컴퍼니"><p class="slogan">나에게는 일어날 것 같지 않은 <br>기적을 만들어드립니다.</p></div>
+    <div><h4>COMPANY</h4><dl><dt>상호</dt><dd>주식회사 미라클컴퍼니</dd><dt>대표</dt><dd>김남기</dd><dt>사업자등록번호</dt><dd>437-88-03148</dd></dl></div>
+    <div><h4>CONTACT</h4><dl><dt>이메일</dt><dd>help@miraclecompany.co.kr</dd><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></dl></div>
+    <div><h4>MENU</h4><ul><li><a href="#offer" data-go="offer">맞춤 제안</a></li><li><a href="#service" data-go="service">서비스</a></li><li><a href="#about" data-go="about">회사소개</a></li><li><a href="#contact" data-go="contact">문의</a></li></ul></div>
+  </div>
+  <div class="bottom"><span>© 2026 Miracle Company Co., Ltd. All rights reserved.</span><span>개인정보처리방침 · 이용약관</span></div>
+</div></footer>
+
+<script>
+(function(){
+  var pages=['home','offer','service','about','contact'];
+  function go(id,tab){
+    if(pages.indexOf(id)<0)id='home';
+    document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id==='p-'+id)});
+    document.querySelectorAll('.menu a').forEach(function(a){a.classList.toggle('on',a.dataset.go===id)});
+    var t=tab&&document.getElementById('offer-'+tab);
+    if(t){t.scrollIntoView({block:'start'});}else{window.scrollTo(0,0);}
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-go]');
+    if(a){e.preventDefault();go(a.dataset.go,a.dataset.tab);try{history.replaceState(null,'','#'+a.dataset.go)}catch(x){}}
+  });
+  var f=document.getElementById('diag-form');
+  if(f)f.addEventListener('submit',function(e){e.preventDefault();alert('시안입니다. 실제 사이트에서는 문의 폼으로 연결됩니다.')});
+
+  /* 후기 롤링 */
+  var qc=document.getElementById('qc');
+  if(qc){
+    var track=qc.querySelector('.track'),items=Array.prototype.slice.call(track.children),n=items.length,idx=0,timer;
+    items.slice(0,3).forEach(function(el){track.appendChild(el.cloneNode(true))});
+    function step(){var q=track.children[0];var w=q.getBoundingClientRect().width;var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap)||0;return w+gap}
+    function move(anim){track.classList.toggle('noanim',!anim);track.style.transform='translateX('+(-idx*step())+'px)'}
+    function next(d){idx+=d;if(idx<0){idx=n-1;move(false);void track.offsetWidth;}move(true);
+      if(idx>=n){setTimeout(function(){idx=0;move(false)},720)}}
+    function start(){stop();timer=setInterval(function(){next(1)},4000)}
+    function stop(){clearInterval(timer)}
+    qc.addEventListener('mouseenter',stop);qc.addEventListener('mouseleave',start);
+    document.querySelectorAll('.cnav button').forEach(function(b){b.addEventListener('click',function(){next(+b.dataset.dir);start()})});
+    window.addEventListener('resize',function(){move(false)});
+    if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))start();
+  }
+  go((location.hash||'#home').slice(1));
+})();
+</script>
