@@ -7,10 +7,18 @@
 <style>
 @font-face{font-family:"Pretendard";src:url("PretendardVariable.woff2") format("woff2-variations"),url("PretendardVariable.woff2") format("woff2");font-weight:45 920;font-style:normal;font-display:swap}
 :root{
-  --bg:#FFFFFF;--bg2:#F4F4F4;--ink:#111111;--muted:#6B6B6B;--line:#E3E3E3;
+  --bg:#FFFFFF;--bg2:#F4F6FB;--ink:#111111;--muted:#6B6B6B;--line:#E3E3E3;
   --font:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --disp:"Montserrat","Pretendard",sans-serif;
   --gut:clamp(20px,3vw,40px);--w:1840px;
+  /* ── 컬러 토큰 ── */
+  --blue:#398BFF;--blue-600:#1F6FE0;--blue-100:#DCE6FE;--blue-50:#EEF3FF;
+  --violet:#873BFF;--violet-50:#F3EDFF;
+  --navy:#0F1A3C;--navy-2:#182860;--navy-line:rgba(255,255,255,.12);--navy-muted:#AAB4D6;
+  --grad:linear-gradient(90deg,var(--blue),var(--violet));
+  --grad-dark:linear-gradient(160deg,#0F1A3C 0%,#1A2B66 100%);
+  /* 포인트 컬러: 모든 강조는 --blue 또는 --grad 하나로 */
+  --c:var(--blue);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;overflow-x:hidden}
@@ -57,20 +65,25 @@ p{margin:0;text-wrap:pretty}
 @media (max-width:900px){.nav .wrap{height:auto;flex-wrap:wrap;padding-block:12px;gap:10px}.logo img{height:26px}.menu{margin-left:0;width:100%;overflow-x:auto;gap:0}.menu a{white-space:nowrap;padding:8px 12px}.nav .pill{margin-left:auto}}
 
 /* 히어로 (검정) */
-.hero{background:#000;color:#fff;position:relative;overflow:hidden}
-.hero .wrap{position:relative;z-index:1;padding-block:clamp(72px,8vw,128px)}
-.hero .wm{position:absolute;right:-1vw;bottom:-5vw;font-family:var(--disp);font-weight:700;font-size:clamp(120px,22vw,360px);line-height:1;letter-spacing:-.06em;color:#121212;white-space:nowrap;pointer-events:none;user-select:none}
-.hero .en{font-family:var(--disp);font-weight:700;font-size:clamp(48px,8.5vw,140px);line-height:.95;letter-spacing:-.04em;text-transform:uppercase}
-.hero h1{font-size:clamp(20px,2vw,30px);font-weight:600;margin-top:36px;line-height:1.5;max-width:720px}
-.hero .sub{color:#9A9A9A;font-size:15px;margin-top:14px}
-.hero .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
-.hero .pill.line{color:#fff}
-.strip3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(56px,6vw,96px)}
-@media (max-width:760px){.strip3{grid-template-columns:1fr}}
-.strip3 figure{margin:0;position:relative;aspect-ratio:3/4;overflow:hidden;background:#1A1A1A}
-.strip3 img{width:100%;height:100%;object-fit:cover}
-.strip3 figcaption{position:absolute;left:22px;bottom:20px;color:#fff;font-size:14px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
-.strip3 figcaption b{display:block;font-family:var(--disp);font-size:24px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px;text-transform:uppercase}
+.hero{background:linear-gradient(120deg,#0B1433 0%,#13214F 38%,#1E2F7A 70%,#2A3E9E 100%);color:#fff;position:relative;overflow:hidden;min-height:clamp(560px,46vw,760px);display:flex;align-items:center}
+.hero .hbg{position:absolute;inset:0;z-index:0}
+.hero .hbg img{position:absolute;right:0;top:0;height:100%;width:auto;max-width:none;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%);mask-image:linear-gradient(90deg,transparent 0,#000 28%)}
+.hero .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0B1433 0%,#0F1A3C 28%,rgba(19,33,79,.82) 42%,rgba(30,47,122,0) 60%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-block:clamp(56px,6vw,96px);text-align:left}
+.hero .htxt{max-width:640px}
+.hero .hbadge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-size:13px;font-weight:700;color:#DCE6FE;box-shadow:0 4px 16px rgba(20,40,120,.06)}
+.hero .en{font-family:var(--disp);font-weight:700;font-size:clamp(12px,1vw,15px);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:26px}
+.hero h1{font-size:clamp(30px,3.6vw,60px);font-weight:800;margin-top:26px;line-height:1.22;letter-spacing:-.04em;max-width:960px}
+.hero h1 .hl{background:linear-gradient(90deg,#8FC0FF,#C9B6FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--navy-muted);font-size:clamp(15px,1.1vw,19px);margin-top:18px;max-width:680px}
+.hero .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.hstats{position:relative;z-index:2;margin:clamp(40px,4.5vw,64px) 0 0;display:grid;grid-template-columns:repeat(4,max-content);justify-content:start;column-gap:0;color:#fff;white-space:nowrap}
+.hstats>div{text-align:left;position:relative;padding:0 clamp(24px,2.6vw,44px)}
+.hstats>div:first-child{padding-left:0}
+.hstats>div+div:before{content:'';position:absolute;left:0;top:10%;bottom:10%;width:1px;background:rgba(255,255,255,.22)}
+.hstats span{display:block;font-size:13px;font-weight:600;color:var(--navy-muted)}
+.hstats b{display:block;margin-top:6px;font-size:clamp(26px,2.3vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:#fff}
+.hstats b i{font-style:normal;font-size:.48em;font-weight:600;color:var(--navy-muted);margin-left:2px}
 
 /* 서브 페이지 상단 (검정) */
 .subhero{background:#000;color:#fff}
@@ -260,10 +273,12 @@ footer .bottom{margin-top:44px;padding-top:18px;border-top:1px solid #1E1E1E;dis
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media (max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.tiles{grid-template-columns:1fr}}
-.tiles a{display:flex;flex-direction:column;gap:18px;padding:32px 30px 30px;background:var(--bg2);min-height:220px;transition:background .2s,color .2s}
-.tiles a:hover{background:var(--ink);color:var(--bg)}
-.tiles a:hover .ic{background:var(--bg);color:var(--ink)}
-.tiles a:hover p,.tiles a:hover small{color:inherit;opacity:.8}
+.tiles .ti{display:flex;flex-direction:column;gap:18px;padding:32px 30px 30px;background:#fff;border:1px solid var(--line);border-radius:22px;min-height:220px;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.tiles .ti .ic{background:var(--grad);color:#fff;border-radius:12px}
+.tiles .ti small{color:var(--blue)}
+.tiles .ti:hover{background:linear-gradient(135deg,var(--blue),var(--violet));border-color:transparent;color:#fff;transform:translateY(-4px);box-shadow:0 18px 40px rgba(57,139,255,.28)}
+.tiles .ti:hover .ic{background:#fff;color:var(--blue)}
+.tiles .ti:hover p,.tiles .ti:hover small{color:inherit;opacity:.85}
 .tiles .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .tiles small{font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
 .tiles h3{font-size:clamp(20px,1.5vw,24px);font-weight:700;margin-top:auto}
@@ -365,18 +380,17 @@ html,body{width:100%;max-width:none}
   .strip3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;width:calc(100% + 2*var(--gut));margin-left:calc(-1*var(--gut));padding:0 var(--gut) 4px;scrollbar-width:none}
   .strip3::-webkit-scrollbar{display:none}
   .strip3 figure{flex:0 0 74%;scroll-snap-align:start;aspect-ratio:4/5}
-  .strip3 figcaption{left:16px;bottom:14px}.strip3 figcaption b{font-size:20px}
 }
 @media (max-width:640px){
   body{font-size:16px;line-height:1.7}
   .band{padding-block:64px}
   .sh{margin-bottom:36px}.sh .lead{margin-top:14px}.sh h2{margin-top:12px}.sh .en{margin-top:8px}
-  .hero .wrap{padding-block:56px 48px}.hero .en{font-size:clamp(44px,13vw,60px)}.hero h1{margin-top:24px;font-size:19px}.hero .act{margin-top:28px}
+  .hero h1{font-size:28px}.hero .sub{font-size:15px}.hero .act{margin-top:24px}.hero{min-height:0;display:block}.hero .hbg{height:300px;inset:auto 0 auto 0;top:0}.hero .hbg img{position:static;width:100%;height:100%;object-fit:cover;object-position:center top;-webkit-mask-image:none;mask-image:none}.hero .hbg::after{background:linear-gradient(180deg,rgba(11,20,51,.1) 20%,#0F1A3C 100%)}.hero .wrap{padding-top:230px}.hstats{white-space:normal}
+  .hstats{margin-top:28px;grid-template-columns:1fr 1fr;row-gap:20px;justify-content:stretch}.hstats>div{padding:0 16px}.hstats>div:nth-child(odd){padding-left:0}.hstats>div:nth-child(3):before{display:none}.hstats b{font-size:24px}
   .hero .act .pill,.cta .pill{width:100%;justify-content:center}
-  .strip3{margin-top:44px}
   .subhero .wrap{padding-block:56px 48px}.subhero .en{font-size:clamp(36px,11vw,52px)}.subhero h1{margin-top:18px;font-size:19px}
   .tiles{gap:10px}
-  .tiles a{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;column-gap:16px;row-gap:2px;padding:18px 18px;min-height:0;align-items:center}
+  .tiles .ti{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;column-gap:16px;row-gap:2px;padding:18px 18px;min-height:0;align-items:center}
   .tiles .top{grid-row:1/3;justify-content:flex-start}.tiles .top small{display:none}
   .tiles h3{font-size:17px;margin-top:0}.tiles p{font-size:14px;line-height:1.5}
   .cards{gap:32px}.cards .card h3{min-height:0}.cards .card .body{min-height:0}
@@ -477,6 +491,338 @@ html,body{width:100%;max-width:none}
 .soc svg{width:22px;height:22px;fill:currentColor}
 @media (max-width:900px){.side{height:auto}}
 
+
+/* ===== 컬러 토큰 적용: 전체 색 배분 ===== */
+::selection{background:var(--blue-100)}
+/* 버튼 */
+.pill.black{background:linear-gradient(90deg,var(--blue),var(--violet));color:#fff;transition:filter .2s,transform .2s}
+.pill.black:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.pill.white{background:#fff;color:var(--navy)}
+.more{color:var(--blue)}
+/* 상단 */
+.menu a.on{text-decoration-color:var(--blue);text-decoration-thickness:2px}
+/* 섹션 머리글: 번호는 그라데이션, 영문은 파랑 */
+.sh .num{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.sh .en{color:var(--blue)}
+.band.black .sh .en{color:#9CC4FF}
+/* 검정 띠 → 네이비 그라데이션 */
+.band.black{background:var(--grad-dark);color:#fff}
+.band.black .muted,.band.black .items p,.band.black .lead{color:var(--navy-muted)}
+.band.black .items>div{border-color:var(--navy-line)}
+/* 성과 카드: 상단 색 띠 + 태그·숫자에 상품 색 */
+.cards .card{border-radius:20px;border:0;box-shadow:0 8px 30px rgba(21,111,249,.08)}
+.cards:not(.c3) .card{border-radius:20px;padding:10px 10px 0}
+.cards:not(.c3) .card .frame{border:0;border-radius:14px;padding:10px;background:linear-gradient(180deg,#EEF3FF,#FAFCFF)}
+.cards:not(.c3) .card .frame .bar{display:none}
+.cards:not(.c3) .card .frame img{border-radius:8px;border:1px solid var(--line)}
+.cards .card .tag,.cards:not(.c3) .card .tag,.rows .txt .tag{display:inline-flex;align-self:flex-start;align-items:center;padding:4px 10px;border-radius:999px;background:var(--blue-50);color:var(--blue-600);font-size:11px;letter-spacing:.06em}
+.cards .card .stat b{color:var(--c)}
+/* 항목 나열: 아이콘·영문 라벨을 항목별 색으로 */
+.items>div{border-top-color:var(--line)}
+.items .ic{background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
+.items b{color:var(--c)}
+.items big{color:var(--c)}
+/* 후기: 둥근 카드 + 색 아바타 */
+.carousel .q{border-radius:22px;box-shadow:0 10px 30px rgba(20,40,120,.05)}
+.carousel .av{background:var(--grad)}
+.cnav button{border-color:var(--blue-100);color:var(--blue)}
+.cnav button:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+/* 로고: 둥글게, 올리면 원래 색 */
+.logos span{border-radius:16px;transition:box-shadow .2s}
+.logos span:hover{box-shadow:0 10px 30px rgba(20,40,120,.10)}
+.logos img{transition:filter .3s,opacity .3s}
+.logos span:hover img{filter:none;opacity:1}
+/* 마무리 띠·서브 히어로·푸터: 네이비 */
+.cta{background:var(--grad-dark)}
+.cta::before,.cta::after{content:"";position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none}
+.cta::before{width:520px;height:520px;left:-120px;top:-160px;background:var(--blue)}
+.cta::after{width:480px;height:480px;right:-120px;bottom:-200px;background:var(--violet)}
+.cta .en{color:#9CC4FF}
+.cta p{color:var(--navy-muted)}
+.cta .wm{color:rgba(255,255,255,.04)}
+.subhero{background:var(--grad-dark)}
+.subhero .en{background:linear-gradient(90deg,#9CC4FF,#D9C8FF);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.subhero .lead{color:var(--navy-muted)}
+footer{background:#0B1230;border-top-color:#1B2650;color:#9AA6CC}
+footer h4,footer dt,footer .bottom{color:#6F7DA8}
+footer dd,footer ul a{color:#D3DAF0}
+footer .bottom{border-top-color:#1B2650}
+/* 맞춤 제안 */
+.checks li::before{background-color:var(--blue)}
+.recoline i{background-color:var(--blue)}
+.recoline span{color:var(--blue)}
+.steps4>div{border-radius:18px}
+.steps4 b{color:var(--blue)}
+.osec.alt .steps4>div{box-shadow:0 8px 24px rgba(20,40,120,.05)}
+.worries div{background:var(--grad-dark)}
+.band.grey .worries div{background:var(--grad-dark)}
+.worries div::before{color:#9CC4FF}
+.timeline>div{border-top-color:var(--blue-100)}
+.timeline>div::before{background:var(--blue)}
+.timeline .n{color:var(--blue)}
+.list li::before{background:var(--blue)}
+/* 서비스: 줄마다 상품 색 */
+.rows .row{border-radius:22px;background:var(--bg2);border:1px solid var(--line)}
+.rows .txt .tag{color:var(--c)}
+.rows .txt dl{border-top-color:var(--blue-100)}
+.rows .pic img{border-radius:14px}
+.items.proc>div{background:rgba(255,255,255,.07);border-radius:18px;border:1px solid var(--navy-line)}
+.items.proc .n{background:linear-gradient(90deg,#9CC4FF,#D9C8FF);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.items.proc b{color:#9CC4FF}
+/* 회사소개 팀 */
+.items.team>div{border-radius:18px}
+.items.team .ic{background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
+.map span{background:var(--blue)}
+/* 문의 */
+.form input,.form select,.form textarea{border-radius:12px}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-100)}
+.side{background:var(--grad-dark);border-radius:22px}
+.side .cap,.side dt,.side .ways .cap{color:var(--navy-muted)}
+.side dl{border-top-color:var(--navy-line)}
+.soc a:hover{background:var(--blue);color:#fff}
+/* 히어로 보조 버튼 */
+.hero .pill.line{color:#fff;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.08)}
+.hero .pill.line:hover{background:rgba(255,255,255,.16)}
+/* 그라데이션 글자: 자간이 음수라 마지막 글자 오른쪽이 잘리는 것 방지 */
+.sh .num,.hero h1 .hl,.subhero .en,.items.proc .n{padding-right:.08em;margin-right:-.08em}
+/* 큰 번호·큰 영문 제거: 랜선페이식 작은 칩 + 제목 */
+.sh .num,.hero .en{display:none}
+.sh .en{display:inline-block;font-size:12.5px;letter-spacing:.12em;margin-top:0;padding:6px 12px;border-radius:999px;background:var(--blue-50);color:var(--blue-600)}
+.band.black .sh .en{background:rgba(255,255,255,.12);color:#DCE6FE}
+.sh h2{margin-top:18px;font-size:clamp(26px,2.6vw,40px)}
+.sh .lead{margin-top:16px}
+.subhero .en{display:inline-block;font-size:12.5px;letter-spacing:.14em;line-height:1.4;text-transform:uppercase;padding:6px 12px;margin-right:0;border-radius:999px;background:rgba(255,255,255,.12);-webkit-background-clip:border-box;background-clip:border-box;color:#DCE6FE}
+.subhero h1{font-size:clamp(28px,3vw,46px);font-weight:700;margin-top:18px;line-height:1.3}
+.items.proc .n{font-size:clamp(22px,1.8vw,30px);margin-bottom:18px}
+@media (max-width:640px){.sh h2{font-size:26px}.subhero h1{font-size:26px}}
+/* 히어로 버튼: 아이콘 + 같은 크기 */
+.hero .act .pill{min-width:196px;justify-content:center;gap:8px;padding:16px 28px}
+.hero .act .pill svg{width:18px;height:18px;fill:currentColor;flex:none}
+@media (max-width:640px){.hero .act .pill{min-width:0}}
+/* 성과: 사례 3개를 비포→애프터 카드로 (비상금비서 상품 카드 구성) */
+.bacards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:1100px){.bacards{grid-template-columns:1fr;max-width:640px;margin:0 auto}}
+.bac{background:#fff;border-radius:24px;padding:12px;box-shadow:0 8px 30px rgba(21,111,249,.08);display:flex;flex-direction:column}
+.bac .bh{padding:18px 16px 20px;display:flex;flex-direction:column;gap:12px}
+.bac .bh .tag{display:inline-flex;align-self:flex-start;padding:4px 10px;border-radius:999px;background:var(--blue-50);color:var(--blue-600);font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.bac .bh h3{font-size:clamp(18px,1.3vw,21px);font-weight:700;line-height:1.35}
+.bac .bfr,.bac .aft{border-radius:18px;padding:24px 22px;text-align:center;position:relative}
+.bac .bfr{background:var(--bg2)}
+.bac .aft{background:linear-gradient(160deg,var(--blue) 0%,var(--violet) 100%);color:#fff;flex:1;display:flex;flex-direction:column}
+.bac em{position:absolute;left:16px;top:14px;font-style:normal;font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.12em;padding:4px 9px;border-radius:999px;background:#fff;color:var(--blue-600)}
+.bac .aft em{background:rgba(255,255,255,.18);color:#fff}
+.bac small{display:block;font-size:13px;color:var(--muted);margin-top:22px}
+.bac .aft small{color:rgba(255,255,255,.8)}
+.bac .bfr b,.bac .aft b{display:block;font-size:clamp(28px,2.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.15;margin-top:6px}
+.bac .bfr b{color:var(--ink)}
+.bac .bfr p,.bac .aft p{margin-top:8px;font-size:14px;line-height:1.6}
+.bac .bfr p{color:var(--muted)}
+.bac .aft p{color:rgba(255,255,255,.88)}
+.bac .arw{display:grid;place-items:center;height:40px;color:var(--blue)}
+.bac .arw svg{width:22px;height:22px}
+.bac .cap{margin-top:18px;background:#fff;border-radius:12px;padding:8px;overflow:hidden}
+.bac .cap img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;border-radius:8px;display:block}
+@media (max-width:640px){.bac .bfr,.bac .aft{padding:20px 16px}.bac .bfr b,.bac .aft b{font-size:28px}}
+/* 진행 과정: 좌(검색 노출 설명) · 중앙(단계) · 우(SNS 광고 설명) */
+.ptog{display:flex;justify-content:center;gap:clamp(28px,4vw,64px);margin-bottom:clamp(28px,3.5vw,48px)}
+.ptog button{display:inline-flex;align-items:center;gap:12px;background:none;border:0;padding:6px 0;color:rgba(255,255,255,.38);font-family:var(--font);font-size:clamp(18px,1.5vw,24px);font-weight:700;letter-spacing:-.02em;cursor:pointer;transition:color .25s}
+.ptog button i{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.14);transition:background .25s}
+.ptog button.on{color:#fff}
+.ptog button.on i{background:var(--blue);box-shadow:0 0 0 6px rgba(57,139,255,.22)}
+.prow{display:grid;grid-template-columns:1fr minmax(260px,520px) 1fr;gap:clamp(20px,3vw,48px);align-items:center;padding:20px 0;border-bottom:1px solid var(--navy-line)}
+.prow:first-of-type{border-top:1px solid var(--navy-line)}
+.prow p{margin:0;font-size:15.5px;line-height:1.7;color:#fff;transition:opacity .25s;max-width:420px}
+.prow .pl{justify-self:start;text-align:left}
+.prow .pr{justify-self:end;text-align:right}
+.pcmp[data-on="seo"] .pr,.pcmp[data-on="sns"] .pl{opacity:.35}
+.pc{width:100%;margin:0 auto;border-radius:14px;padding:18px 20px;text-align:center;border:0;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));box-shadow:0 12px 30px rgba(57,139,255,.18)}
+.prow:nth-of-type(1) .pc{--mix:100%}.prow:nth-of-type(2) .pc{--mix:75%}.prow:nth-of-type(3) .pc{--mix:50%}.prow:nth-of-type(4) .pc{--mix:25%}.prow:nth-of-type(5) .pc{--mix:0%}
+.pc small{display:block;font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,.8);margin-bottom:4px}
+.pc b{display:none;font-size:clamp(17px,1.3vw,21px);font-weight:700;color:#fff;letter-spacing:-.02em}
+.pcmp[data-on="seo"] .pc b.seo,.pcmp[data-on="sns"] .pc b.sns{display:block}
+@media (max-width:900px){
+  .prow{grid-template-columns:1fr;gap:12px;padding:16px 0}
+  .pc{width:100%}
+  .prow p{display:none;max-width:none;text-align:center;justify-self:stretch}
+  .pcmp[data-on="seo"] .pl,.pcmp[data-on="sns"] .pr{display:block;opacity:1}
+  .ptog{gap:20px}.ptog button{font-size:17px;gap:8px}.ptog button i{width:16px;height:16px}
+}
+/* 상품 묶음: 좌(검색 노출 6개) · 우(SNS·콘텐츠 3개) 나란히 */
+.tgs{display:grid;grid-template-columns:2fr 1fr;gap:clamp(24px,3vw,48px);align-items:start}
+.tg+.tg{margin-top:0}
+.tgs .tg:first-child .tiles{grid-template-columns:repeat(2,1fr)}
+.tgs .tg:last-child .tiles{grid-template-columns:1fr}
+.tgh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.tgh p{flex-basis:100%;margin-left:0}
+@media (min-width:900px){.tgh p{flex-basis:100%;margin-left:0}}
+@media (max-width:1000px){.tgs{grid-template-columns:1fr}.tg+.tg{margin-top:48px}.tgs .tg .tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.tgs .tg .tiles{grid-template-columns:1fr}}
+/* 상품: 묶음별로 한 줄, 작은 아이콘+이름 칩 */
+.tgs{display:block}
+.tg{display:grid;grid-template-columns:220px 1fr;gap:16px 24px;align-items:center;padding:22px 0;border-top:1px solid var(--line)}
+.tg:last-child{border-bottom:1px solid var(--line)}
+.tg+.tg{margin-top:0}
+.tgh{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;padding:0;border:0}
+.tgh h3{font-size:18px}
+.tgh p{display:none}
+.tgs .tg .tiles,.tgs .tg:first-child .tiles,.tgs .tg:last-child .tiles{display:flex;flex-wrap:wrap;gap:10px}
+.tiles .ti{display:inline-flex;flex-direction:row;align-items:center;gap:10px;min-height:0;padding:8px 16px 8px 8px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:none}
+.tiles .ti .top{display:contents}
+.tiles .ti .top small{display:none}
+.tiles .ti .ic{width:30px;height:30px;border-radius:9px}
+.tiles .ti .ic svg{width:16px;height:16px}
+.tiles h3{font-size:15px;font-weight:600;margin:0}
+.tiles p{display:none}
+.tiles .ti:hover{transform:none;box-shadow:0 8px 20px rgba(57,139,255,.22)}
+@media (max-width:900px){.tg{grid-template-columns:1fr;gap:12px;padding:18px 0}.tiles .ti{padding:7px 14px 7px 7px}.tiles h3{font-size:14px}}
+/* 상품: 좌(검색 노출) · 우(SNS·콘텐츠) 두 칸, 클릭 없음 */
+.tgs{display:grid;grid-template-columns:2fr 1fr;gap:clamp(32px,4vw,64px);align-items:start}
+.tg,.tg:last-child{display:block;padding:22px 0 0;border-top:1px solid var(--line);border-bottom:0}
+.tgh{margin-bottom:16px;flex-direction:row;align-items:baseline;gap:12px}
+.tiles .ti{cursor:default}
+.tiles .ti:hover{background:#fff;color:inherit;border-color:var(--line);transform:none;box-shadow:none}
+.tiles .ti:hover .ic{background:var(--grad);color:#fff}
+.tiles .ti:hover p,.tiles .ti:hover small{color:inherit;opacity:1}
+@media (max-width:900px){.tgs{grid-template-columns:1fr;gap:24px}}
+/* 01: Why choose us — 강점 단락 + 얇은 상품 띠 */
+.whyh{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,4vw,72px);align-items:end}
+@media (max-width:900px){.whyh{grid-template-columns:1fr;gap:24px}}
+.wl h2{font-size:clamp(26px,2.6vw,40px);font-weight:700;line-height:1.3;letter-spacing:-.03em}
+.wl h2 .thin{font-weight:300}
+.wtags{display:flex;align-items:center;gap:10px;margin-top:22px;font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+.wtags i{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.wr h3{font-family:var(--disp);font-size:clamp(24px,2vw,34px);font-weight:500;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;padding-right:.08em;margin-right:-.08em}
+.wr p{margin-top:14px;color:var(--muted);font-size:15.5px;line-height:1.85;max-width:560px}
+.pstrip{display:flex;flex-wrap:wrap;align-items:center;gap:10px 32px;margin-top:clamp(28px,3vw,44px);padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pstrip .pg{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.pstrip .pg>b{font-size:13px;font-weight:700;color:var(--blue-600);margin-right:6px;white-space:nowrap}
+.pstrip .ti{display:inline-flex;align-items:center;gap:7px;padding:4px 11px 4px 4px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--ink)}
+.pstrip .ic{width:22px;height:22px;border-radius:7px;background:var(--grad);color:#fff;display:grid;place-items:center}
+.pstrip .ic svg{width:12px;height:12px;fill:currentColor}
+.whyv{display:grid;grid-template-columns:auto 1fr auto;align-items:center;margin-top:clamp(44px,5vw,80px)}
+.big{width:clamp(220px,19vw,320px);aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center;box-shadow:0 24px 60px rgba(57,139,255,.28)}
+.big .in{width:78%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);display:flex;flex-direction:column;justify-content:center;text-align:center;color:#fff;padding:16px}
+.big small{font-size:clamp(13px,1vw,15px);opacity:.9}
+.big b{font-size:clamp(20px,1.7vw,28px);font-weight:800;line-height:1.25;margin-top:8px;letter-spacing:-.03em}
+.ln{height:1px;background:var(--line);margin:0 clamp(16px,2vw,40px)}
+.circles{display:flex;align-items:flex-start}
+.c{width:clamp(190px,17vw,280px);text-align:center;position:relative}
+.c+.c{margin-left:clamp(-40px,-3vw,-24px)}
+.disc{aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;padding:20px;position:relative}
+.c:nth-child(1) .disc{background:color-mix(in srgb,var(--blue) 100%,var(--violet));z-index:3}
+.c:nth-child(2) .disc{background:color-mix(in srgb,var(--blue) 50%,var(--violet));z-index:2}
+.c:nth-child(3) .disc{background:color-mix(in srgb,var(--violet) 78%,#fff);z-index:1}
+.c+.c::before{content:"+";position:absolute;left:0;top:calc(var(--r) / 2);transform:translate(-50%,-50%);font-size:24px;font-weight:700;color:#fff;z-index:5;line-height:1}
+.c{--r:clamp(190px,17vw,280px)}
+.disc em{font-style:normal;font-family:var(--disp);font-size:13px;font-weight:700;color:#E3ECFF;position:absolute;top:18%}
+.disc b{font-size:clamp(20px,1.7vw,28px);font-weight:800;line-height:1.25;letter-spacing:-.03em}
+.c p{margin-top:22px;font-size:14.5px;line-height:1.75;color:var(--muted)}
+.c p strong{color:var(--ink);font-weight:700}
+@media (max-width:1100px){.whyv{grid-template-columns:1fr;justify-items:center;gap:32px}.ln{display:none}.circles{flex-wrap:wrap;justify-content:center;gap:24px}.c+.c{margin-left:0}.c+.c::before{display:none}}
+@media (max-width:640px){.pstrip{gap:12px}.pstrip .pg>b{flex-basis:100%;margin:0}.circles{flex-direction:column;align-items:center}.c{width:min(260px,80vw)}}
+/* 메인 아래 얇은 상품 띠 */
+.pband{background:#fff;border-bottom:1px solid var(--line)}
+.pband .pstrip{margin:0;border:0;padding:16px 0}
+.whyv{margin-top:0}
+/* Why choose us: 강점 3개 + = 결과 (수식 배치) */
+.eq{display:flex;align-items:stretch;justify-content:center;gap:clamp(10px,1.2vw,18px);margin-top:clamp(40px,4.5vw,64px)}
+.term{flex:0 1 250px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px 22px 28px;text-align:center;box-shadow:0 8px 30px rgba(21,111,249,.06);display:flex;flex-direction:column;align-items:center}
+.term .dot{width:56px;height:56px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;margin-bottom:18px}
+.term:nth-child(3) .dot{background:linear-gradient(135deg,#5A7DFF,#7A5CFF)}
+.term:nth-child(5) .dot{background:linear-gradient(135deg,#7A5CFF,var(--violet))}
+.term .dot svg{width:24px;height:24px;fill:currentColor}
+.term em{font-style:normal;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
+.term b{display:block;font-size:clamp(18px,1.4vw,21px);font-weight:700;margin-top:8px;letter-spacing:-.02em}
+.term p{margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)}
+.term p strong{color:var(--ink);font-weight:700}
+.op{align-self:center;font-size:clamp(26px,2.4vw,36px);font-weight:300;color:var(--blue);line-height:1;flex:none}
+.result{flex:0 1 280px;border-radius:24px;background:linear-gradient(160deg,var(--blue),var(--violet));color:#fff;padding:36px 26px;text-align:center;display:flex;flex-direction:column;justify-content:center;box-shadow:0 24px 60px rgba(57,139,255,.28)}
+.result small{font-size:14px;opacity:.9}
+.result b{display:block;font-size:clamp(22px,1.9vw,30px);font-weight:800;line-height:1.25;margin-top:10px;letter-spacing:-.03em}
+@media (max-width:1100px){.eq{flex-wrap:wrap}.term{flex:1 1 200px}.op{flex-basis:auto}.result{flex:1 1 100%;padding:28px}.eq .op:nth-child(6){flex-basis:100%;text-align:center}}
+@media (max-width:640px){.eq{flex-direction:column;align-items:stretch}.term,.result{flex:none}.op{text-align:center}}
+.sh.center{text-align:center}
+.sh.center .lead{margin-inline:auto}
+/* 상품 띠: 끊김 없는 무한 롤링 */
+.pband{border-bottom:1px solid var(--line);padding:14px 0;overflow:hidden}
+.marq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq .track{display:flex;width:max-content;align-items:center;gap:0;animation:marq 60s linear infinite;will-change:transform}
+.marq .track:hover{animation-play-state:paused}
+.marq .grp{display:flex;align-items:center;gap:12px;padding-right:12px;flex:none}
+.marq .pg{display:inline-flex;align-items:center;gap:8px;padding-right:40px}
+.marq .pg>b{font-size:13px;font-weight:700;color:var(--blue-600);margin-right:4px;white-space:nowrap}
+.marq .ti{display:inline-flex;align-items:center;gap:7px;padding:4px 11px 4px 4px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+.marq .ic{width:22px;height:22px;border-radius:7px;background:var(--grad);color:#fff;display:grid;place-items:center}
+.marq .ic svg{width:12px;height:12px;fill:currentColor}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(calc(-100% / 6))}}
+@media (prefers-reduced-motion:reduce){.marq .track{animation:none}}
+/* 진행 과정: 두꺼운 상자 대신 가운데 세로선 + 번호 원 */
+.prow{border-bottom:0;padding:14px 0}
+.prow:first-of-type{border-top:0}
+.pc{background:none;box-shadow:none;padding:0 20px;position:relative}
+.pc::before{content:"";position:absolute;left:50%;top:-14px;bottom:-14px;width:1px;background:rgba(255,255,255,.16);transform:translateX(-.5px)}
+.prow:first-of-type .pc::before{top:50%}
+.prow:last-of-type .pc::before{bottom:auto;height:calc(50% + 14px)}
+.pc small{position:relative;z-index:1;display:grid;place-items:center;width:46px;height:46px;margin:0 auto;border-radius:50%;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));color:#fff;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 0 0 6px rgba(255,255,255,.06),0 10px 24px rgba(57,139,255,.28)}
+.pc b{margin-top:12px;font-size:clamp(16px,1.2vw,19px);font-weight:700}
+.prow .pl,.prow .pr{font-size:15px}
+@media (max-width:900px){.pc::before{display:none}.prow{padding:12px 0}}
+/* 진행 과정: 좌 SEO · 우 SNS 각각 번호+내용, 모바일은 토글 */
+.pcols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,80px);align-items:start}
+.pcol h3{display:flex;align-items:center;gap:12px;font-size:clamp(20px,1.6vw,26px);font-weight:700;color:#fff;margin-bottom:8px}
+.pcol h3 i{width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px rgba(57,139,255,.22)}
+.pcol[data-p="sns"] h3 i{background:var(--violet);box-shadow:0 0 0 5px rgba(135,59,255,.22)}
+.pcol ol{list-style:none;margin:0;padding:0}
+.pcol li{display:grid;grid-template-columns:46px 1fr;gap:18px;align-items:start;padding:22px 0;border-top:1px solid var(--navy-line)}
+.pcol li:last-child{border-bottom:1px solid var(--navy-line)}
+.pcol li b{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));color:#fff;font-family:var(--disp);font-size:13px;font-weight:700;box-shadow:0 0 0 5px rgba(255,255,255,.05)}
+.pcol li:nth-child(1) b{--mix:100%}.pcol li:nth-child(2) b{--mix:75%}.pcol li:nth-child(3) b{--mix:50%}.pcol li:nth-child(4) b{--mix:25%}.pcol li:nth-child(5) b{--mix:0%}
+.pcol h4{font-size:clamp(17px,1.25vw,20px);font-weight:700;color:#fff;margin:0 0 6px;padding-top:10px}
+.pcol p{font-size:15px;line-height:1.7;color:var(--navy-muted)}
+.pcmp .ptog{display:none}
+@media (max-width:900px){
+  .pcmp .ptog{display:flex}
+  .pcols{grid-template-columns:1fr}
+  .pcol{display:none}
+  .pcmp[data-on="seo"] .pcol[data-p="seo"],.pcmp[data-on="sns"] .pcol[data-p="sns"]{display:block}
+  .pcol h3{display:none}
+  .pcol li{padding:16px 0;gap:14px;grid-template-columns:40px 1fr}.pcol li b{width:40px;height:40px;font-size:12px}.pcol h4{padding-top:8px}
+}
+/* 롤링 칩: 높이·간격·아이콘 위치 통일 */
+.pband{padding:16px 0}
+.marq .grp{gap:14px;padding-right:14px}
+.marq .ti{height:40px;padding:0 18px 0 7px;gap:10px;font-size:13.5px;font-weight:600;line-height:1;letter-spacing:-.01em;border-color:#E6E9F2}
+.marq .ic{width:26px;height:26px;border-radius:8px;flex:none}
+.marq .ic svg{width:13px;height:13px}
+/* 롤링 칩: 가로 폭 동일 */
+.marq .ti{width:168px;justify-content:flex-start;padding:0 12px 0 7px}
+.marq .ti .ic{flex:none}
+@media (max-width:640px){.marq .ti{width:150px;font-size:13px}}
+/* 롤링 칩: 가장 긴 이름에 맞춘 폭, 글자는 아이콘 제외 영역 중앙 */
+.marq .ti{display:grid;grid-template-columns:26px 1fr;align-items:center;gap:0;width:150px;padding:0 10px 0 7px;text-align:center;white-space:nowrap}
+@media (max-width:640px){.marq .ti{width:138px}}
+.pcol li{align-items:center}
+.pcol h4{padding-top:0}
+@media (max-width:900px){.pcol h4{padding-top:0}}
+/* 성과 묶음 제목 */
+.rgh{display:flex;align-items:center;gap:10px;font-size:clamp(18px,1.4vw,22px);font-weight:700;margin:0 0 18px}
+.rgh i{width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px var(--blue-100)}
+.rgh.sns{margin-top:clamp(40px,4.5vw,64px)}
+.rgh.sns i{background:var(--violet);box-shadow:0 0 0 4px var(--violet-50)}
+.bac .cap img{background:#fff}
+/* 성과 AFTER: 보라 그라데이션 대신 네이비 */
+.bac .aft{background:linear-gradient(160deg,#13214F 0%,#1B2A66 100%)}
+.bac .aft em{background:rgba(255,255,255,.14)}
+.bac .aft small{color:var(--navy-muted)}
+.bac .aft p{color:var(--navy-muted)}
+.bac .arw{color:var(--blue)}
+/* 성과 AFTER: 흰 상자 + 그라데이션 테두리 */
+.bac .aft{color:var(--ink);position:relative;padding:24px 22px;border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,var(--blue),var(--violet)) border-box}
+.bac .aft em{background:linear-gradient(90deg,var(--blue),var(--violet));color:#fff}
+.bac .aft small{color:var(--muted)}
+.bac .aft b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em;margin-right:-.08em}
+.bac .aft p{color:var(--muted)}
+.bac .cap{background:var(--bg2);border:1px solid var(--line)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -495,6 +841,8 @@ html,body{width:100%;max-width:none}
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></symbol>
   <symbol id="i-person" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
   <symbol id="i-tune" viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></symbol>
+  <symbol id="i-web" viewBox="0 0 24 24"><path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h6v2H7v2h10v-2h-3v-2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 13H4V5h16v11z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
   <symbol id="i-design" viewBox="0 0 24 24"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34a1 1 0 0 0-1.41 0L9 12.25 11.75 15l8.96-8.96a1 1 0 0 0 0-1.41z"/></symbol>
   <symbol id="i-kakao" viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.86 5.31 4.66 6.72L5.5 21.5c-.08.3.26.54.52.37l4.4-2.93c.52.06 1.04.1 1.58.1 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></symbol>
@@ -515,61 +863,105 @@ html,body{width:100%;max-width:none}
 
 <!-- ================= HOME ================= -->
 <section class="page on" id="p-home">
-  <div class="hero"><div class="wrap">
-    <div class="en">Make a<br>Miracle</div>
-    <h1>나에게는 일어날 것 같지 않은 기적을 만들어드립니다.</h1>
-    <p class="sub">종합 온라인광고대행사 주식회사 미라클컴퍼니</p>
-    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a><a class="pill line" href="#service" data-go="service">서비스 보기</a></div>
-    <div class="strip3">
-      <figure><img src="assets/hero-brand.jpg" alt=""><figcaption><b>Brand</b>온라인 제품 · 브랜드</figcaption></figure>
-      <figure><img src="assets/hero-local.jpg" alt=""><figcaption><b>Local</b>오프라인 매장 · 지역 사업</figcaption></figure>
-      <figure><img src="assets/hero-medical.jpg" alt=""><figcaption><b>Medical</b>병의원</figcaption></figure>
+  <div class="hero">
+    <div class="hbg"><img src="assets/hero-visual.jpg" alt=""></div>
+    <div class="wrap">
+      <div class="htxt">
+        <span class="hbadge">종합 온라인광고대행사</span>
+        <h1>나에게는 일어날 것 같지 않은<br><span class="hl">기적</span>을 만들어드립니다.</h1>
+        <p class="sub">플레이스·블로그·카페·지식iN부터 SNS 광고·영상까지, 온라인 마케팅 전 영역을 진행합니다.</p>
+        <div class="act"><a class="pill black" href="#contact" data-go="contact"><svg><use href="#i-search"/></svg>무료 진단 신청</a><a class="pill line" href="#service" data-go="service"><svg><use href="#i-grid"/></svg>서비스 보기</a></div>
+      </div>
+      <div class="hstats">
+        <div><span>누적 광고주</span><b>350<i>곳+</i></b></div>
+        <div><span>진행 키워드</span><b>8,500<i>개+</i></b></div>
+        <div><span>제작 콘텐츠</span><b>12,000<i>건+</i></b></div>
+        <div><span>협력 파트너</span><b>10<i>곳+</i></b></div>
+      </div>
     </div>
-  </div></div>
+  </div>
+
+  <div class="pband"><div class="marq"><div class="track"><span class="grp"><span class="ti"><i class="ic"><svg><use href="#i-place"/></svg></i>플레이스</span><span class="ti"><i class="ic"><svg><use href="#i-blog"/></svg></i>블로그</span><span class="ti"><i class="ic"><svg><use href="#i-cafe"/></svg></i>카페</span><span class="ti"><i class="ic"><svg><use href="#i-review"/></svg></i>카페 후기</span><span class="ti"><i class="ic"><svg><use href="#i-qna"/></svg></i>지식iN</span><span class="ti"><i class="ic"><svg><use href="#i-news"/></svg></i>언론보도</span><span class="ti"><i class="ic"><svg><use href="#i-sns"/></svg></i>SNS 광고</span><span class="ti"><i class="ic"><svg><use href="#i-youtube"/></svg></i>유튜브 마케팅</span><span class="ti"><i class="ic"><svg><use href="#i-video"/></svg></i>영상 제작</span><span class="ti"><i class="ic"><svg><use href="#i-web"/></svg></i>홈페이지 제작</span></span><span class="grp" aria-hidden="true"><span class="ti"><i class="ic"><svg><use href="#i-place"/></svg></i>플레이스</span><span class="ti"><i class="ic"><svg><use href="#i-blog"/></svg></i>블로그</span><span class="ti"><i class="ic"><svg><use href="#i-cafe"/></svg></i>카페</span><span class="ti"><i class="ic"><svg><use href="#i-review"/></svg></i>카페 후기</span><span class="ti"><i class="ic"><svg><use href="#i-qna"/></svg></i>지식iN</span><span class="ti"><i class="ic"><svg><use href="#i-news"/></svg></i>언론보도</span><span class="ti"><i class="ic"><svg><use href="#i-sns"/></svg></i>SNS 광고</span><span class="ti"><i class="ic"><svg><use href="#i-youtube"/></svg></i>유튜브 마케팅</span><span class="ti"><i class="ic"><svg><use href="#i-video"/></svg></i>영상 제작</span><span class="ti"><i class="ic"><svg><use href="#i-web"/></svg></i>홈페이지 제작</span></span><span class="grp" aria-hidden="true"><span class="ti"><i class="ic"><svg><use href="#i-place"/></svg></i>플레이스</span><span class="ti"><i class="ic"><svg><use href="#i-blog"/></svg></i>블로그</span><span class="ti"><i class="ic"><svg><use href="#i-cafe"/></svg></i>카페</span><span class="ti"><i class="ic"><svg><use href="#i-review"/></svg></i>카페 후기</span><span class="ti"><i class="ic"><svg><use href="#i-qna"/></svg></i>지식iN</span><span class="ti"><i class="ic"><svg><use href="#i-news"/></svg></i>언론보도</span><span class="ti"><i class="ic"><svg><use href="#i-sns"/></svg></i>SNS 광고</span><span class="ti"><i class="ic"><svg><use href="#i-youtube"/></svg></i>유튜브 마케팅</span><span class="ti"><i class="ic"><svg><use href="#i-video"/></svg></i>영상 제작</span><span class="ti"><i class="ic"><svg><use href="#i-web"/></svg></i>홈페이지 제작</span></span><span class="grp" aria-hidden="true"><span class="ti"><i class="ic"><svg><use href="#i-place"/></svg></i>플레이스</span><span class="ti"><i class="ic"><svg><use href="#i-blog"/></svg></i>블로그</span><span class="ti"><i class="ic"><svg><use href="#i-cafe"/></svg></i>카페</span><span class="ti"><i class="ic"><svg><use href="#i-review"/></svg></i>카페 후기</span><span class="ti"><i class="ic"><svg><use href="#i-qna"/></svg></i>지식iN</span><span class="ti"><i class="ic"><svg><use href="#i-news"/></svg></i>언론보도</span><span class="ti"><i class="ic"><svg><use href="#i-sns"/></svg></i>SNS 광고</span><span class="ti"><i class="ic"><svg><use href="#i-youtube"/></svg></i>유튜브 마케팅</span><span class="ti"><i class="ic"><svg><use href="#i-video"/></svg></i>영상 제작</span><span class="ti"><i class="ic"><svg><use href="#i-web"/></svg></i>홈페이지 제작</span></span><span class="grp" aria-hidden="true"><span class="ti"><i class="ic"><svg><use href="#i-place"/></svg></i>플레이스</span><span class="ti"><i class="ic"><svg><use href="#i-blog"/></svg></i>블로그</span><span class="ti"><i class="ic"><svg><use href="#i-cafe"/></svg></i>카페</span><span class="ti"><i class="ic"><svg><use href="#i-review"/></svg></i>카페 후기</span><span class="ti"><i class="ic"><svg><use href="#i-qna"/></svg></i>지식iN</span><span class="ti"><i class="ic"><svg><use href="#i-news"/></svg></i>언론보도</span><span class="ti"><i class="ic"><svg><use href="#i-sns"/></svg></i>SNS 광고</span><span class="ti"><i class="ic"><svg><use href="#i-youtube"/></svg></i>유튜브 마케팅</span><span class="ti"><i class="ic"><svg><use href="#i-video"/></svg></i>영상 제작</span><span class="ti"><i class="ic"><svg><use href="#i-web"/></svg></i>홈페이지 제작</span></span><span class="grp" aria-hidden="true"><span class="ti"><i class="ic"><svg><use href="#i-place"/></svg></i>플레이스</span><span class="ti"><i class="ic"><svg><use href="#i-blog"/></svg></i>블로그</span><span class="ti"><i class="ic"><svg><use href="#i-cafe"/></svg></i>카페</span><span class="ti"><i class="ic"><svg><use href="#i-review"/></svg></i>카페 후기</span><span class="ti"><i class="ic"><svg><use href="#i-qna"/></svg></i>지식iN</span><span class="ti"><i class="ic"><svg><use href="#i-news"/></svg></i>언론보도</span><span class="ti"><i class="ic"><svg><use href="#i-sns"/></svg></i>SNS 광고</span><span class="ti"><i class="ic"><svg><use href="#i-youtube"/></svg></i>유튜브 마케팅</span><span class="ti"><i class="ic"><svg><use href="#i-video"/></svg></i>영상 제작</span><span class="ti"><i class="ic"><svg><use href="#i-web"/></svg></i>홈페이지 제작</span></span></div></div></div>
 
   <div class="band"><div class="wrap">
-    <div class="sh">
-      <div><div class="num">01</div><div class="en">Marketing</div><h2><span class="thin">바이럴 마케팅의</span> 모든 것을 우리 손으로</h2></div>
-      <p class="lead">미라클컴퍼니는 온라인 비즈니스 컨설팅 노하우와 통합 마케팅 역량으로 다양한 파트너사의 성장을 이끌어 가고 있습니다. 전문화된 인력을 통해 브랜드의 비전을 현실화하고, 장기적인 시장 확대와 지속적인 고객 창출을 목표로 움직입니다.</p>
+    <div class="sh center">
+      <div><div class="num">01</div><div class="en">Why choose us</div><h2><span class="thin">SEO부터 SNS·영상까지,</span><br>한 팀이 끝까지 책임집니다</h2></div>
+      <p class="lead">온라인 비즈니스 컨설팅 노하우와 통합 마케팅 역량으로 파트너사의 성장을 이끌어 왔습니다. 진단부터 제작, 노출, 관리까지 외주 없이 한 팀이 진행합니다.</p>
     </div>
-    <div class="tiles">
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-place"/></svg></span><small>PLACE</small></div><h3>플레이스 상위노출</h3><p>지도·플레이스 탭에서 지역 키워드 상위 고정</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-blog"/></svg></span><small>BLOG</small></div><h3>블로그 상위노출</h3><p>발행 · 건별 · 월보장, 검색 마케팅의 기본</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-cafe"/></svg></span><small>CAFE</small></div><h3>카페 상위노출</h3><p>카페 탭 상위 노출로 검색 첫 화면 점유</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-review"/></svg></span><small>REVIEW</small></div><h3>카페 후기 노출</h3><p>추천 질문에 실제 이용 후기로 노출</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-qna"/></svg></span><small>Q&amp;A</small></div><h3>지식iN 상위노출</h3><p>질문형 검색에 답변으로 노출</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-news"/></svg></span><small>PRESS</small></div><h3>언론보도</h3><p>언론사 기사 발행으로 신뢰도 확보</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-sns"/></svg></span><small>SNS</small></div><h3>SNS 광고 운영</h3><p>기획·소재 제작·운영·보고 원스톱</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-youtube"/></svg></span><small>YOUTUBE</small></div><h3>유튜브 마케팅</h3><p>채널 개설, 광고, 인플루언서 협업</p></a>
-      <a href="#service" data-go="service"><div class="top"><span class="ic"><svg><use href="#i-video"/></svg></span><small>VIDEO</small></div><h3>영상 제작</h3><p>자체 촬영팀, 4K · 스튜디오 · 드론</p></a>
+    <div class="eq">
+      <div class="term"><span class="dot"><svg><use href="#i-grid"/></svg></span><em>One-stop</em><b>SEO·SNS·영상 원스톱</b><p>플레이스·블로그·카페·지식iN부터 SNS 광고, 영상, 홈페이지까지 <strong>한 곳에서</strong> 진행합니다.</p></div>
+      <span class="op">+</span>
+      <div class="term"><span class="dot"><svg><use href="#i-design"/></svg></span><em>In-house</em><b>자체 제작팀</b><p>기획·디자인·촬영을 <strong>외주 없이 직접</strong> 해서 수정이 빠르고 비용이 투명합니다.</p></div>
+      <span class="op">+</span>
+      <div class="term"><span class="dot"><svg><use href="#i-check"/></svg></span><em>Approve first</em><b>게시 전 확인</b><p>모든 콘텐츠는 <strong>광고주 확인 후</strong> 게시합니다. 병의원은 심의 기준까지 거칩니다.</p></div>
+      <span class="op">=</span>
+      <div class="result"><small>그래서 미라클컴퍼니는</small><b>믿고 맡기는<br>마케팅 파트너</b></div>
     </div>
   </div></div>
 
   <div class="band grey"><div class="wrap">
     <div class="sh">
-      <div><div class="num">02</div><div class="en">Results</div><h2><span class="thin">검색 첫 화면에서</span> 확인되는 성과</h2></div>
-      <p class="lead">실적은 말이 아니라 검색 첫 화면으로 보여드립니다. 키워드별 순위와 검색량, 노출 화면을 매주 리포트로 전달합니다.</p>
+      <div><div class="num">02</div><div class="en">Results</div><h2><span class="thin">진행 전과 후,</span> 이렇게 달라졌습니다</h2></div>
+      <p class="lead">실적은 말이 아니라 실제 화면으로 보여드립니다. 진행 전과 후가 어떻게 달라졌는지 그대로 옮겼습니다.</p>
     </div>
-    <div class="cards">
-      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-place.jpg" alt=""></div><div class="body"><span class="tag">Place · 요식업</span><h3>천안 입장 맛집, 300위 밖에서 첫 화면으로</h3><div class="stat"><div><b>첫 페이지</b><span>플레이스 노출 위치</span></div><div><b>27,400</b><span>키워드 월 검색량</span></div></div></div></div>
-      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-blog.jpg" alt=""></div><div class="body"><span class="tag">Blog · 화장품</span><h3>브랜드 검색 시 블로그 탭 최상단 고정</h3><div class="stat"><div><b>48,900</b><span>키워드 월 검색량</span></div><div><b>1위</b><span>블로그 탭 노출</span></div></div></div></div>
-      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-medical.jpg" alt=""></div><div class="body"><span class="tag">Place + Cafe · 병의원</span><h3>불당동 피부과, 지역 검색 1위와 카페 후기 노출</h3><div class="stat"><div><b>1위</b><span>플레이스 노출 순위</span></div><div><b>2개 탭</b><span>플레이스·카페 동시 노출</span></div></div></div></div>
-      <div class="card"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="assets/card-keyword.jpg" alt=""></div><div class="body"><span class="tag">Keyword · 영양제 브랜드</span><h3>키워드 방향 설계 후 검색량이 달라졌습니다</h3><div class="stat"><div><b>1,683%</b><span>A 브랜드 검색량 증가</span></div><div><b>934%</b><span>B 브랜드 검색량 증가</span></div></div></div></div>
+    <h3 class="rgh"><i></i>SEO 성과</h3>
+    <div class="bacards">
+      <article class="bac">
+        <div class="bh"><span class="tag">Place · 요식업</span><h3>천안 입장 맛집, 300위 밖에서 첫 화면으로</h3></div>
+        <div class="bfr"><em>BEFORE</em><small>'천안 입장 맛집' 플레이스 순위</small><b>300위 밖</b><p>검색해도 우리 매장이 나오지 않던 상태</p></div>
+        <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="aft"><em>AFTER</em><small>플레이스 노출 위치</small><b>첫 페이지</b><p>월 검색량 27,400회 키워드의 첫 화면에 노출</p><div class="cap"><img src="assets/card-place.jpg" alt=""></div></div>
+      </article>
+      <article class="bac">
+        <div class="bh"><span class="tag">Blog · 화장품</span><h3>브랜드 검색 시 블로그 탭 최상단 고정</h3></div>
+        <div class="bfr"><em>BEFORE</em><small>브랜드명 검색 시 블로그 탭</small><b>첫 화면에 없음</b><p>브랜드를 검색해도 우리 글이 아닌 다른 글만 보이던 상태</p></div>
+        <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="aft"><em>AFTER</em><small>블로그 탭 노출</small><b>1위</b><p>월 검색량 48,900회 키워드에서 최상단 고정</p><div class="cap"><img src="assets/card-blog.jpg" alt=""></div></div>
+      </article>
+      <article class="bac">
+        <div class="bh"><span class="tag">Place + Cafe · 병의원</span><h3>불당동 피부과, 지역 검색 1위와 카페 후기 노출</h3></div>
+        <div class="bfr"><em>BEFORE</em><small>'천안 피부과' 지역 검색</small><b>첫 화면에 없음</b><p>경쟁 병원이 먼저 보여 신환이 다른 곳으로 가던 상태</p></div>
+        <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="aft"><em>AFTER</em><small>플레이스 노출 순위</small><b>1위</b><p>플레이스와 카페 후기, 2개 탭 동시 노출</p><div class="cap"><img src="assets/card-medical.jpg" alt=""></div></div>
+      </article>
+    </div>
+    <h3 class="rgh sns"><i></i>SNS · 콘텐츠 성과</h3>
+    <div class="bacards">
+      <article class="bac">
+        <div class="bh"><span class="tag">SNS · 수제 디저트</span><h3>사진만 올리던 계정, 광고 소재로 문의가 생기기까지</h3></div>
+        <div class="bfr"><em>BEFORE</em><small>인스타그램 계정</small><b>게시물만 올림</b><p>광고 소재 없이 사진만 올려 반응이 없던 상태</p></div>
+        <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="aft"><em>AFTER</em><small>소재 제작 + 타깃 광고 운영</small><b>문의 발생</b><p>Basic으로 시작해 성과가 나서 Standard로 확대</p><div class="cap"><img src="assets/case-sns.jpg" alt=""></div></div>
+      </article>
+      <article class="bac">
+        <div class="bh"><span class="tag">Content · 앱 서비스</span><h3>제각각이던 피드, 브랜드 톤으로 정리</h3></div>
+        <div class="bfr"><em>BEFORE</em><small>인스타그램 피드</small><b>통일감 없음</b><p>기능 설명, 이벤트, 캐릭터 이미지가 제각각이라 브랜드가 기억되지 않던 상태</p></div>
+        <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="aft"><em>AFTER</em><small>자체 디자인팀 카드뉴스·피드 제작</small><b>브랜드 톤 통일</b><p>캐릭터와 브랜드 컬러를 살려 소개·이벤트 콘텐츠를 한 톤으로 제작</p><div class="cap"><img src="assets/case-feed.jpg" alt=""></div></div>
+      </article>
+      <article class="bac">
+        <div class="bh"><span class="tag">Video · 교육 서비스</span><h3>외주 영상 수정 비용, 자체 촬영팀으로 해결</h3></div>
+        <div class="bfr"><em>BEFORE</em><small>외주 영상 제작</small><b>수정마다 비용</b><p>수정 요청마다 추가 비용이 붙고 일정이 늦어지던 상태</p></div>
+        <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="aft"><em>AFTER</em><small>자체 촬영·편집팀</small><b>추가 비용 없음</b><p>기획·촬영·편집을 내부에서 진행해 수정이 빠름</p><div class="cap"><img src="assets/case-video.jpg" alt=""></div></div>
+      </article>
     </div>
       </div></div>
 
-  <div class="band"><div class="wrap">
+  <div class="band black"><div class="wrap">
     <div class="sh">
-      <div><div class="num">03</div><div class="en">Difference</div><h2><span class="thin">계약하면</span> 이렇게 일합니다</h2></div>
-      <p class="lead">실적을 내세우는 대신 일하는 방식으로 말씀드립니다. 여섯 가지는 계약서에 그대로 들어가는 조건입니다.</p>
+      <div><div class="num">03</div><div class="en">Process</div><h2><span class="thin">SEO 마케팅과 SNS 광고,</span> 이렇게 진행합니다</h2></div>
+      <p class="lead">상품마다 진행 단계가 다릅니다. 진단부터 운영까지 담당자 한 명이 끝까지 맡습니다.</p>
     </div>
-    <div class="items">
-      <div><span class="ic lg"><svg><use href="#i-nocharge"/></svg></span><b>No exposure, no charge</b><h3>노출이 안 된 날은 세지 않습니다</h3><p>건별은 노출된 건만, 월보장은 노출된 날만 정산합니다.</p></div>
-      <div><span class="ic lg"><svg><use href="#i-report"/></svg></span><b>Weekly report</b><h3>매주 숫자로 보고합니다</h3><p>키워드별 순위, 검색량, 유입과 노출 화면 캡처를 매주 리포트로 전달합니다.</p></div>
-      <div><span class="ic lg"><svg><use href="#i-team"/></svg></span><b>In-house</b><h3>기획부터 촬영까지 자체 제작</h3><p>외주 없이 자체 기획·디자인·촬영팀이 만들어 수정이 빠르고 비용이 투명합니다.</p></div>
-      <div><span class="ic lg"><svg><use href="#i-check"/></svg></span><b>Approve first</b><h3>게시 전에 반드시 확인받습니다</h3><p>모든 콘텐츠는 광고주 확인 후 게시합니다. 병의원은 원장님 확인과 심의 기준을 거칩니다.</p></div>
-      <div><span class="ic lg"><svg><use href="#i-person"/></svg></span><b>One manager</b><h3>전담 담당자가 끝까지 맡습니다</h3><p>담당자 한 명이 진단부터 리포트까지 책임지고, 문의에는 당일 답합니다.</p></div>
-      <div><span class="ic lg"><svg><use href="#i-tune"/></svg></span><b>Only what you need</b><h3>필요한 상품만 제안합니다</h3><p>업종과 예산에 맞는 구성만 제안합니다. 상품 하나로 시작하셔도 됩니다.</p></div>
+    <div class="pcmp" data-on="seo">
+      <nav class="ptog" role="tablist">
+        <button type="button" class="on" data-p="seo" role="tab" aria-selected="true"><i></i>SEO 마케팅</button>
+        <button type="button" data-p="sns" role="tab" aria-selected="false"><i></i>SNS 광고</button>
+      </nav>
+      <div class="pcols">
+      <div class="pcol" data-p="seo"><h3><i></i>SEO 마케팅</h3><ol><li><b>01</b><div><h4>현황 진단</h4><p>매장·브랜드의 검색 현황과 플레이스·블로그 상태, 경쟁 업체 노출을 분석합니다.</p></div></li><li><b>02</b><div><h4>전략 수립</h4><p>업종과 예산에 맞는 상품 구성과 목표 순위를 정합니다.</p></div></li><li><b>03</b><div><h4>키워드 선정</h4><p>검색량과 경쟁 강도를 보고 지역·구매 의도 키워드를 고릅니다.</p></div></li><li><b>04</b><div><h4>콘텐츠 제작·노출</h4><p>플레이스 정비, 블로그·카페·지식iN 원고를 제작해 확인 후 게시합니다.</p></div></li><li><b>05</b><div><h4>순위 관리</h4><p>매일 순위를 점검하고, 성과가 낮은 키워드는 바로 교체합니다.</p></div></li></ol></div>
+      <div class="pcol" data-p="sns"><h3><i></i>SNS 광고</h3><ol><li><b>01</b><div><h4>기업 분석</h4><p>기업 환경과 니즈를 파악하고 시장과 경쟁사를 조사합니다.</p></div></li><li><b>02</b><div><h4>콘텐츠 제작</h4><p>카드뉴스·영상 등 브랜드에 맞는 콘텐츠를 기획하고 제작합니다.</p></div></li><li><b>03</b><div><h4>채널 운영</h4><p>인스타그램·페이스북 채널에 콘텐츠를 올리고 관리합니다.</p></div></li><li><b>04</b><div><h4>게시물 광고</h4><p>타깃을 설정해 게시물 광고를 운영합니다.</p></div></li><li><b>05</b><div><h4>효과 분석</h4><p>페이지 인사이트와 광고 효과를 분석해 다음 소재에 반영합니다.</p></div></li></ol></div>
+      </div>
     </div>
   </div></div>
 
@@ -578,7 +970,7 @@ html,body{width:100%;max-width:none}
       <div><div class="num">04</div><div class="en">Clients say</div><h2>함께한 광고주의 이야기</h2></div>
       <p class="lead">계약 후에 어떻게 달라졌는지, 광고주분들이 직접 남긴 말입니다.</p>
     </div>
-    <div class="carousel" id="qc"><div class="track"><div class="q"><span class="av">김</span><p>플레이스 상위노출을 시작하고 두 달째부터 예약 전화가 눈에 띄게 늘었습니다. 매주 리포트가 와서 지금 무엇을 하고 있는지 알 수 있다는 점이 가장 좋았습니다.</p><div class="who"><b>김○○ 대표</b>천안 · 요식업</div></div><div class="q"><span class="av">이</span><p>의료광고 심의 때문에 걱정이 많았는데 원고 작성부터 접수까지 맡아 주셔서 진료에만 집중할 수 있었습니다. 게시 전에 항상 확인을 받는 점도 안심이 됩니다.</p><div class="who"><b>이○○ 원장</b>피부과</div></div><div class="q"><span class="av">박</span><p>대행사를 세 곳 거쳤는데 노출이 안 된 날을 빼고 정산하는 곳은 처음이었습니다. 키워드가 안 되면 바로 바꿔 주는 것도 다른 점입니다.</p><div class="who"><b>박○○ 팀장</b>건강식품 브랜드</div></div><div class="q"><span class="av">최</span><p>블로그 상위노출을 두 달 진행했더니 문의 전화의 절반이 검색으로 왔다고 답합니다. 어떤 키워드로 왔는지까지 리포트에 적혀 있어서 광고비를 어디에 쓰는지 알겠더군요.</p><div class="who"><b>최○○ 대표</b>인테리어</div></div><div class="q"><span class="av">정</span><p>플레이스 정비만 먼저 해 주셨는데 그것만으로도 지도에서 우리 가게가 보이기 시작했습니다. 억지로 상품을 늘리지 않는 점이 신뢰가 갔습니다.</p><div class="who"><b>정○○ 원장</b>한의원</div></div><div class="q"><span class="av">한</span><p>스마트스토어 신규 유입이 늘지 않아 고민이었는데 키워드를 다시 잡은 뒤 검색 유입이 꾸준히 올라갔습니다. 매주 월요일 리포트를 기다리게 됩니다.</p><div class="who"><b>한○○ 이사</b>화장품 브랜드</div></div><div class="q"><span class="av">오</span><p>카페 후기 노출 이후 "카페에서 보고 왔다"는 손님이 실제로 생겼습니다. 후기 원고를 게시 전에 보여 주고 확인받는 과정이 꼼꼼했습니다.</p><div class="who"><b>오○○ 대표</b>천안 · 카페</div></div><div class="q"><span class="av">윤</span><p>언론보도 한 건으로 기사 링크를 상세페이지와 인스타에 계속 쓰고 있습니다. 매체 선정부터 원고까지 한 번에 진행돼서 편했습니다.</p><div class="who"><b>윤○○ 대표</b>생활용품 브랜드</div></div><div class="q"><span class="av">장</span><p>유동 인구가 적은 자리라 검색으로 손님을 데려와야 했습니다. 지역 키워드 다섯 개로 시작했는데 세 달째 플레이스 첫 화면을 유지하고 있습니다.</p><div class="who"><b>장○○ 대표</b>천안 · 미용실</div></div><div class="q"><span class="av">서</span><p>영상 제작을 외부에 맡기면 수정마다 비용이 붙었는데, 촬영팀이 내부에 있어서 수정이 빠르고 추가 비용 얘기가 없었습니다.</p><div class="who"><b>서○○ 팀장</b>교육 서비스</div></div><div class="q"><span class="av">임</span><p>담당자 한 명이 처음부터 끝까지 맡아 줘서 매번 설명을 반복할 필요가 없었습니다. 카톡으로 물어보면 당일에 답이 옵니다.</p><div class="who"><b>임○○ 대표</b>포장이사</div></div><div class="q"><span class="av">조</span><p>지식iN 답변 노출이 병원 선택 단계에서 이렇게 효과가 있는지 몰랐습니다. 증상 키워드부터 지역 키워드까지 순서대로 잡아 준 설계가 좋았습니다.</p><div class="who"><b>조○○ 원장</b>정형외과</div></div><div class="q"><span class="av">강</span><p>SNS 광고를 Basic으로 작게 시작했는데 소재 제작과 보고서까지 포함돼 있어 부담이 없었습니다. 성과가 나서 Standard로 올렸습니다.</p><div class="who"><b>강○○ 대표</b>수제 디저트</div></div><div class="q"><span class="av">문</span><p>첫 달 진단 리포트만 받고 진행을 미뤘는데도 재촉이 없었습니다. 세 달 뒤에 다시 연락했을 때도 같은 담당자가 기억하고 있어서 놀랐습니다.</p><div class="who"><b>문○○ 대표</b>천안 · 학원</div></div><div class="q"><span class="av">신</span><p>같은 업계 대행사인데 실행을 맡기고 있습니다. 노출 카운팅이 정확하고 리포트가 깔끔해서 우리 광고주에게 그대로 전달합니다.</p><div class="who"><b>신○○ 팀장</b>광고 대행사</div></div></div></div>
+    <div class="carousel" id="qc"><div class="track"><div class="q"><span class="av">김</span><p>플레이스 노출을 시작하고 두 달째부터 예약 전화가 눈에 띄게 늘었습니다. 지금 무엇을 하고 있는지 물어보면 바로 답이 오는 점이 가장 좋았습니다.</p><div class="who"><b>김○○ 대표</b>천안 · 요식업</div></div><div class="q"><span class="av">이</span><p>의료광고 심의 때문에 걱정이 많았는데 원고 작성부터 접수까지 맡아 주셔서 진료에만 집중할 수 있었습니다. 게시 전에 항상 확인을 받는 점도 안심이 됩니다.</p><div class="who"><b>이○○ 원장</b>피부과</div></div><div class="q"><span class="av">박</span><p>대행사를 세 곳 거쳤는데 노출이 안 된 날을 빼고 정산하는 곳은 처음이었습니다. 키워드가 안 되면 바로 바꿔 주는 것도 다른 점입니다.</p><div class="who"><b>박○○ 팀장</b>건강식품 브랜드</div></div><div class="q"><span class="av">최</span><p>블로그 노출을 두 달 진행했더니 문의 전화의 절반이 검색으로 왔다고 답합니다. 어떤 키워드로 왔는지까지 알려 줘서 광고비를 어디에 쓰는지 알겠더군요.</p><div class="who"><b>최○○ 대표</b>인테리어</div></div><div class="q"><span class="av">정</span><p>플레이스 정비만 먼저 해 주셨는데 그것만으로도 지도에서 우리 가게가 보이기 시작했습니다. 억지로 상품을 늘리지 않는 점이 신뢰가 갔습니다.</p><div class="who"><b>정○○ 원장</b>한의원</div></div><div class="q"><span class="av">한</span><p>스마트스토어 신규 유입이 늘지 않아 고민이었는데 키워드를 다시 잡은 뒤 검색 유입이 꾸준히 올라갔습니다. 상세페이지 방향까지 함께 봐 준 게 도움이 됐습니다.</p><div class="who"><b>한○○ 이사</b>화장품 브랜드</div></div><div class="q"><span class="av">오</span><p>카페 후기 노출 이후 "카페에서 보고 왔다"는 손님이 실제로 생겼습니다. 후기 원고를 게시 전에 보여 주고 확인받는 과정이 꼼꼼했습니다.</p><div class="who"><b>오○○ 대표</b>천안 · 카페</div></div><div class="q"><span class="av">윤</span><p>언론보도 한 건으로 기사 링크를 상세페이지와 인스타에 계속 쓰고 있습니다. 매체 선정부터 원고까지 한 번에 진행돼서 편했습니다.</p><div class="who"><b>윤○○ 대표</b>생활용품 브랜드</div></div><div class="q"><span class="av">장</span><p>유동 인구가 적은 자리라 검색으로 손님을 데려와야 했습니다. 지역 키워드 다섯 개로 시작했는데 세 달째 플레이스 첫 화면을 유지하고 있습니다.</p><div class="who"><b>장○○ 대표</b>천안 · 미용실</div></div><div class="q"><span class="av">서</span><p>영상 제작을 외부에 맡기면 수정마다 비용이 붙었는데, 촬영팀이 내부에 있어서 수정이 빠르고 추가 비용 얘기가 없었습니다.</p><div class="who"><b>서○○ 팀장</b>교육 서비스</div></div><div class="q"><span class="av">임</span><p>담당자 한 명이 처음부터 끝까지 맡아 줘서 매번 설명을 반복할 필요가 없었습니다. 카톡으로 물어보면 당일에 답이 옵니다.</p><div class="who"><b>임○○ 대표</b>포장이사</div></div><div class="q"><span class="av">조</span><p>지식iN 답변 노출이 병원 선택 단계에서 이렇게 효과가 있는지 몰랐습니다. 증상 키워드부터 지역 키워드까지 순서대로 잡아 준 설계가 좋았습니다.</p><div class="who"><b>조○○ 원장</b>정형외과</div></div><div class="q"><span class="av">강</span><p>SNS 광고를 Basic으로 작게 시작했는데 소재 제작과 보고서까지 포함돼 있어 부담이 없었습니다. 성과가 나서 Standard로 올렸습니다.</p><div class="who"><b>강○○ 대표</b>수제 디저트</div></div><div class="q"><span class="av">문</span><p>첫 상담만 받고 진행을 미뤘는데도 재촉이 없었습니다. 세 달 뒤에 다시 연락했을 때도 같은 담당자가 기억하고 있어서 놀랐습니다.</p><div class="who"><b>문○○ 대표</b>천안 · 학원</div></div><div class="q"><span class="av">신</span><p>같은 업계 대행사인데 실행을 맡기고 있습니다. 노출 카운팅이 정확하고 정리가 깔끔해서 우리 광고주에게 그대로 전달합니다.</p><div class="who"><b>신○○ 팀장</b>광고 대행사</div></div></div></div>
     <div class="cnav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></div>
       </div></div>
 
@@ -615,7 +1007,7 @@ html,body{width:100%;max-width:none}
       <div class="pic"><img src="assets/offer-graph.jpg" alt=""></div>
     </div>
     <div class="plan-t">진행 순서</div>
-    <div class="steps4"><div><b>01</b><h4>구매 의도 키워드 발굴</h4><p>'○○ 추천', '○○ 효과'처럼 구매 직전 키워드를 선정합니다.</p></div><div><b>02</b><h4>블로그 상위노출 시작</h4><p>24시간 안에 노출된 건만 정산합니다.</p></div><div><b>03</b><h4>카페 후기 노출</h4><p>타깃 고객이 모인 카페에 실제 후기로 노출합니다.</p></div><div><b>04</b><h4>첫 리포트와 조정</h4><p>순위·유입 리포트를 전달하고 키워드를 교체합니다.</p></div></div>
+    <div class="steps4"><div><b>01</b><h4>구매 의도 키워드 발굴</h4><p>'○○ 추천', '○○ 효과'처럼 구매 직전 키워드를 선정합니다.</p></div><div><b>02</b><h4>블로그 노출 시작</h4><p>24시간 안에 노출된 건만 정산합니다.</p></div><div><b>03</b><h4>카페 후기 노출</h4><p>타깃 고객이 모인 카페에 실제 후기로 노출합니다.</p></div><div><b>04</b><h4>첫 성과 확인과 조정</h4><p>순위와 유입을 확인하고 키워드를 교체합니다.</p></div></div>
   </div></div>
 <div class="band osec alt" id="offer-local"><div class="wrap">
     <div class="ohead">
@@ -623,15 +1015,15 @@ html,body{width:100%;max-width:none}
       <div class="pic"><img src="assets/offer-local.jpg" alt=""></div>
     </div>
     <div class="plan-t">진행 순서</div>
-    <div class="steps4"><div><b>01</b><h4>플레이스 정비와 키워드 선정</h4><p>사진·메뉴·영업시간을 정비하고 지역 키워드 5개를 고릅니다.</p></div><div><b>02</b><h4>플레이스 상위노출 시작</h4><p>노출된 날만 카운팅해 월 단위로 정산합니다.</p></div><div><b>03</b><h4>블로그·카페 상위노출</h4><p>'천안 맛집' 같은 대형 키워드를 함께 잡습니다.</p></div><div><b>04</b><h4>지역 카페 후기 노출</h4><p>맘카페·커뮤니티의 추천 질문에 실제 방문 후기로 노출합니다.</p></div></div>
+    <div class="steps4"><div><b>01</b><h4>플레이스 정비와 키워드 선정</h4><p>사진·메뉴·영업시간을 정비하고 지역 키워드 5개를 고릅니다.</p></div><div><b>02</b><h4>플레이스 노출 시작</h4><p>노출된 날만 카운팅해 월 단위로 정산합니다.</p></div><div><b>03</b><h4>블로그·카페 노출</h4><p>'천안 맛집' 같은 대형 키워드를 함께 잡습니다.</p></div><div><b>04</b><h4>지역 카페 후기 노출</h4><p>맘카페·커뮤니티의 추천 질문에 실제 방문 후기로 노출합니다.</p></div></div>
   </div></div>
 <div class="band osec" id="offer-medical"><div class="wrap">
     <div class="ohead">
-      <div><div class="sh" style="margin-bottom:0"><div class="num">03</div><div class="en">Medical</div><h2><span class="thin">단순 상위노출이 아니라</span> 신환으로 이어지는 병원 마케팅</h2><ul class="checks"><li>상위노출은 되는데 실제 내원으로 이어지지 않는다</li><li>환자가 검색하는 순서에 맞춰 노출하고 싶다</li><li>진료에 집중하고 마케팅은 맡기고 싶다</li></ul><p class="recoline"><i></i><span>BEST</span><b>플레이스 · 지식iN · 블로그 · 카페 후기 노출</b></p><div class="act"><a class="pill black" href="#contact" data-go="contact">이 구성으로 상담 신청</a></div></div></div>
+      <div><div class="sh" style="margin-bottom:0"><div class="num">03</div><div class="en">Medical</div><h2><span class="thin">단순 노출이 아니라</span><br>신환으로 이어지는 병원 마케팅</h2><ul class="checks"><li>노출은 되는데 실제 내원으로 이어지지 않는다</li><li>환자가 검색하는 순서에 맞춰 노출하고 싶다</li><li>진료에 집중하고 마케팅은 맡기고 싶다</li></ul><p class="recoline"><i></i><span>BEST</span><b>플레이스 · 지식iN · 블로그 · 카페 후기 노출</b></p><div class="act"><a class="pill black" href="#contact" data-go="contact">이 구성으로 상담 신청</a></div></div></div>
       <div class="pic"><img src="assets/offer-medical.jpg" alt=""></div>
     </div>
     <div class="plan-t">진행 순서</div>
-    <div class="steps4"><div><b>01</b><h4>증상 인지</h4><p>'무릎 아플 때' 같은 증상 검색에서 블로그·지식iN 답변으로 먼저 만납니다.</p></div><div><b>02</b><h4>해결 방법 검색</h4><p>'○○ 치료 방법' 검색에 정보성 블로그 콘텐츠로 노출합니다.</p></div><div><b>03</b><h4>병원 후보 검색</h4><p>'천안 피부과' 같은 지역 키워드를 플레이스 상위노출로 잡습니다.</p></div><div><b>04</b><h4>비교와 내원</h4><p>카페 추천 질문에 실제 후기로 노출하고 예약·전화 유입을 보고합니다.</p></div></div>
+    <div class="steps4"><div><b>01</b><h4>증상 인지</h4><p>'무릎 아플 때' 같은 증상 검색에서 블로그·지식iN 답변으로 먼저 만납니다.</p></div><div><b>02</b><h4>해결 방법 검색</h4><p>'○○ 치료 방법' 검색에 정보성 블로그 콘텐츠로 노출합니다.</p></div><div><b>03</b><h4>병원 후보 검색</h4><p>'천안 피부과' 같은 지역 키워드를 플레이스 노출로 잡습니다.</p></div><div><b>04</b><h4>비교와 내원</h4><p>카페 추천 질문에 실제 후기로 노출하고 예약·전화 유입을 보고합니다.</p></div></div>
   </div></div>
 
   <div class="cta"><div class="wrap">
@@ -653,15 +1045,15 @@ html,body{width:100%;max-width:none}
 
   <div class="band"><div class="wrap">
     <div class="sh">
-      <div><div class="num">A</div><div class="en">Search Exposure</div><h2>검색 노출</h2></div>
+      <div><div class="num">A</div><div class="en">SEO Marketing</div><h2>SEO 마케팅</h2></div>
       <p class="lead">고객이 검색하는 바로 그 자리에 노출됩니다. 플레이스, 블로그, 카페, 지식iN, 언론보도까지 검색 결과 전체를 한 곳에서 설계하고 운영합니다.</p>
     </div>
     <div class="rows">
-      <div class="row"><div class="txt"><span class="tag">Place</span><h3>플레이스 상위노출</h3><p>업종·지역 키워드 검색 시 지도 첫 화면에 우리 매장을 노출합니다. 요식업과 매장형 업종의 기본 상품입니다.</p><dl><dt>과금</dt><dd>노출된 날만 집계해 월 단위 정산</dd><dt>기간</dt><dd>첫 노출까지 보통 1~2주</dd><dt>추천</dt><dd>식당·카페·미용실·병의원</dd></dl></div><div class="pic"><img src="assets/srch-place.jpg" alt=""></div></div>
-      <div class="row"><div class="txt"><span class="tag">Blog</span><h3>블로그 상위노출</h3><p>검색 마케팅의 기본이 되는 상품입니다. 예산과 목표에 따라 발행·건별·월보장 중 선택합니다.</p><dl><dt>발행</dt><dd>포스팅 업로드 시 결제</dd><dt>건별</dt><dd>24시간 안에 노출된 건만 결제</dd><dt>월보장</dt><dd>25일 노출 보장, 미달 일수 차감</dd></dl></div><div class="pic"><img src="assets/srch-blog.jpg" alt=""></div></div>
-      <div class="row"><div class="txt"><span class="tag">Cafe</span><h3>카페 상위노출</h3><p>카페 탭 상위에 노출합니다. 블로그와 함께 운영하면 검색 첫 화면 점유율이 높아집니다.</p><dl><dt>과금</dt><dd>건별 24시간 · 월보장 25일 기준</dd><dt>추천</dt><dd>검색량이 많은 상품·업종</dd></dl></div><div class="pic"><img src="assets/srch-cafe.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Place</span><h3>플레이스</h3><p>업종·지역 키워드 검색 시 지도 첫 화면에 우리 매장을 노출합니다. 요식업과 매장형 업종의 기본 상품입니다.</p><dl><dt>과금</dt><dd>노출된 날만 집계해 월 단위 정산</dd><dt>기간</dt><dd>첫 노출까지 보통 1~2주</dd><dt>추천</dt><dd>식당·카페·미용실·병의원</dd></dl></div><div class="pic"><img src="assets/srch-place.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Blog</span><h3>블로그</h3><p>SEO 마케팅의 기본이 되는 상품입니다. 예산과 목표에 따라 발행·건별·월보장 중 선택합니다.</p><dl><dt>발행</dt><dd>포스팅 업로드 시 결제</dd><dt>건별</dt><dd>24시간 안에 노출된 건만 결제</dd><dt>월보장</dt><dd>25일 노출 보장, 미달 일수 차감</dd></dl></div><div class="pic"><img src="assets/srch-blog.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Cafe</span><h3>카페</h3><p>카페 탭 상위에 노출합니다. 블로그와 함께 운영하면 검색 첫 화면 점유율이 높아집니다.</p><dl><dt>과금</dt><dd>건별 24시간 · 월보장 25일 기준</dd><dt>추천</dt><dd>검색량이 많은 상품·업종</dd></dl></div><div class="pic"><img src="assets/srch-cafe.jpg" alt=""></div></div>
       <div class="row"><div class="txt"><span class="tag">Review</span><h3>카페 후기 노출</h3><p>지역·관심사 카페의 추천 질문에 실제 이용 후기 형태로 노출합니다. 구매 직전 고객에게 가장 가까운 상품입니다.</p><dl><dt>과금</dt><dd>게시글·댓글 건별</dd><dt>원칙</dt><dd>광고 표시 규정 준수</dd><dt>추천</dt><dd>병의원, 매장, 신제품</dd></dl></div><div class="pic"><img src="assets/viral.png" alt=""></div></div>
-      <div class="row"><div class="txt"><span class="tag">Q&amp;A</span><h3>지식iN 상위노출</h3><p>질문형 검색에 답변 형태로 노출합니다. 정보 신뢰도가 높아 병의원과 전문 서비스에 효과적입니다.</p><dl><dt>과금</dt><dd>노출 확인 후 건별</dd><dt>추천</dt><dd>병의원·법률·전문 서비스</dd></dl></div><div class="pic"><img src="assets/srch-qna.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Q&amp;A</span><h3>지식iN</h3><p>질문형 검색에 답변 형태로 노출합니다. 정보 신뢰도가 높아 병의원과 전문 서비스에 효과적입니다.</p><dl><dt>과금</dt><dd>노출 확인 후 건별</dd><dt>추천</dt><dd>병의원·법률·전문 서비스</dd></dl></div><div class="pic"><img src="assets/srch-qna.jpg" alt=""></div></div>
       <div class="row"><div class="txt"><span class="tag">Press</span><h3>언론보도</h3><p>언론사 기사 발행으로 뉴스 탭에 노출하고 브랜드 신뢰도를 높입니다. 발행 기사는 블로그·SNS 콘텐츠로 재활용합니다.</p><dl><dt>과금</dt><dd>매체별 건별, 발행 전 원고 확인</dd><dt>추천</dt><dd>신규 오픈, 신제품</dd></dl></div><div class="pic"><img src="assets/srch-press.jpg" alt=""></div></div>
     </div>
   </div></div>
@@ -680,15 +1072,15 @@ html,body{width:100%;max-width:none}
 
   <div class="band black"><div class="wrap">
     <div class="sh">
-      <div><div class="num">C</div><div class="en">Process</div><h2><span class="thin">상담부터 리포트까지,</span> 이렇게 진행합니다</h2></div>
+      <div><div class="num">C</div><div class="en">Process</div><h2><span class="thin">상담부터 운영까지,</span> 이렇게 진행합니다</h2></div>
       <p class="lead">진단과 제안은 무료입니다. 진단만 받고 진행하지 않으셔도 됩니다.</p>
     </div>
     <div class="items c5 proc">
-      <div><span class="n">01</span><b>Step 1</b><h3>키워드 진단</h3><p>검색량, 현재 순위, 경쟁 현황을 리포트로 드립니다.</p></div>
+      <div><span class="n">01</span><b>Step 1</b><h3>키워드 진단</h3><p>검색량, 현재 순위, 경쟁 현황을 정리해 드립니다.</p></div>
       <div><span class="n">02</span><b>Step 2</b><h3>제안과 견적</h3><p>필요한 상품만 구성해 예산과 기간을 제안합니다.</p></div>
       <div><span class="n">03</span><b>Step 3</b><h3>콘텐츠 제작</h3><p>자체 팀이 만들고, 게시 전 확인을 받습니다.</p></div>
       <div><span class="n">04</span><b>Step 4</b><h3>노출과 운영</h3><p>순위를 매일 점검하고 즉시 대응합니다.</p></div>
-      <div><span class="n">05</span><b>Step 5</b><h3>주간 리포트</h3><p>매주 순위와 유입을 전달하고 키워드를 조정합니다.</p></div>
+      <div><span class="n">05</span><b>Step 5</b><h3>성과 관리</h3><p>매주 순위와 유입을 전달하고 키워드를 조정합니다.</p></div>
     </div>
   </div></div>
 
@@ -717,7 +1109,7 @@ html,body{width:100%;max-width:none}
       <div><span class="ic lg"><svg><use href="#i-search"/></svg></span><b>Planning</b><h3>기획</h3><p>검색량 분석, 키워드 선정, 블로그·카페·지식iN 원고</p></div>
       <div><span class="ic lg"><svg><use href="#i-design"/></svg></span><b>Design</b><h3>디자인</h3><p>SNS 광고 소재, 상세페이지, 썸네일, 인쇄물</p></div>
       <div><span class="ic lg"><svg><use href="#i-video"/></svg></span><b>Video</b><h3>촬영·편집</h3><p>4K·드론 촬영, 스튜디오, 편집, 유튜브 운영</p></div>
-      <div><span class="ic lg"><svg><use href="#i-report"/></svg></span><b>Operation</b><h3>운영</h3><p>매일 순위 점검, 주간 리포트, 광고주 전담</p></div>
+      <div><span class="ic lg"><svg><use href="#i-report"/></svg></span><b>Operation</b><h3>운영</h3><p>매일 순위 점검, 키워드 교체, 광고주 전담</p></div>
     </div>
   </div></div>
 
@@ -772,7 +1164,7 @@ html,body{width:100%;max-width:none}
     </form>
     <div class="side">
       <span class="cap">Contact</span>
-      <h3>진단 리포트는 무료입니다.<br>업종·지역 키워드 검색량과 현재 순위, 추천 상품 구성과 예상 예산을 담아 드립니다.</h3>
+      <h3>진단은 무료입니다.<br>업종·지역 키워드 검색량과 현재 순위, 추천 상품 구성과 예상 예산을 담아 드립니다.</h3>
       <dl><dt>이메일</dt><dd>help@miraclecompany.co.kr</dd><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></dl>
       <div class="ways"><div class="soc">
         <a href="#" title="카카오톡 채널"><svg><use href="#i-kakao"/></svg></a>
@@ -829,4 +1221,7 @@ html,body{width:100%;max-width:none}
   }
   go((location.hash||'#home').slice(1));
 })();
+</script>
+<script>
+document.querySelectorAll('.ptog button').forEach(function(b){b.addEventListener('click',function(){var box=b.closest('.pcmp');box.dataset.on=b.dataset.p;box.querySelectorAll('.ptog button').forEach(function(x){x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)})})});
 </script>
