@@ -1001,7 +1001,7 @@ p,dd,li,figcaption,small{text-wrap:pretty}
 .gal img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 @media (max-width:760px){
   :root{--galh:190px}
-  .gal{display:flex;height:var(--galh);overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;width:calc(100% + 2*var(--gut));margin-left:calc(-1*var(--gut));padding:0 var(--gut);scrollbar-width:none}
+  .gal{display:flex;height:var(--galh);overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;width:auto;margin-left:calc(-1*var(--gut));margin-right:calc(-1*var(--gut));padding:0 var(--gut);scroll-padding-left:var(--gut);scrollbar-width:none;box-sizing:border-box}
   .gal::-webkit-scrollbar{display:none}
   .gal figure{flex:0 0 72%;scroll-snap-align:start;border-radius:14px}
 }
