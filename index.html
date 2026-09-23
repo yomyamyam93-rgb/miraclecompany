@@ -1064,6 +1064,11 @@ p,dd,li,figcaption,small{text-wrap:pretty}
   .lead,.sh .lead,.subhero .lead,.ceo-txt p{text-align:left}
   .sh.center .lead,.hero .sub{text-align:center}
 }
+/* 성과 카드 라벨: 상자 하나만 — AFTER는 보라 상자에 흰 글씨, BEFORE는 흰 상자에 보라 글씨 (안에 알약 또 넣지 않음) */
+.bac .lb{padding:7px 16px;gap:8px}
+.bac em{background:transparent;padding:0;color:var(--pv-dk)}
+.bac .aft .lb{background:var(--pv);border-color:transparent}
+.bac .aft em,.bac .aft .lb small{color:#fff}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
