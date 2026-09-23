@@ -1074,6 +1074,17 @@ p,dd,li,figcaption,small{text-wrap:pretty}
 .bac em{background:transparent;padding:0;color:var(--pv-dk)}
 .bac .aft .lb{background:var(--pv);border-color:transparent}
 .bac .aft em,.bac .aft .lb small{color:#fff}
+/* 맞춤제안 모바일: 제목 → 이미지 → 고민 체크 → BEST → 버튼 순서 */
+@media (max-width:900px){
+  .ohead{display:flex;flex-direction:column;gap:0}
+  .ohead>div:first-child,.ohead .sh{display:contents}
+  .ohead .en{order:0;align-self:flex-start}
+  .ohead h2{order:1;margin-top:18px}
+  .ohead .checks{order:2;margin-top:24px}
+  .ohead .pic{order:3;margin:22px 0 6px}
+  .ohead .recoline{order:4;margin-top:18px}
+  .ohead .act{order:5}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
