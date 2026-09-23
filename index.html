@@ -984,7 +984,9 @@ p,dd,li,figcaption,small{text-wrap:pretty}
 .items p,.pcol p,.teamrows p,.locinfo p,.rows .txt p,.card p,.carousel .q p,.steps4 p,.side h3{text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere;text-align:left}
 /* 가운데 정렬 카드(강점 3장·성과 카드)의 글은 가운데 */
 .term p,.bac p{text-wrap:balance;word-break:keep-all;overflow-wrap:anywhere;text-align:center}
-.sh.center .lead,.hero .sub{text-align:center;word-break:keep-all;text-wrap:balance}
+.sh.center .lead{text-align:center;word-break:keep-all;text-wrap:balance}
+.hero .sub{text-align:left;word-break:keep-all;text-wrap:pretty}
+@media (max-width:900px){.hero .sub{text-align:center;text-wrap:balance}}
 /* 모바일 숫자 4칸: 나머지 첫 화면처럼 가운데 정렬 */
 @media (max-width:900px){
   .hstats{justify-content:center;column-gap:0}
