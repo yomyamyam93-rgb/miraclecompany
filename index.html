@@ -976,8 +976,10 @@ p,dd,li,figcaption,small{text-wrap:pretty}
 /* 줄 끝에 한두 단어만 남던 곳 */
 .recoline b{text-wrap:balance}
 /* 왼쪽 정렬 문단: 글상자 폭에 딱 맞게 채워서 줄바꿈 (오른쪽 끝이 들쭉날쭉하지 않게) */
-/* 모든 문단: 왼쪽 정렬 + 단어 단위 줄바꿈 (양끝 맞춤은 단어 사이가 벌어져서 쓰지 않음) */
-.ceo-txt p,.lead,.sh .lead,.subhero .lead{text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere;text-align:left}
+/* 설명글(.lead)은 왼쪽 정렬 + 단어 단위 줄바꿈 (좁은 폭에서 양끝 맞춤은 단어 사이가 벌어짐) */
+.lead,.sh .lead,.subhero .lead{text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere;text-align:left}
+/* 대표 인사말만 글상자 폭에 맞춰 양끝 맞춤 (넓고 문장이 길어 벌어짐 없음) — 사용자 확정, 풀지 말 것 */
+.ceo-txt p{text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere;text-align:justify;text-justify:auto}
 /* 좁은 상자 안 글은 왼쪽 정렬 (양끝 맞춤하면 단어 사이가 벌어짐) */
 .items p,.pcol p,.teamrows p,.locinfo p,.rows .txt p,.card p,.carousel .q p,.steps4 p,.side h3{text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere;text-align:left}
 /* 가운데 정렬 카드(강점 3장·성과 카드)의 글은 가운데 */
