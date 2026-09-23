@@ -2,22 +2,24 @@
 <html lang="ko">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <title>미라클컴퍼니 리뉴얼 시안</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap">
 <style>
 @font-face{font-family:"Pretendard";src:url("PretendardVariable.woff2") format("woff2-variations"),url("PretendardVariable.woff2") format("woff2");font-weight:45 920;font-style:normal;font-display:swap}
 :root{
-  --bg:#FFFFFF;--bg2:#F4F6FB;--ink:#111111;--muted:#6B6B6B;--line:#E3E3E3;
+  --bg:#FFFFFF;--bg2:#F5F5F5;--ink:#111111;--muted:#6B6B6B;--line:#E3E3E3;
   --font:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --disp:"Montserrat","Pretendard",sans-serif;
   --gut:clamp(20px,3vw,40px);--w:1840px;
   /* ── 컬러 토큰 ── */
-  --blue:#398BFF;--blue-600:#1F6FE0;--blue-100:#DCE6FE;--blue-50:#EEF3FF;
-  --violet:#873BFF;--violet-50:#F3EDFF;
-  --navy:#0F1A3C;--navy-2:#182860;--navy-line:rgba(255,255,255,.12);--navy-muted:#AAB4D6;
-  --grad:linear-gradient(90deg,var(--blue),var(--violet));
-  --grad-dark:linear-gradient(160deg,#0F1A3C 0%,#1A2B66 100%);
-  /* 포인트 컬러: 모든 강조는 --blue 또는 --grad 하나로 */
+  --blue:#111111;--blue-600:#111111;--blue-100:#DADADA;--blue-50:#F0F0F0;
+  --violet:#1C1C1C;--violet-50:#ECECEC;
+  --navy:#000000;--navy-2:#141414;--navy-line:rgba(255,255,255,.14);--navy-muted:#A6A6A6;
+  --grad:linear-gradient(135deg,#3A3A3A 0%,#000000 100%);
+  --grad-dark:linear-gradient(165deg,#191919 0%,#000000 62%);
+  /* 흰색+검정 전용. --blue 계열은 이름만 남은 무채색 토큰입니다 */
   --c:var(--blue);
 }
 *{box-sizing:border-box}
@@ -65,25 +67,25 @@ p{margin:0;text-wrap:pretty}
 @media (max-width:900px){.nav .wrap{height:auto;flex-wrap:wrap;padding-block:12px;gap:10px}.logo img{height:26px}.menu{margin-left:0;width:100%;overflow-x:auto;gap:0}.menu a{white-space:nowrap;padding:8px 12px}.nav .pill{margin-left:auto}}
 
 /* 히어로 (검정) */
-.hero{background:linear-gradient(120deg,#0B1433 0%,#13214F 38%,#1E2F7A 70%,#2A3E9E 100%);color:#fff;position:relative;overflow:hidden;min-height:clamp(560px,46vw,760px);display:flex;align-items:center}
+.hero{background:#000;color:#fff;position:relative;overflow:hidden;min-height:clamp(560px,46vw,760px);display:flex;align-items:center}
 .hero .hbg{position:absolute;inset:0;z-index:0}
-.hero .hbg img{position:absolute;right:0;top:0;height:100%;width:auto;max-width:none;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%);mask-image:linear-gradient(90deg,transparent 0,#000 28%)}
-.hero .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0B1433 0%,#0F1A3C 28%,rgba(19,33,79,.82) 42%,rgba(30,47,122,0) 60%)}
+.hero .hbg img{position:absolute;right:0;top:50%;transform:translateY(-50%);height:126%;width:auto;max-width:none;display:block;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0,#000 22%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0,#000 22%)}
+.hero .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82) 0,rgba(0,0,0,0) 36%),linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.86) 27%,rgba(0,0,0,.6) 37%,rgba(0,0,0,0) 50%)}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-block:clamp(56px,6vw,96px);text-align:left}
-.hero .htxt{max-width:640px}
-.hero .hbadge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-size:13px;font-weight:700;color:#DCE6FE;box-shadow:0 4px 16px rgba(20,40,120,.06)}
+.hero .htxt{max-width:660px}
+.hero .hbadge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);font-size:13px;font-weight:700;color:#fff}
 .hero .en{font-family:var(--disp);font-weight:700;font-size:clamp(12px,1vw,15px);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:26px}
 .hero h1{font-size:clamp(30px,3.6vw,60px);font-weight:800;margin-top:26px;line-height:1.22;letter-spacing:-.04em;max-width:960px}
-.hero h1 .hl{background:linear-gradient(90deg,#8FC0FF,#C9B6FF);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero .sub{color:var(--navy-muted);font-size:clamp(15px,1.1vw,19px);margin-top:18px;max-width:680px}
+.hero h1{color:#fff;font-weight:800}
+.hero .sub{color:#B5B5B5;font-size:clamp(15px,1.1vw,19px);margin-top:20px;max-width:640px;line-height:1.75}
 .hero .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
 .hstats{position:relative;z-index:2;margin:clamp(40px,4.5vw,64px) 0 0;display:grid;grid-template-columns:repeat(4,max-content);justify-content:start;column-gap:0;color:#fff;white-space:nowrap}
 .hstats>div{text-align:left;position:relative;padding:0 clamp(24px,2.6vw,44px)}
 .hstats>div:first-child{padding-left:0}
 .hstats>div+div:before{content:'';position:absolute;left:0;top:10%;bottom:10%;width:1px;background:rgba(255,255,255,.22)}
-.hstats span{display:block;font-size:13px;font-weight:600;color:var(--navy-muted)}
+.hstats span{display:block;font-size:13px;font-weight:600;color:#9A9A9A}
 .hstats b{display:block;margin-top:6px;font-size:clamp(26px,2.3vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:#fff}
-.hstats b i{font-style:normal;font-size:.48em;font-weight:600;color:var(--navy-muted);margin-left:2px}
+.hstats b i{font-style:normal;font-size:.48em;font-weight:600;color:#9A9A9A;margin-left:2px}
 
 /* 서브 페이지 상단 (검정) */
 .subhero{background:#000;color:#fff}
@@ -158,7 +160,7 @@ p{margin:0;text-wrap:pretty}
 @media (max-width:900px){.logos{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:540px){.logos{grid-template-columns:repeat(2,1fr)}}
 .logos span{border:1px solid var(--line);background:#fff;aspect-ratio:4/3;display:block;overflow:hidden}
-.logos img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.7}
+.logos img{width:100%;height:100%;object-fit:contain}
 
 /* 맞춤 제안: 단계 */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:clamp(40px,5vw,72px)}
@@ -201,7 +203,7 @@ p{margin:0;text-wrap:pretty}
 .cta .act{margin-top:36px}
 
 footer{background:#000;color:#9A9A9A;padding-block:56px 36px;font-size:14px;border-top:1px solid #1E1E1E}
-footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr .8fr;gap:40px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:40px}
 @media (max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){footer .cols{grid-template-columns:1fr;gap:22px}footer h4{margin-bottom:8px}footer ul{flex-direction:row;flex-wrap:wrap;gap:8px 18px}footer dl{gap:4px 12px}}
 footer img{height:30px;width:auto;margin-bottom:16px}
@@ -276,7 +278,7 @@ footer .bottom{margin-top:44px;padding-top:18px;border-top:1px solid #1E1E1E;dis
 .tiles .ti{display:flex;flex-direction:column;gap:18px;padding:32px 30px 30px;background:#fff;border:1px solid var(--line);border-radius:22px;min-height:220px;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
 .tiles .ti .ic{background:var(--grad);color:#fff;border-radius:12px}
 .tiles .ti small{color:var(--blue)}
-.tiles .ti:hover{background:linear-gradient(135deg,var(--blue),var(--violet));border-color:transparent;color:#fff;transform:translateY(-4px);box-shadow:0 18px 40px rgba(57,139,255,.28)}
+.tiles .ti:hover{background:linear-gradient(135deg,var(--blue),var(--violet));border-color:transparent;color:#fff;transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.22)}
 .tiles .ti:hover .ic{background:#fff;color:var(--blue)}
 .tiles .ti:hover p,.tiles .ti:hover small{color:inherit;opacity:.85}
 .tiles .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -309,9 +311,10 @@ footer .bottom{margin-top:44px;padding-top:18px;border-top:1px solid #1E1E1E;dis
 .cta .wrap{padding-block:clamp(88px,10vw,160px);text-align:center}
 .cta .act{justify-content:center;display:flex}
 
-/* 띠는 화면 끝까지: 상위 폭 제한과 무관하게 뷰포트 너비로 확장 */
+/* 띠는 화면 끝까지 (블록 요소라 기본으로 전체 폭 — 100vw는 스크롤바 폭만큼
+   왼쪽으로 밀리는 원인이라 쓰지 않습니다) */
 html,body{width:100%;max-width:none}
-.nav,.hero,.subhero,.band,.cta,footer{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+.nav,.hero,.subhero,.band,.cta,footer{width:auto;margin-left:0;margin-right:0}
 .nav{position:sticky}
 
 /* 맞춤 제안: 제안서 표 */
@@ -351,12 +354,10 @@ html,body{width:100%;max-width:none}
 
 #p-about .sh .en{margin-top:0}
 
-.map{position:relative;display:block;aspect-ratio:auto;background:var(--bg2);overflow:hidden}
+.map{position:relative;display:block;aspect-ratio:auto;background:var(--bg2);overflow:hidden;border:1px solid var(--line)}
 .map img{width:100%;height:auto;display:block}
 .map span{position:absolute;right:16px;bottom:16px;background:#111;color:#fff;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px}
 
-.mapwrap.live .fallback{display:none}
-.mapwrap .root_daum_roughmap{min-height:0}
 
 /* 성과 카드 정렬 */
 .cards .card h3{min-height:2.6em;line-height:1.3}
@@ -376,6 +377,16 @@ html,body{width:100%;max-width:none}
   .menu a{white-space:nowrap;padding:10px 10px 12px;font-size:15px}
   .menu a.on{text-underline-offset:6px}
 }
+/* 모바일: 히어로 숫자 2x2, 버튼은 가로로 2개 */
+@media (max-width:900px){
+  .hstats{margin-top:28px;grid-template-columns:1fr 1fr;row-gap:20px;justify-content:stretch;white-space:normal}
+  .hstats>div{padding:0 16px}.hstats>div:nth-child(odd){padding-left:0}.hstats>div:nth-child(3):before{display:none}
+  .hstats b{font-size:clamp(22px,5vw,28px)}
+  .hero .act{flex-wrap:nowrap;gap:8px}
+  .hero .act .pill{flex:1 1 0;min-width:0;padding:15px 12px;font-size:14px;justify-content:center}
+  .hero .act .pill svg{width:16px;height:16px}
+}
+@media (max-width:360px){.hero .act .pill{font-size:13px;padding:14px 8px;gap:6px}}
 @media (max-width:760px){
   .strip3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;width:calc(100% + 2*var(--gut));margin-left:calc(-1*var(--gut));padding:0 var(--gut) 4px;scrollbar-width:none}
   .strip3::-webkit-scrollbar{display:none}
@@ -385,9 +396,8 @@ html,body{width:100%;max-width:none}
   body{font-size:16px;line-height:1.7}
   .band{padding-block:64px}
   .sh{margin-bottom:36px}.sh .lead{margin-top:14px}.sh h2{margin-top:12px}.sh .en{margin-top:8px}
-  .hero h1{font-size:28px}.hero .sub{font-size:15px}.hero .act{margin-top:24px}.hero{min-height:0;display:flex;flex-direction:column}.hero .hbg{position:static;order:2;inset:auto;padding:0 var(--gut) 40px}.hero .hbg img{position:static;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:16px;-webkit-mask-image:none;mask-image:none;box-shadow:0 16px 40px rgba(0,0,0,.3)}.hero .hbg::after{display:none}.hero .wrap{padding:40px var(--gut) 28px}.hstats{white-space:normal}
-  .hstats{margin-top:28px;grid-template-columns:1fr 1fr;row-gap:20px;justify-content:stretch}.hstats>div{padding:0 16px}.hstats>div:nth-child(odd){padding-left:0}.hstats>div:nth-child(3):before{display:none}.hstats b{font-size:24px}
-  .hero .act .pill,.cta .pill{width:100%;justify-content:center}
+  .hero h1{font-size:28px}.hero .sub{font-size:15px}.hero .act{margin-top:24px}.hero .wrap{padding:36px var(--gut) 32px}
+  .cta .pill{width:100%;justify-content:center}
   .subhero .wrap{padding-block:56px 48px}.subhero .en{font-size:clamp(36px,11vw,52px)}.subhero h1{margin-top:18px;font-size:19px}
   .tiles{gap:10px}
   .tiles .ti{display:grid;grid-template-columns:40px 1fr;grid-template-rows:auto auto;column-gap:16px;row-gap:2px;padding:18px 18px;min-height:0;align-items:center}
@@ -405,7 +415,6 @@ html,body{width:100%;max-width:none}
   .contact{gap:40px}.form input,.form select,.form textarea{font-size:16px}
   .form .pill,.side .act .pill{width:100%;justify-content:center}
   .addr{gap:8px 24px;font-size:14px}
-  .mapwrap .root_daum_roughmap,.mapwrap .root_daum_roughmap .wrap_map{height:300px!important}
 }
 
 /* 성과 카드: 검정 카드 한 장 안에 캡처+글 */
@@ -433,8 +442,8 @@ html,body{width:100%;max-width:none}
 
 /* 추천 구성: 체크 목록과 같은 줄 형식 */
 .recoline{display:flex;gap:12px;align-items:flex-start;margin:22px 0 0;font-size:17px;font-weight:600;line-height:1.5}
-.recoline i{flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:#E5322D;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 3.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.8l6.1-.7z'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
-.recoline span{color:#E5322D;font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.1em;margin-right:10px;line-height:26px}
+.recoline i{flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:#111;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 3.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.8l6.1-.7z'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.recoline span{color:#111;font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.1em;margin-right:10px;line-height:26px}
 .recoline b{font-weight:700}
 .ohead .act{margin-top:30px}
 @media (max-width:640px){.recoline{font-size:16px}.ohead .act .pill{width:100%;justify-content:center}}
@@ -463,7 +472,7 @@ html,body{width:100%;max-width:none}
 
 /* 회사소개 팀: 흰 박스 + 아이콘 */
 .items.team{gap:12px}
-.items.team>div{background:#fff;border-top:0;padding:32px 30px 34px}
+.items.team>div{background:var(--bg2);border-top:0;padding:32px 30px 34px}
 .items.team .ic{margin-bottom:26px}
 .items.team p{font-size:15px}
 @media (max-width:640px){.items.team>div{padding:24px 22px 26px}.items.team .ic{margin-bottom:18px}}
@@ -495,24 +504,25 @@ html,body{width:100%;max-width:none}
 /* ===== 컬러 토큰 적용: 전체 색 배분 ===== */
 ::selection{background:var(--blue-100)}
 /* 버튼 */
-.pill.black{background:linear-gradient(90deg,var(--blue),var(--violet));color:#fff;transition:filter .2s,transform .2s}
-.pill.black:hover{filter:brightness(1.08);transform:translateY(-1px)}
-.pill.white{background:#fff;color:var(--navy)}
+.pill.black{background:#111;color:#fff;transition:background .2s,transform .2s}
+.pill.black:hover{background:#000;transform:translateY(-1px)}
+.pill.white{background:#fff;color:#111;transition:background .2s,transform .2s}
+.pill.white:hover{background:#EDEDED;transform:translateY(-1px)}
 .more{color:var(--blue)}
 /* 상단 */
-.menu a.on{text-decoration-color:var(--blue);text-decoration-thickness:2px}
+.menu a.on{text-decoration-color:var(--ink);text-decoration-thickness:2px}
 /* 섹션 머리글: 번호는 그라데이션, 영문은 파랑 */
 .sh .num{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
 .sh .en{color:var(--blue)}
-.band.black .sh .en{color:#9CC4FF}
+.band.black .sh .en{color:#fff}
 /* 검정 띠 → 네이비 그라데이션 */
 .band.black{background:var(--grad-dark);color:#fff}
 .band.black .muted,.band.black .items p,.band.black .lead{color:var(--navy-muted)}
 .band.black .items>div{border-color:var(--navy-line)}
 /* 성과 카드: 상단 색 띠 + 태그·숫자에 상품 색 */
-.cards .card{border-radius:20px;border:0;box-shadow:0 8px 30px rgba(21,111,249,.08)}
+.cards .card{border-radius:20px;border:0;box-shadow:0 8px 30px rgba(0,0,0,.07)}
 .cards:not(.c3) .card{border-radius:20px;padding:10px 10px 0}
-.cards:not(.c3) .card .frame{border:0;border-radius:14px;padding:10px;background:linear-gradient(180deg,#EEF3FF,#FAFCFF)}
+.cards:not(.c3) .card .frame{border:0;border-radius:14px;padding:10px;background:linear-gradient(180deg,#F0F0F0,#FCFCFC)}
 .cards:not(.c3) .card .frame .bar{display:none}
 .cards:not(.c3) .card .frame img{border-radius:8px;border:1px solid var(--line)}
 .cards .card .tag,.cards:not(.c3) .card .tag,.rows .txt .tag{display:inline-flex;align-self:flex-start;align-items:center;padding:4px 10px;border-radius:999px;background:var(--blue-50);color:var(--blue-600);font-size:11px;letter-spacing:.06em}
@@ -523,40 +533,41 @@ html,body{width:100%;max-width:none}
 .items b{color:var(--c)}
 .items big{color:var(--c)}
 /* 후기: 둥근 카드 + 색 아바타 */
-.carousel .q{border-radius:22px;box-shadow:0 10px 30px rgba(20,40,120,.05)}
+.carousel .q{border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.05)}
 .carousel .av{background:var(--grad)}
 .cnav button{border-color:var(--blue-100);color:var(--blue)}
 .cnav button:hover{background:var(--blue);border-color:var(--blue);color:#fff}
 /* 로고: 둥글게, 올리면 원래 색 */
-.logos span{border-radius:16px;transition:box-shadow .2s}
-.logos span:hover{box-shadow:0 10px 30px rgba(20,40,120,.10)}
-.logos img{transition:filter .3s,opacity .3s}
-.logos span:hover img{filter:none;opacity:1}
+.logos span{border-radius:16px;transition:box-shadow .2s,border-color .2s;display:grid;place-items:center;padding:18px 22px}
+.logos span:hover{box-shadow:0 10px 30px rgba(0,0,0,.08);border-color:#CFCFCF}
+.logos span.w img{width:76%;margin:0 auto}
+.logos .tx{font-size:clamp(14px,1.1vw,17px);font-weight:700;letter-spacing:-.03em;text-align:center;line-height:1.35;color:#111}
+@media (max-width:540px){.logos span{padding:14px 12px}.logos .tx{font-size:13px}}
 /* 마무리 띠·서브 히어로·푸터: 네이비 */
 .cta{background:var(--grad-dark)}
 .cta::before,.cta::after{content:"";position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none}
-.cta::before{width:520px;height:520px;left:-120px;top:-160px;background:var(--blue)}
-.cta::after{width:480px;height:480px;right:-120px;bottom:-200px;background:var(--violet)}
-.cta .en{color:#9CC4FF}
+.cta::before{width:520px;height:520px;left:-120px;top:-160px;background:#fff;opacity:.05}
+.cta::after{width:480px;height:480px;right:-120px;bottom:-200px;background:#fff;opacity:.04}
+.cta .en{color:#8A8A8A}
 .cta p{color:var(--navy-muted)}
 .cta .wm{color:rgba(255,255,255,.04)}
 .subhero{background:var(--grad-dark)}
-.subhero .en{background:linear-gradient(90deg,#9CC4FF,#D9C8FF);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.subhero .en{color:#fff;display:inline-block}
 .subhero .lead{color:var(--navy-muted)}
-footer{background:#0B1230;border-top-color:#1B2650;color:#9AA6CC}
-footer h4,footer dt,footer .bottom{color:#6F7DA8}
-footer dd,footer ul a{color:#D3DAF0}
-footer .bottom{border-top-color:#1B2650}
+footer{background:#000;border-top-color:#1E1E1E;color:#9A9A9A}
+footer h4,footer dt,footer .bottom{color:#787878}
+footer dd,footer ul a{color:#D6D6D6}
+footer .bottom{border-top-color:#1E1E1E}
 /* 맞춤 제안 */
 .checks li::before{background-color:var(--blue)}
 .recoline i{background-color:var(--blue)}
 .recoline span{color:var(--blue)}
 .steps4>div{border-radius:18px}
 .steps4 b{color:var(--blue)}
-.osec.alt .steps4>div{box-shadow:0 8px 24px rgba(20,40,120,.05)}
+.osec.alt .steps4>div{box-shadow:0 8px 24px rgba(0,0,0,.05)}
 .worries div{background:var(--grad-dark)}
 .band.grey .worries div{background:var(--grad-dark)}
-.worries div::before{color:#9CC4FF}
+.worries div::before{color:#9A9A9A}
 .timeline>div{border-top-color:var(--blue-100)}
 .timeline>div::before{background:var(--blue)}
 .timeline .n{color:var(--blue)}
@@ -567,8 +578,8 @@ footer .bottom{border-top-color:#1B2650}
 .rows .txt dl{border-top-color:var(--blue-100)}
 .rows .pic img{border-radius:14px}
 .items.proc>div{background:rgba(255,255,255,.07);border-radius:18px;border:1px solid var(--navy-line)}
-.items.proc .n{background:linear-gradient(90deg,#9CC4FF,#D9C8FF);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
-.items.proc b{color:#9CC4FF}
+.items.proc .n{color:#fff;display:inline-block}
+.items.proc b{color:#9A9A9A}
 /* 회사소개 팀 */
 .items.team>div{border-radius:18px}
 .items.team .ic{background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
@@ -581,34 +592,34 @@ footer .bottom{border-top-color:#1B2650}
 .side dl{border-top-color:var(--navy-line)}
 .soc a:hover{background:var(--blue);color:#fff}
 /* 히어로 보조 버튼 */
-.hero .pill.line{color:#fff;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.08)}
-.hero .pill.line:hover{background:rgba(255,255,255,.16)}
+.hero .pill.line{color:#fff;border-color:rgba(255,255,255,.38);background:transparent}
+.hero .pill.line:hover{background:rgba(255,255,255,.12)}
 /* 그라데이션 글자: 자간이 음수라 마지막 글자 오른쪽이 잘리는 것 방지 */
 .sh .num,.hero h1 .hl,.subhero .en,.items.proc .n{padding-right:.08em;margin-right:-.08em}
 /* 큰 번호·큰 영문 제거: 랜선페이식 작은 칩 + 제목 */
 .sh .num,.hero .en{display:none}
 .sh .en{display:inline-block;font-size:12.5px;letter-spacing:.12em;margin-top:0;padding:6px 12px;border-radius:999px;background:var(--blue-50);color:var(--blue-600)}
-.band.black .sh .en{background:rgba(255,255,255,.12);color:#DCE6FE}
+.band.black .sh .en{background:rgba(255,255,255,.12);color:#fff}
 .sh h2{margin-top:18px;font-size:clamp(26px,2.6vw,40px)}
 .sh .lead{margin-top:16px}
-.subhero .en{display:inline-block;font-size:12.5px;letter-spacing:.14em;line-height:1.4;text-transform:uppercase;padding:6px 12px;margin-right:0;border-radius:999px;background:rgba(255,255,255,.12);-webkit-background-clip:border-box;background-clip:border-box;color:#DCE6FE}
+.subhero .en{display:inline-block;font-size:12.5px;letter-spacing:.14em;line-height:1.4;text-transform:uppercase;padding:6px 12px;margin-right:0;border-radius:999px;background:rgba(255,255,255,.12);-webkit-background-clip:border-box;background-clip:border-box;color:#fff}
 .subhero h1{font-size:clamp(28px,3vw,46px);font-weight:700;margin-top:18px;line-height:1.3}
 .items.proc .n{font-size:clamp(22px,1.8vw,30px);margin-bottom:18px}
 @media (max-width:640px){.sh h2{font-size:26px}.subhero h1{font-size:26px}}
 /* 히어로 버튼: 아이콘 + 같은 크기 */
 .hero .act .pill{min-width:196px;justify-content:center;gap:8px;padding:16px 28px}
 .hero .act .pill svg{width:18px;height:18px;fill:currentColor;flex:none}
-@media (max-width:640px){.hero .act .pill{min-width:0}}
+@media (max-width:900px){.hero .act .pill{min-width:0}}
 /* 성과: 사례 3개를 비포→애프터 카드로 (비상금비서 상품 카드 구성) */
 .bacards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 @media (max-width:1100px){.bacards{grid-template-columns:1fr;max-width:640px;margin:0 auto}}
-.bac{background:#fff;border-radius:24px;padding:12px;box-shadow:0 8px 30px rgba(21,111,249,.08);display:flex;flex-direction:column}
+.bac{background:#fff;border-radius:24px;padding:12px;box-shadow:0 8px 30px rgba(0,0,0,.07);display:flex;flex-direction:column}
 .bac .bh{padding:18px 16px 20px;display:flex;flex-direction:column;gap:12px}
 .bac .bh .tag{display:inline-flex;align-self:flex-start;padding:4px 10px;border-radius:999px;background:var(--blue-50);color:var(--blue-600);font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .bac .bh h3{font-size:clamp(18px,1.3vw,21px);font-weight:700;line-height:1.35}
 .bac .bfr,.bac .aft{border-radius:18px;padding:24px 22px;text-align:center;position:relative}
 .bac .bfr{background:var(--bg2)}
-.bac .aft{background:linear-gradient(160deg,var(--blue) 0%,var(--violet) 100%);color:#fff;flex:1;display:flex;flex-direction:column}
+.bac .aft{background:#fff;color:var(--ink);flex:1;display:flex;flex-direction:column}
 .bac em{position:absolute;left:16px;top:14px;font-style:normal;font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.12em;padding:4px 9px;border-radius:999px;background:#fff;color:var(--blue-600)}
 .bac .aft em{background:rgba(255,255,255,.18);color:#fff}
 .bac small{display:block;font-size:13px;color:var(--muted);margin-top:22px}
@@ -618,7 +629,7 @@ footer .bottom{border-top-color:#1B2650}
 .bac .bfr p,.bac .aft p{margin-top:8px;font-size:14px;line-height:1.6}
 .bac .bfr p{color:var(--muted)}
 .bac .aft p{color:rgba(255,255,255,.88)}
-.bac .arw{display:grid;place-items:center;height:40px;color:var(--blue)}
+.bac .arw{display:grid;place-items:center;height:40px;color:#111}
 .bac .arw svg{width:22px;height:22px}
 .bac .cap{margin-top:18px;background:#fff;border-radius:12px;padding:8px;overflow:hidden}
 .bac .cap img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;border-radius:8px;display:block}
@@ -628,14 +639,14 @@ footer .bottom{border-top-color:#1B2650}
 .ptog button{display:inline-flex;align-items:center;gap:12px;background:none;border:0;padding:6px 0;color:rgba(255,255,255,.38);font-family:var(--font);font-size:clamp(18px,1.5vw,24px);font-weight:700;letter-spacing:-.02em;cursor:pointer;transition:color .25s}
 .ptog button i{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.14);transition:background .25s}
 .ptog button.on{color:#fff}
-.ptog button.on i{background:var(--blue);box-shadow:0 0 0 6px rgba(57,139,255,.22)}
+.ptog button.on i{background:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.16)}
 .prow{display:grid;grid-template-columns:1fr minmax(260px,520px) 1fr;gap:clamp(20px,3vw,48px);align-items:center;padding:20px 0;border-bottom:1px solid var(--navy-line)}
 .prow:first-of-type{border-top:1px solid var(--navy-line)}
 .prow p{margin:0;font-size:15.5px;line-height:1.7;color:#fff;transition:opacity .25s;max-width:420px}
 .prow .pl{justify-self:start;text-align:left}
 .prow .pr{justify-self:end;text-align:right}
 .pcmp[data-on="seo"] .pr,.pcmp[data-on="sns"] .pl{opacity:.35}
-.pc{width:100%;margin:0 auto;border-radius:14px;padding:18px 20px;text-align:center;border:0;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));box-shadow:0 12px 30px rgba(57,139,255,.18)}
+.pc{width:100%;margin:0 auto;border-radius:14px;padding:18px 20px;text-align:center;border:0;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));box-shadow:0 12px 30px rgba(0,0,0,.16)}
 .prow:nth-of-type(1) .pc{--mix:100%}.prow:nth-of-type(2) .pc{--mix:75%}.prow:nth-of-type(3) .pc{--mix:50%}.prow:nth-of-type(4) .pc{--mix:25%}.prow:nth-of-type(5) .pc{--mix:0%}
 .pc small{display:block;font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,.8);margin-bottom:4px}
 .pc b{display:none;font-size:clamp(17px,1.3vw,21px);font-weight:700;color:#fff;letter-spacing:-.02em}
@@ -673,7 +684,7 @@ footer .bottom{border-top-color:#1B2650}
 .tiles .ti .ic svg{width:16px;height:16px}
 .tiles h3{font-size:15px;font-weight:600;margin:0}
 .tiles p{display:none}
-.tiles .ti:hover{transform:none;box-shadow:0 8px 20px rgba(57,139,255,.22)}
+.tiles .ti:hover{transform:none;box-shadow:0 8px 20px rgba(0,0,0,.18)}
 @media (max-width:900px){.tg{grid-template-columns:1fr;gap:12px;padding:18px 0}.tiles .ti{padding:7px 14px 7px 7px}.tiles h3{font-size:14px}}
 /* 상품: 좌(검색 노출) · 우(SNS·콘텐츠) 두 칸, 클릭 없음 */
 .tgs{display:grid;grid-template-columns:2fr 1fr;gap:clamp(32px,4vw,64px);align-items:start}
@@ -700,7 +711,7 @@ footer .bottom{border-top-color:#1B2650}
 .pstrip .ic{width:22px;height:22px;border-radius:7px;background:var(--grad);color:#fff;display:grid;place-items:center}
 .pstrip .ic svg{width:12px;height:12px;fill:currentColor}
 .whyv{display:grid;grid-template-columns:auto 1fr auto;align-items:center;margin-top:clamp(44px,5vw,80px)}
-.big{width:clamp(220px,19vw,320px);aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center;box-shadow:0 24px 60px rgba(57,139,255,.28)}
+.big{width:clamp(220px,19vw,320px);aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--violet));display:grid;place-items:center;box-shadow:0 24px 60px rgba(0,0,0,.22)}
 .big .in{width:78%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);display:flex;flex-direction:column;justify-content:center;text-align:center;color:#fff;padding:16px}
 .big small{font-size:clamp(13px,1vw,15px);opacity:.9}
 .big b{font-size:clamp(20px,1.7vw,28px);font-weight:800;line-height:1.25;margin-top:8px;letter-spacing:-.03em}
@@ -714,7 +725,7 @@ footer .bottom{border-top-color:#1B2650}
 .c:nth-child(3) .disc{background:color-mix(in srgb,var(--violet) 78%,#fff);z-index:1}
 .c+.c::before{content:"+";position:absolute;left:0;top:calc(var(--r) / 2);transform:translate(-50%,-50%);font-size:24px;font-weight:700;color:#fff;z-index:5;line-height:1}
 .c{--r:clamp(190px,17vw,280px)}
-.disc em{font-style:normal;font-family:var(--disp);font-size:13px;font-weight:700;color:#E3ECFF;position:absolute;top:18%}
+.disc em{font-style:normal;font-family:var(--disp);font-size:13px;font-weight:700;color:#EDEDED;position:absolute;top:18%}
 .disc b{font-size:clamp(20px,1.7vw,28px);font-weight:800;line-height:1.25;letter-spacing:-.03em}
 .c p{margin-top:22px;font-size:14.5px;line-height:1.75;color:var(--muted)}
 .c p strong{color:var(--ink);font-weight:700}
@@ -726,17 +737,16 @@ footer .bottom{border-top-color:#1B2650}
 .whyv{margin-top:0}
 /* Why choose us: 강점 3개 + = 결과 (수식 배치) */
 .eq{display:flex;align-items:stretch;justify-content:center;gap:clamp(10px,1.2vw,18px);margin-top:clamp(40px,4.5vw,64px)}
-.term{flex:0 1 250px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px 22px 28px;text-align:center;box-shadow:0 8px 30px rgba(21,111,249,.06);display:flex;flex-direction:column;align-items:center}
+.term{flex:0 1 250px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px 22px 28px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center}
 .term .dot{width:56px;height:56px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;margin-bottom:18px}
-.term:nth-child(3) .dot{background:linear-gradient(135deg,#5A7DFF,#7A5CFF)}
-.term:nth-child(5) .dot{background:linear-gradient(135deg,#7A5CFF,var(--violet))}
+.term:nth-child(3) .dot,.term:nth-child(5) .dot{background:var(--grad)}
 .term .dot svg{width:24px;height:24px;fill:currentColor}
 .term em{font-style:normal;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
 .term b{display:block;font-size:clamp(18px,1.4vw,21px);font-weight:700;margin-top:8px;letter-spacing:-.02em}
 .term p{margin-top:12px;font-size:14px;line-height:1.7;color:var(--muted)}
 .term p strong{color:var(--ink);font-weight:700}
 .op{align-self:center;font-size:clamp(26px,2.4vw,36px);font-weight:300;color:var(--blue);line-height:1;flex:none}
-.result{flex:0 1 280px;border-radius:24px;background:linear-gradient(160deg,var(--blue),var(--violet));color:#fff;padding:36px 26px;text-align:center;display:flex;flex-direction:column;justify-content:center;box-shadow:0 24px 60px rgba(57,139,255,.28)}
+.result{flex:0 1 280px;border-radius:24px;background:linear-gradient(160deg,#2A2A2A,#000);color:#fff;padding:36px 26px;text-align:center;display:flex;flex-direction:column;justify-content:center;box-shadow:0 20px 48px rgba(0,0,0,.22)}
 .result small{font-size:14px;opacity:.9}
 .result b{display:block;font-size:clamp(22px,1.9vw,30px);font-weight:800;line-height:1.25;margin-top:10px;letter-spacing:-.03em}
 @media (max-width:1100px){.eq{flex-wrap:wrap}.term{flex:1 1 200px}.op{flex-basis:auto}.result{flex:1 1 100%;padding:28px}.eq .op:nth-child(6){flex-basis:100%;text-align:center}}
@@ -763,19 +773,19 @@ footer .bottom{border-top-color:#1B2650}
 .pc::before{content:"";position:absolute;left:50%;top:-14px;bottom:-14px;width:1px;background:rgba(255,255,255,.16);transform:translateX(-.5px)}
 .prow:first-of-type .pc::before{top:50%}
 .prow:last-of-type .pc::before{bottom:auto;height:calc(50% + 14px)}
-.pc small{position:relative;z-index:1;display:grid;place-items:center;width:46px;height:46px;margin:0 auto;border-radius:50%;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));color:#fff;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 0 0 6px rgba(255,255,255,.06),0 10px 24px rgba(57,139,255,.28)}
+.pc small{position:relative;z-index:1;display:grid;place-items:center;width:46px;height:46px;margin:0 auto;border-radius:50%;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));color:#fff;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 0 0 6px rgba(255,255,255,.06),0 10px 24px rgba(0,0,0,.22)}
 .pc b{margin-top:12px;font-size:clamp(16px,1.2vw,19px);font-weight:700}
 .prow .pl,.prow .pr{font-size:15px}
 @media (max-width:900px){.pc::before{display:none}.prow{padding:12px 0}}
 /* 진행 과정: 좌 SEO · 우 SNS 각각 번호+내용, 모바일은 토글 */
 .pcols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,80px);align-items:start}
 .pcol h3{display:flex;align-items:center;gap:12px;font-size:clamp(20px,1.6vw,26px);font-weight:700;color:#fff;margin-bottom:8px}
-.pcol h3 i{width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px rgba(57,139,255,.22)}
-.pcol[data-p="sns"] h3 i{background:var(--violet);box-shadow:0 0 0 5px rgba(135,59,255,.22)}
+.pcol h3 i{width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.14)}
+.pcol[data-p="sns"] h3 i{background:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.14)}
 .pcol ol{list-style:none;margin:0;padding:0}
 .pcol li{display:grid;grid-template-columns:46px 1fr;gap:18px;align-items:start;padding:22px 0;border-top:1px solid var(--navy-line)}
 .pcol li:last-child{border-bottom:1px solid var(--navy-line)}
-.pcol li b{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:color-mix(in srgb,var(--blue) var(--mix),var(--violet));color:#fff;font-family:var(--disp);font-size:13px;font-weight:700;box-shadow:0 0 0 5px rgba(255,255,255,.05)}
+.pcol li b{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#fff;color:#000;font-family:var(--disp);font-size:13px;font-weight:700;box-shadow:0 0 0 5px rgba(255,255,255,.07)}
 .pcol li:nth-child(1) b{--mix:100%}.pcol li:nth-child(2) b{--mix:75%}.pcol li:nth-child(3) b{--mix:50%}.pcol li:nth-child(4) b{--mix:25%}.pcol li:nth-child(5) b{--mix:0%}
 .pcol h4{font-size:clamp(17px,1.25vw,20px);font-weight:700;color:#fff;margin:0 0 6px;padding-top:10px}
 .pcol p{font-size:15px;line-height:1.7;color:var(--navy-muted)}
@@ -791,7 +801,7 @@ footer .bottom{border-top-color:#1B2650}
 /* 롤링 칩: 높이·간격·아이콘 위치 통일 */
 .pband{padding:16px 0}
 .marq .grp{gap:14px;padding-right:14px}
-.marq .ti{height:40px;padding:0 18px 0 7px;gap:10px;font-size:13.5px;font-weight:600;line-height:1;letter-spacing:-.01em;border-color:#E6E9F2}
+.marq .ti{height:40px;padding:0 18px 0 7px;gap:10px;font-size:13.5px;font-weight:600;line-height:1;letter-spacing:-.01em;border-color:#E3E3E3}
 .marq .ic{width:26px;height:26px;border-radius:8px;flex:none}
 .marq .ic svg{width:13px;height:13px}
 /* 롤링 칩: 가로 폭 동일 */
@@ -808,31 +818,35 @@ footer .bottom{border-top-color:#1B2650}
 .rgh{display:flex;align-items:center;gap:10px;font-size:clamp(18px,1.4vw,22px);font-weight:700;margin:0 0 18px}
 .rgh i{width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px var(--blue-100)}
 .rgh.sns{margin-top:clamp(40px,4.5vw,64px)}
-.rgh.sns i{background:var(--violet);box-shadow:0 0 0 4px var(--violet-50)}
+.rgh.sns i{background:#111;box-shadow:0 0 0 4px #E6E6E6}
 .bac .cap img{background:#fff}
 /* 성과 AFTER: 보라 그라데이션 대신 네이비 */
-.bac .aft{background:linear-gradient(160deg,#13214F 0%,#1B2A66 100%)}
+.bac .aft{background:#fff}
 .bac .aft em{background:rgba(255,255,255,.14)}
 .bac .aft small{color:var(--navy-muted)}
 .bac .aft p{color:var(--navy-muted)}
-.bac .arw{color:var(--blue)}
+.bac .arw{color:#111}
 /* 성과 AFTER: 흰 상자 + 그라데이션 테두리 */
-.bac .aft{color:var(--ink);position:relative;padding:24px 22px;border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,var(--blue),var(--violet)) border-box}
-.bac .aft em{background:linear-gradient(90deg,var(--blue),var(--violet));color:#fff}
+.bac .aft{color:var(--ink);position:relative;padding:24px 22px;border:2px solid #111;background:#fff}
+.bac .aft em{background:#111;color:#fff}
 .bac .aft small{color:var(--muted)}
-.bac .aft b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em;margin-right:-.08em}
+.bac .aft b{color:var(--ink)}
 .bac .aft p{color:var(--muted)}
 .bac .cap{background:var(--bg2);border:1px solid var(--line)}
 /* 모바일 푸터: 메뉴 가로 나열 */
 @media (max-width:560px){footer ul{flex-direction:row;flex-wrap:wrap;gap:8px 18px}footer ul a{font-size:14px}footer .cols{gap:24px}}
-/* 모바일: 사진을 버튼 위로 */
+/* 모바일: 배경 사진 숨기고 글 아래에 사진 한 장 */
 .hmob{display:none}
-@media (max-width:900px){.hero .hbg{display:none}.hmob{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;margin-top:24px;box-shadow:0 16px 40px rgba(0,0,0,.3)}.hero .act{margin-top:24px}.hero .wrap{padding-bottom:44px}}
+@media (max-width:900px){
+  .hero{min-height:0;display:block}
+  .hero .act{margin-top:24px}
+  .hero .wrap{padding-bottom:44px}
+}
 /* 모바일 푸터 정리: 로고·슬로건 → 메뉴 한 줄 → 회사 정보 두 덩이 */
 @media (max-width:560px){
   footer{padding-block:40px 24px}
   footer .cols{gap:18px}
-  footer .cols>div:nth-child(1){order:1;padding-bottom:18px;border-bottom:1px solid #1B2650}
+  footer .cols>div:nth-child(1){order:1;padding-bottom:18px;border-bottom:1px solid #1E1E1E}
   footer .cols>div:nth-child(4){order:2}
   footer .cols>div:nth-child(2){order:3}
   footer .cols>div:nth-child(3){order:4}
@@ -840,11 +854,215 @@ footer .bottom{border-top-color:#1B2650}
   footer .slogan{font-size:15px}
   footer h4{display:none}
   footer ul{gap:6px 16px}footer ul a{font-size:14px;font-weight:600;color:#fff}
-  footer dl{display:block;font-size:13px;line-height:1.7;color:#9AA6CC}
-  footer dt{display:inline;color:#6F7DA8;margin-right:4px}
-  footer dd{display:inline;color:#D3DAF0}
+  footer dl{display:block;font-size:13px;line-height:1.7;color:#9A9A9A}
+  footer dt{display:inline;color:#787878;margin-right:4px}
+  footer dd{display:inline;color:#D6D6D6}
   footer dd::after{content:"";display:block}
   footer .bottom{margin-top:24px;padding-top:14px;font-size:12px;gap:4px}
+}
+/* ===== 9/23 수정: 회사소개 · 오시는길 · 파트너 ===== */
+/* 오시는길: 제목 아래 연락처 목록 (블록 없이, 항목명 | 내용) */
+.locinfo{margin:0 0 clamp(32px,4vw,56px);padding:0;border-top:1px solid var(--ink);max-width:880px}
+.locinfo>div{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.locinfo dt{font-size:14px;font-weight:700;color:var(--pv-dk);letter-spacing:-.01em}
+.locinfo dd{margin:0;font-size:clamp(16px,1.15vw,18px);font-weight:600;letter-spacing:-.02em;line-height:1.55}
+.locinfo a{text-decoration:none}
+.locinfo a:hover{text-decoration:underline}
+@media (max-width:560px){.locinfo>div{grid-template-columns:96px 1fr;gap:12px;padding:14px 0}.locinfo dd{font-size:15.5px}}
+#p-location .map{border-radius:20px;overflow:hidden}
+@media (max-width:760px){#p-location .map img{aspect-ratio:4/3;object-fit:cover;object-position:center}}
+
+/* 파트너 로고: 마지막 줄 가운데, 항상 컬러 */
+.logos{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.logos span{flex:0 1 calc((100% - 4*16px)/5);aspect-ratio:4/3}
+@media (max-width:900px){.logos span{flex-basis:calc((100% - 2*16px)/3)}}
+@media (max-width:540px){.logos{gap:10px}.logos span{flex-basis:calc((100% - 10px)/2)}}
+/* ===== 흑백 바탕 + 보라 포인트 (01 강점 · 02 성과 · 03 진행 과정 세 곳만) ===== */
+:root{
+  --pv:#873BFF;        /* 기본 보라 */
+  --pv-lt:#B98BFF;     /* 검정 배경 위 글씨 */
+  --pv-dk:#6D2BD9;     /* 흰 배경 위 글씨 */
+  --pv-50:#F3EDFF;     /* 연보라 칩 배경 */
+  --pv-grad:linear-gradient(135deg,#9B6BFF 0%,#6D2BD9 100%);
+}
+
+/* ── 01 Why choose us: 아이콘 원 · 영문 라벨 · +/= 기호 · 결과 카드 ── */
+.term .dot{background:var(--pv-grad)}
+.term:nth-child(1) .dot{background:linear-gradient(135deg,#AD82FF,#873BFF)}
+.term:nth-child(3) .dot,.term:nth-child(5) .dot{background:linear-gradient(135deg,#9B6BFF,#7430DE)}
+.term:nth-child(5) .dot{background:linear-gradient(135deg,#8A4BF0,#5F21C4)}
+.term em{color:var(--pv-dk)}
+.op{color:var(--pv)}
+.result{border:1px solid rgba(135,59,255,.55);box-shadow:0 20px 48px rgba(135,59,255,.3)}
+.result small{color:var(--pv-lt)}
+
+/* ── 02 성과: 묶음 점 · 태그 · BEFORE/AFTER · 화살표 ── */
+.rgh i,.rgh.sns i{background:var(--pv);box-shadow:0 0 0 4px var(--pv-50)}
+.bac .bh .tag{background:var(--pv-50);color:var(--pv-dk)}
+.bac .bfr em{color:var(--pv-dk)}
+.bac .arw{color:var(--pv)}
+.bac .aft{border-color:var(--pv)}
+.bac .aft em{background:var(--pv);color:#fff}
+.bac .aft b{color:var(--pv-dk)}
+
+/* ── 03 진행 과정(검정 띠): 제목 점 · 단계 번호 원 ── */
+.pcol h3 i,.pcol[data-p="sns"] h3 i{background:var(--pv);box-shadow:0 0 0 5px rgba(135,59,255,.26)}
+.pcol li b{background:var(--pv-grad);color:#fff;box-shadow:0 0 0 5px rgba(135,59,255,.14)}
+.pcol li:nth-child(1) b{background:linear-gradient(135deg,#C09BFF,#8F52F5)}
+.pcol li:nth-child(2) b{background:linear-gradient(135deg,#AD82FF,#8442EE)}
+.pcol li:nth-child(3) b{background:linear-gradient(135deg,#9B6BFF,#7A34E4)}
+.pcol li:nth-child(4) b{background:linear-gradient(135deg,#8E5BF5,#6D2BD9)}
+.pcol li:nth-child(5) b{background:linear-gradient(135deg,#7F4BEA,#5C1CC2)}
+.ptog button.on i{background:var(--pv);box-shadow:0 0 0 6px rgba(135,59,255,.24)}
+/* ===== 회사소개: 대표 인사말 (사진 왼쪽 · 글 오른쪽) ===== */
+.ceo{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:clamp(32px,4.5vw,80px);align-items:center}
+.ceo-pic{background:var(--bg2);border-radius:24px;overflow:hidden;aspect-ratio:4/5}
+.ceo-pic img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.ceo-txt .en{display:inline-block;font-family:var(--disp);font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--bg2);color:var(--ink)}
+.ceo-txt h2{font-size:clamp(24px,2.3vw,36px);font-weight:700;line-height:1.35;margin:18px 0 22px}
+.ceo-txt p{font-size:clamp(15.5px,1.08vw,17.5px);line-height:1.85;color:#3A3A3A}
+.ceo-txt p+p{margin-top:12px}
+.ceo-txt .sign{display:block;margin-top:28px;text-align:right;font-size:16px;font-weight:700}
+@media (max-width:900px){.ceo{grid-template-columns:1fr;gap:28px}.ceo-pic{max-width:320px;margin:0 auto;aspect-ratio:4/5}.ceo-txt .sign{text-align:left}}
+/* 파트너 로고: 여백을 잘라낸 이미지에 같은 크기 틀 적용 */
+.logos img{width:auto;height:auto;max-width:56%;max-height:42%;object-fit:contain}
+.logos span.w img{width:auto}
+/* 회사소개 팀: 제목 위, 아래에 3×3 카드 (아이콘 · 팀 · 하는 일 · 번호) */
+.teamwrap{display:block}
+.teamwrap .sh{margin-bottom:clamp(36px,4.5vw,64px)}
+.teamrows{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,22px)}
+.teamrows li{position:relative;display:flex;flex-direction:column;gap:0;background:#fff;border-radius:20px;padding:clamp(26px,2.4vw,36px) clamp(24px,2.2vw,34px) clamp(28px,2.6vw,38px)}
+.teamrows li .ic{margin-bottom:22px}
+.teamrows .tt{margin-bottom:10px}
+.teamrows .no{position:absolute;top:24px;right:26px;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--pv-lt)}
+.teamrows .ic{background:#111;color:#fff}
+.teamrows .tt b{display:block;font-family:var(--disp);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.teamrows .tt h3{font-size:clamp(18px,1.3vw,21px);font-weight:700}
+.teamrows p{font-size:15.5px;line-height:1.7;color:var(--muted)}
+@media (max-width:1000px){.teamrows{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.teamrows{grid-template-columns:1fr;gap:12px}.teamrows li{padding:24px 22px 26px}.teamrows li .ic{margin-bottom:16px}.teamrows .tt h3{font-size:18px}.teamrows p{font-size:15px}}
+/* 모바일 히어로: 로고 사진이 맨 위(메뉴 바로 아래), 아래쪽만 검정으로 녹아들고 그 아래 글 → 버튼 → 숫자 */
+@media (max-width:900px){
+  .hero .hbg{display:none}
+  .hmob{display:block;width:100%;margin:0}
+  .hmob img{display:block;width:100%;height:auto;aspect-ratio:1000/1240;object-fit:cover;-webkit-mask-image:linear-gradient(180deg,#000 58%,rgba(0,0,0,.82) 70%,rgba(0,0,0,.45) 84%,rgba(0,0,0,.12) 94%,transparent 100%);mask-image:linear-gradient(180deg,#000 58%,rgba(0,0,0,.82) 70%,rgba(0,0,0,.45) 84%,rgba(0,0,0,.12) 94%,transparent 100%)}
+  .hero .wrap{margin-top:-16%;padding-top:0}
+  .hero .htxt{max-width:none;text-align:center}
+  .hero .sub{margin-inline:auto}
+  .hero .act{justify-content:center;margin-top:24px}
+}
+/* 모바일 상단: 가로 메뉴 대신 햄버거 버튼 + 펼침 메뉴 */
+.hbtn{display:none}
+@media (max-width:900px){
+  .nav .wrap{padding-block:12px;row-gap:0}
+  .hbtn{display:flex;order:3;flex-direction:column;justify-content:center;gap:6px;width:40px;height:40px;margin-left:6px;padding:0 8px;border:0;border-radius:0;background:none;cursor:pointer}
+  .hbtn i{display:block;width:24px;height:2px;background:#111}
+  /* 메뉴: 오른쪽에서 밀려 들어오는 서랍 (본문을 밀지 않음) */
+  .menu{display:flex;position:fixed;top:0;right:0;bottom:0;width:min(78vw,320px);margin:0;padding:88px 24px 24px;flex-direction:column;gap:0;overflow-y:auto;background:#fff;box-shadow:-12px 0 40px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .28s ease;z-index:40}
+  .nav.open .menu{transform:translateX(0)}
+  .nav::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .28s;z-index:39}
+  .nav.open::before{opacity:1;pointer-events:auto}
+  .menu a{padding:16px 4px;font-size:17px;border-bottom:1px solid var(--line)}
+  .menu a.on{text-decoration:none;font-weight:700}
+}
+/* 글 줄바꿈: 상자 폭 안에서 브라우저가 줄 길이를 고르게 맞춤 (한 글자·한 단어만 내려가는 것 방지) */
+p,dd,li,figcaption,small{text-wrap:pretty}
+.lead,.hero .sub,.subhero .lead,.term p,.bac p,.bac small,.bac .bh h3,.items p,.pcol p,.teamrows p,.ceo-txt p,.locinfo p,.rows .txt p,.card p,.carousel .q p,.cta p,footer .slogan,.checks li,.steps4 p,.abtxt p,.side h3,.result b{text-wrap:balance}
+.lead{max-width:min(640px,56ch)}
+.sh .lead{max-width:min(760px,60ch)}
+/* 대표 인사말: 폭을 좁혀 가운데로 (글꼴은 기존 프리텐다드 그대로) */
+.ceo{max-width:1120px;margin:0 auto;grid-template-columns:minmax(240px,340px) minmax(0,640px);justify-content:center}
+@media (max-width:900px){.ceo{grid-template-columns:1fr}}
+/* 줄 끝에 한두 단어만 남던 곳 */
+.recoline b{text-wrap:balance}
+/* 왼쪽 정렬 문단: 글상자 폭에 딱 맞게 채워서 줄바꿈 (오른쪽 끝이 들쭉날쭉하지 않게) */
+/* 모든 문단: 왼쪽 정렬 + 단어 단위 줄바꿈 (양끝 맞춤은 단어 사이가 벌어져서 쓰지 않음) */
+.ceo-txt p,.lead,.sh .lead,.subhero .lead{text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere;text-align:left}
+/* 좁은 상자 안 글은 왼쪽 정렬 (양끝 맞춤하면 단어 사이가 벌어짐) */
+.items p,.pcol p,.teamrows p,.locinfo p,.rows .txt p,.card p,.carousel .q p,.steps4 p,.side h3{text-wrap:pretty;word-break:keep-all;overflow-wrap:anywhere;text-align:left}
+/* 가운데 정렬 카드(강점 3장·성과 카드)의 글은 가운데 */
+.term p,.bac p{text-wrap:balance;word-break:keep-all;overflow-wrap:anywhere;text-align:center}
+.sh.center .lead,.hero .sub{text-align:center;word-break:keep-all;text-wrap:balance}
+/* 모바일 숫자 4칸: 나머지 첫 화면처럼 가운데 정렬 */
+@media (max-width:900px){
+  .hstats{justify-content:center;column-gap:0}
+  .hstats>div,.hstats>div:nth-child(odd){text-align:center;padding:0 12px}
+}
+/* 회사소개: 인사말과 검정 띠 사이에 걸치는 사무실 사진 갤러리 (같은 크기 5장) */
+:root{--galh:clamp(150px,16vw,250px)}
+#p-about .band:has(.ceo){padding-bottom:calc(clamp(80px,9vw,150px) + var(--galh)/2)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.2vw,18px);height:var(--galh);margin:calc(-1*(clamp(80px,9vw,150px) + var(--galh)/2)) 0 clamp(48px,6vw,96px);position:relative;z-index:2}
+.gal figure{margin:0;height:100%;border-radius:18px;overflow:hidden;background:#222;box-shadow:0 18px 44px rgba(0,0,0,.28)}
+.gal img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+@media (max-width:760px){
+  :root{--galh:190px}
+  .gal{display:flex;height:var(--galh);overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;width:calc(100% + 2*var(--gut));margin-left:calc(-1*var(--gut));padding:0 var(--gut);scrollbar-width:none}
+  .gal::-webkit-scrollbar{display:none}
+  .gal figure{flex:0 0 72%;scroll-snap-align:start;border-radius:14px}
+}
+/* 회사소개: '네 가지' 카드와 팀 목록에 보라 포인트 살짝 */
+#p-about .items.proc .n{color:var(--pv-lt)}
+#p-about .items.proc b{color:var(--pv-lt);opacity:.85}
+#p-about .items.proc>div{border-color:rgba(135,59,255,.22)}
+#p-about .items.proc>div:hover{border-color:rgba(135,59,255,.5)}
+.teamrows .ic{background:var(--pv-grad);color:#fff;box-shadow:0 8px 20px rgba(135,59,255,.22)}
+.teamrows .tt b{color:var(--pv-dk)}
+.teamrows p{text-align:left;max-width:none}
+.teamrows .tt h3{line-height:1.25}
+/* 회사소개 '네 가지' 검정 띠: 상자는 원래 크기, 검정 배경 여백(좌우·위아래)을 넓힘 */
+#p-about .band.black{padding-bottom:clamp(110px,11vw,180px)}
+#p-about .band.black .gal{margin-bottom:clamp(72px,9vw,140px)}
+#p-about .band.black .sh{margin-bottom:clamp(48px,5.5vw,84px)}
+#p-about .items.proc{max-width:1240px;margin-inline:auto;gap:clamp(16px,1.6vw,24px)}
+@media (max-width:640px){#p-about .band.black .gal{margin-bottom:56px}}
+/* 맞춤제안·서비스: 본문 폭을 줄여 가운데로 */
+#p-offer .subhero .wrap,#p-offer .band .wrap,#p-service .subhero .wrap,#p-service .band .wrap{max-width:1400px}
+#p-location .band .wrap{max-width:1200px}
+/* 맞춤제안·서비스: 중간중간 보라 포인트 */
+#p-offer .checks li::before{background-color:var(--pv)}
+#p-offer .recoline i{background-color:var(--pv)}
+#p-offer .recoline span{color:var(--pv-dk)}
+#p-offer .steps4 b{color:var(--pv-dk)}
+#p-offer .sh .en{background:var(--pv-50);color:var(--pv-dk)}
+#p-service .sh .en{background:var(--pv-50);color:var(--pv-dk)}
+#p-service .band.black .sh .en{background:rgba(135,59,255,.18);color:var(--pv-lt)}
+#p-service .rows .txt .tag,#p-service .cards .card .tag{background:var(--pv-50);color:var(--pv-dk)}
+#p-service .rows .txt dl,#p-service .card dl{border-top-color:rgba(135,59,255,.28)}
+#p-service .rows .txt dt,#p-service .card dt{color:var(--pv-dk)}
+#p-service .items.proc .n{color:var(--pv-lt)}
+#p-service .items.proc b{color:var(--pv-lt);opacity:.85}
+#p-service .items.proc>div{border-color:rgba(135,59,255,.22)}
+/* 파트너 로고: 격자(5/5/3) 대신 한 줄로 천천히 흐르는 띠 — 개수와 상관없이 항상 정렬돼 보임 */
+.logowrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.logowrap .logos{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:16px;width:max-content;animation:logomarq 45s linear infinite}
+.logowrap .logos:hover{animation-play-state:paused}
+.logowrap .logos span{flex:0 0 300px;width:300px;aspect-ratio:5/3;padding:22px 26px}
+.logowrap .logos img{width:76%;height:62%;max-width:none;max-height:none;object-fit:contain}
+@keyframes logomarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:640px){.logowrap .logos span{flex-basis:200px;width:200px;padding:14px 16px}.logowrap .logos{gap:10px;animation-duration:36s}}
+@media (prefers-reduced-motion:reduce){.logowrap .logos{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.logowrap{-webkit-mask-image:none;mask-image:none}}
+/* 오시는길: 연락처 선은 본문 폭 끝까지, 지도는 더 높게 */
+#p-location .locinfo{max-width:none}
+#p-location .map{aspect-ratio:2/1}
+#p-location .map img{width:100%;height:100%;object-fit:cover;object-position:center}
+@media (max-width:760px){#p-location .map{aspect-ratio:4/3}}
+/* 성과 카드: BEFORE/AFTER 라벨과 설명을 흰 둥근 상자 하나에 같이 */
+.bac .bfr,.bac .aft{padding-top:20px;display:flex;flex-direction:column;align-items:center}
+.bac .lb{display:inline-flex;align-items:center;gap:10px;margin:0 auto 14px;padding:5px 14px 5px 5px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+.bac .aft .lb{background:var(--bg2);border-color:transparent}
+.bac em{position:static;left:auto;top:auto}
+.bac .lb small{margin:0;font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap}
+.bac .bfr b,.bac .aft b{margin-top:0}
+@media (max-width:640px){.bac .lb small{white-space:normal;text-align:left}}
+/* 파트너 로고 띠: 모바일은 두 줄이 서로 반대 방향으로 흐름 */
+.logowrap .logos.r1,.logowrap .logos.r2{display:none}
+@media (max-width:640px){
+  .logowrap .logos.all{display:none}
+  .logowrap .logos.r1,.logowrap .logos.r2{display:flex}
+  .logowrap .logos.r2{animation-direction:reverse;margin-top:10px}
+  /* 좁은 폭에서 양끝 맞춤은 단어 사이가 벌어지므로 왼쪽 정렬 */
+  .lead,.sh .lead,.subhero .lead,.ceo-txt p{text-align:left}
+  .sh.center .lead,.hero .sub{text-align:center}
 }
 </style>
 
@@ -870,6 +1088,7 @@ footer .bottom{border-top-color:#1B2650}
   <symbol id="i-design" viewBox="0 0 24 24"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37-1.34-1.34a1 1 0 0 0-1.41 0L9 12.25 11.75 15l8.96-8.96a1 1 0 0 0 0-1.41z"/></symbol>
   <symbol id="i-kakao" viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.86 5.31 4.66 6.72L5.5 21.5c-.08.3.26.54.52.37l4.4-2.93c.52.06 1.04.1 1.58.1 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></symbol>
   <symbol id="i-insta" viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-2.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></symbol>
+  <symbol id="i-ai" viewBox="0 0 24 24"><path d="M12 2l1.9 5.3L19 9l-5.1 1.7L12 16l-1.9-5.3L5 9l5.1-1.7L12 2zm7 11l.9 2.5 2.6.9-2.6.9L19 20l-.9-2.7-2.6-.9 2.6-.9L19 13zM5 14l.7 2 2 .7-2 .7L5 19.5l-.7-2.1-2-.7 2-.7L5 14z"/></symbol>
   <symbol id="i-blogn" viewBox="0 0 24 24"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-7l-4.5 3.5V18H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 4v7h4.2c1.6 0 2.6-.8 2.6-2 0-.9-.5-1.5-1.3-1.7.6-.3 1-.8 1-1.5C13.5 7.7 12.6 7 11.2 7H7zm2 1.5h1.8c.6 0 .9.3.9.7s-.3.7-.9.7H9V8.5zm0 2.6h2c.7 0 1 .3 1 .8s-.3.8-1 .8H9v-1.6z"/></symbol>
 </svg>
 
@@ -877,30 +1096,32 @@ footer .bottom{border-top-color:#1B2650}
   <a class="logo" href="#home" data-go="home"><img src="assets/logo.gif" alt="미라클컴퍼니"></a>
   <div class="menu">
     <a href="#home" data-go="home" class="on">홈</a>
-    <a href="#offer" data-go="offer">맞춤 제안</a>
-    <a href="#service" data-go="service">서비스</a>
     <a href="#about" data-go="about">회사소개</a>
+    <a href="#offer" data-go="offer">맞춤제안</a>
+    <a href="#service" data-go="service">서비스</a>
+    <a href="#location" data-go="location">오시는길</a>
   </div>
-  <a class="pill black" href="#contact" data-go="contact">무료 상담신청</a>
+  <a class="pill black" href="#contact" data-go="contact">광고 서비스 문의</a>
+  <button type="button" class="hbtn" aria-label="메뉴 열기" aria-expanded="false"><i></i><i></i><i></i></button>
 </div></nav>
 
 <!-- ================= HOME ================= -->
 <section class="page on" id="p-home">
   <div class="hero">
-    <div class="hbg"><img src="assets/hero-visual.jpg" alt=""></div>
+    <div class="hbg"><img src="assets/hero-visual.jpg?v=4" alt=""></div>
+    <div class="hmob"><img src="assets/hero-mobile.jpg?v=7" alt="미라클컴퍼니 사무실 로고 벽"></div>
     <div class="wrap">
       <div class="htxt">
-        <span class="hbadge">종합 온라인광고대행사</span>
-        <h1>나에게는 일어날 것 같지 않은<br><span class="hl">기적</span>을 만들어드립니다.</h1>
-        <p class="sub">플레이스·블로그·카페·지식iN부터 SNS 광고·영상까지, 온라인 마케팅 전 영역을 진행합니다.</p>
-        <img class="hmob" src="assets/hero-visual.jpg" alt="">
-        <div class="act"><a class="pill black" href="#contact" data-go="contact"><svg><use href="#i-search"/></svg>무료 진단 신청</a><a class="pill line" href="#service" data-go="service"><svg><use href="#i-grid"/></svg>서비스 보기</a></div>
+        <span class="hbadge">천안 종합 온라인광고대행사</span>
+        <h1>기적은 기다리는 것이 아니라<br>만드는 것입니다.</h1>
+        <p class="sub">기획자와 디자이너, 촬영팀이 한 사무실에 있습니다.<br>검색 노출부터 SNS 광고, 카드뉴스와 영상까지 외주 없이 직접 만들고 직접 올립니다.</p>
+        <div class="act"><a class="pill white" href="#contact" data-go="contact"><svg><use href="#i-kakao"/></svg>광고 서비스 문의</a><a class="pill line" href="#service" data-go="service"><svg><use href="#i-grid"/></svg>서비스 보기</a></div>
       </div>
       <div class="hstats">
         <div><span>누적 광고주</span><b>350<i>곳+</i></b></div>
         <div><span>진행 키워드</span><b>8,500<i>개+</i></b></div>
         <div><span>제작 콘텐츠</span><b>12,000<i>건+</i></b></div>
-        <div><span>협력 파트너</span><b>10<i>곳+</i></b></div>
+        <div><span>협력 파트너</span><b>30<i>곳+</i></b></div>
       </div>
     </div>
   </div>
@@ -909,65 +1130,65 @@ footer .bottom{border-top-color:#1B2650}
 
   <div class="band"><div class="wrap">
     <div class="sh center">
-      <div><div class="num">01</div><div class="en">Why choose us</div><h2><span class="thin">SEO부터 SNS·영상까지,</span><br>한 팀이 끝까지 책임집니다</h2></div>
-      <p class="lead">온라인 비즈니스 컨설팅 노하우와 통합 마케팅 역량으로 파트너사의 성장을 이끌어 왔습니다. 진단부터 제작, 노출, 관리까지 외주 없이 한 팀이 진행합니다.</p>
+      <div><div class="num">01</div><div class="en">Why choose us</div><h2><span class="thin">SEO, SNS, 콘텐츠, 플랫폼까지</span><br>한 팀이 끝까지 책임집니다</h2></div>
+      <p class="lead">검색 노출과 SNS 광고, 콘텐츠 제작, 홈페이지·앱 개발까지 온라인에서 손님을 만나는 데 필요한 일을 한 회사에서 진행합니다. 원고와 디자인, 촬영, 개발을 자체 팀이 맡기 때문에 수정이 빠르고 중간 수수료가 붙지 않습니다.</p>
     </div>
     <div class="eq">
-      <div class="term"><span class="dot"><svg><use href="#i-grid"/></svg></span><em>One-stop</em><b>SEO·SNS·영상 원스톱</b><p>플레이스·블로그·카페·지식iN부터 SNS 광고, 영상, 홈페이지까지 <strong>한 곳에서</strong> 진행합니다.</p></div>
+      <div class="term"><span class="dot"><svg><use href="#i-search"/></svg></span><em>SEO · Search Ads</em><b>SEO 검색광고</b><p>플레이스, 블로그, 카페, 지식iN, 언론보도까지 우리 매장과 브랜드를 <strong>검색 첫 화면</strong>에 올립니다.</p></div>
       <span class="op">+</span>
-      <div class="term"><span class="dot"><svg><use href="#i-design"/></svg></span><em>In-house</em><b>자체 제작팀</b><p>기획·디자인·촬영을 <strong>외주 없이 직접</strong> 해서 수정이 빠르고 비용이 투명합니다.</p></div>
+      <div class="term"><span class="dot"><svg><use href="#i-design"/></svg></span><em>SNS Ads · Content</em><b>SNS 광고 · 콘텐츠 제작</b><p>인스타그램과 페이스북 광고를 운영하고, 카드뉴스와 영상 같은 콘텐츠를 <strong>자체 제작팀</strong>이 만듭니다.</p></div>
       <span class="op">+</span>
-      <div class="term"><span class="dot"><svg><use href="#i-check"/></svg></span><em>Approve first</em><b>게시 전 확인</b><p>모든 콘텐츠는 <strong>광고주 확인 후</strong> 게시합니다. 병의원은 심의 기준까지 거칩니다.</p></div>
+      <div class="term"><span class="dot"><svg><use href="#i-web"/></svg></span><em>App · Web Platform</em><b>앱 · 웹 플랫폼 개발</b><p>홈페이지와 랜딩페이지, 예약과 주문 앱까지 <strong>광고와 함께</strong> 설계하고 개발합니다.</p></div>
       <span class="op">=</span>
-      <div class="result"><small>그래서 미라클컴퍼니는</small><b>믿고 맡기는<br>마케팅 파트너</b></div>
+      <div class="result"><small>그래서 미라클컴퍼니는</small><b>온라인 마케팅의<br>처음부터 끝까지</b></div>
     </div>
   </div></div>
 
   <div class="band grey"><div class="wrap">
     <div class="sh">
       <div><div class="num">02</div><div class="en">Results</div><h2><span class="thin">진행 전과 후,</span> 이렇게 달라졌습니다</h2></div>
-      <p class="lead">실적은 말이 아니라 실제 화면으로 보여드립니다. 진행 전과 후가 어떻게 달라졌는지 그대로 옮겼습니다.</p>
+      <p class="lead">숫자를 말로만 전하지 않습니다. 진행 전 검색 화면과 진행 후 화면을 그대로 옮겼습니다. 아래 사례는 실제로 진행한 업종별 대표 사례입니다.</p>
     </div>
     <h3 class="rgh"><i></i>SEO 성과</h3>
     <div class="bacards">
       <article class="bac">
         <div class="bh"><span class="tag">Place · 요식업</span><h3>천안 입장 맛집, 300위 밖에서 첫 화면으로</h3></div>
-        <div class="bfr"><em>BEFORE</em><small>'천안 입장 맛집' 플레이스 순위</small><b>300위 밖</b><p>검색해도 우리 매장이 나오지 않던 상태</p></div>
+        <div class="bfr"><div class="lb"><em>BEFORE</em><small>'천안 입장 맛집' 검색 순위</small></div><b>300위 밖</b><p>검색해도 우리 매장이 나오지 않던 상태</p></div>
         <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="aft"><em>AFTER</em><small>플레이스 노출 위치</small><b>첫 페이지</b><p>월 검색량 27,400회 키워드의 첫 화면에 노출</p><div class="cap"><img src="assets/card-place.jpg" alt=""></div></div>
+        <div class="aft"><div class="lb"><em>AFTER</em><small>진행 후 검색 순위</small></div><b>첫 페이지</b><p>월 검색량 27,400회 키워드의 첫 화면에 노출</p><div class="cap"><img src="assets/card-place.jpg" alt=""></div></div>
       </article>
       <article class="bac">
         <div class="bh"><span class="tag">Blog · 화장품</span><h3>브랜드 검색 시 블로그 탭 최상단 고정</h3></div>
-        <div class="bfr"><em>BEFORE</em><small>브랜드명 검색 시 블로그 탭</small><b>첫 화면에 없음</b><p>브랜드를 검색해도 우리 글이 아닌 다른 글만 보이던 상태</p></div>
+        <div class="bfr"><div class="lb"><em>BEFORE</em><small>브랜드명 검색 블로그 탭</small></div><b>첫 화면에 없음</b><p>브랜드를 검색해도 우리 글이 아닌 다른 글만 보이던 상태</p></div>
         <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="aft"><em>AFTER</em><small>블로그 탭 노출</small><b>1위</b><p>월 검색량 48,900회 키워드에서 최상단 고정</p><div class="cap"><img src="assets/card-blog.jpg" alt=""></div></div>
+        <div class="aft"><div class="lb"><em>AFTER</em><small>진행 후 블로그 탭</small></div><b>1위</b><p>월 검색량 48,900회 키워드에서 최상단 고정</p><div class="cap"><img src="assets/card-blog.jpg" alt=""></div></div>
       </article>
       <article class="bac">
         <div class="bh"><span class="tag">Place + Cafe · 병의원</span><h3>불당동 피부과, 지역 검색 1위와 카페 후기 노출</h3></div>
-        <div class="bfr"><em>BEFORE</em><small>'천안 피부과' 지역 검색</small><b>첫 화면에 없음</b><p>경쟁 병원이 먼저 보여 신환이 다른 곳으로 가던 상태</p></div>
+        <div class="bfr"><div class="lb"><em>BEFORE</em><small>'천안 피부과' 검색 순위</small></div><b>첫 화면에 없음</b><p>경쟁 병원이 먼저 보여 신환이 다른 곳으로 가던 상태</p></div>
         <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="aft"><em>AFTER</em><small>플레이스 노출 순위</small><b>1위</b><p>플레이스와 카페 후기, 2개 탭 동시 노출</p><div class="cap"><img src="assets/card-medical.jpg" alt=""></div></div>
+        <div class="aft"><div class="lb"><em>AFTER</em><small>진행 후 검색 순위</small></div><b>1위</b><p>플레이스와 카페 후기, 2개 탭 동시 노출</p><div class="cap"><img src="assets/card-medical.jpg" alt=""></div></div>
       </article>
     </div>
     <h3 class="rgh sns"><i></i>SNS · 콘텐츠 성과</h3>
     <div class="bacards">
       <article class="bac">
         <div class="bh"><span class="tag">SNS · 수제 디저트</span><h3>사진만 올리던 계정, 광고 소재로 문의가 생기기까지</h3></div>
-        <div class="bfr"><em>BEFORE</em><small>인스타그램 계정</small><b>게시물만 올림</b><p>광고 소재 없이 사진만 올려 반응이 없던 상태</p></div>
+        <div class="bfr"><div class="lb"><em>BEFORE</em><small>인스타그램 계정 상태</small></div><b>게시물만 올림</b><p>광고 소재 없이 사진만 올려 반응이 없던 상태</p></div>
         <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="aft"><em>AFTER</em><small>소재 제작 + 타깃 광고 운영</small><b>문의 발생</b><p>Basic으로 시작해 성과가 나서 Standard로 확대</p><div class="cap"><img src="assets/case-sns.jpg" alt=""></div></div>
+        <div class="aft"><div class="lb"><em>AFTER</em><small>광고 운영 후</small></div><b>문의 발생</b><p>Basic으로 시작해 성과가 나서 Standard로 확대</p><div class="cap"><img src="assets/case-sns.jpg" alt=""></div></div>
       </article>
       <article class="bac">
         <div class="bh"><span class="tag">Content · 앱 서비스</span><h3>제각각이던 피드, 브랜드 톤으로 정리</h3></div>
-        <div class="bfr"><em>BEFORE</em><small>인스타그램 피드</small><b>통일감 없음</b><p>기능 설명, 이벤트, 캐릭터 이미지가 제각각이라 브랜드가 기억되지 않던 상태</p></div>
+        <div class="bfr"><div class="lb"><em>BEFORE</em><small>인스타그램 피드 상태</small></div><b>통일감 없음</b><p>기능 설명, 이벤트, 캐릭터 이미지가 제각각이라 브랜드가 기억되지 않던 상태</p></div>
         <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="aft"><em>AFTER</em><small>자체 디자인팀 카드뉴스·피드 제작</small><b>브랜드 톤 통일</b><p>캐릭터와 브랜드 컬러를 살려 소개·이벤트 콘텐츠를 한 톤으로 제작</p><div class="cap"><img src="assets/case-feed.jpg" alt=""></div></div>
+        <div class="aft"><div class="lb"><em>AFTER</em><small>피드 제작 후</small></div><b>브랜드 톤 통일</b><p>캐릭터와 브랜드 컬러를 살려 소개·이벤트 콘텐츠를 한 톤으로 제작</p><div class="cap"><img src="assets/case-feed.jpg" alt=""></div></div>
       </article>
       <article class="bac">
         <div class="bh"><span class="tag">Video · 교육 서비스</span><h3>외주 영상 수정 비용, 자체 촬영팀으로 해결</h3></div>
-        <div class="bfr"><em>BEFORE</em><small>외주 영상 제작</small><b>수정마다 비용</b><p>수정 요청마다 추가 비용이 붙고 일정이 늦어지던 상태</p></div>
+        <div class="bfr"><div class="lb"><em>BEFORE</em><small>외주 제작 때</small></div><b>수정마다 비용</b><p>수정 요청마다 추가 비용이 붙고 일정이 늦어지던 상태</p></div>
         <div class="arw" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v13M6 11l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="aft"><em>AFTER</em><small>자체 촬영·편집팀</small><b>추가 비용 없음</b><p>기획·촬영·편집을 내부에서 진행해 수정이 빠름</p><div class="cap"><img src="assets/case-video.jpg" alt=""></div></div>
+        <div class="aft"><div class="lb"><em>AFTER</em><small>자체 촬영팀으로 바꾼 후</small></div><b>추가 비용 없음</b><p>기획·촬영·편집을 내부에서 진행해 수정이 빠름</p><div class="cap"><img src="assets/case-video.jpg" alt=""></div></div>
       </article>
     </div>
       </div></div>
@@ -975,7 +1196,7 @@ footer .bottom{border-top-color:#1B2650}
   <div class="band black"><div class="wrap">
     <div class="sh">
       <div><div class="num">03</div><div class="en">Process</div><h2><span class="thin">SEO 마케팅과 SNS 광고,</span> 이렇게 진행합니다</h2></div>
-      <p class="lead">상품마다 진행 단계가 다릅니다. 진단부터 운영까지 담당자 한 명이 끝까지 맡습니다.</p>
+      <p class="lead">검색 노출과 SNS 광고는 준비하는 방식이 다릅니다. 둘 다 담당자 한 명이 진단부터 운영까지 맡고, 진행 상황은 카카오톡으로 바로 알려드립니다.</p>
     </div>
     <div class="pcmp" data-on="seo">
       <nav class="ptog" role="tablist">
@@ -992,7 +1213,7 @@ footer .bottom{border-top-color:#1B2650}
   <div class="band grey"><div class="wrap">
     <div class="sh">
       <div><div class="num">04</div><div class="en">Clients say</div><h2>함께한 광고주의 이야기</h2></div>
-      <p class="lead">계약 후에 어떻게 달라졌는지, 광고주분들이 직접 남긴 말입니다.</p>
+      <p class="lead">계약 후에 무엇이 달라졌는지, 함께 일한 대표님과 원장님들이 직접 남긴 말입니다.</p>
     </div>
     <div class="carousel" id="qc"><div class="track"><div class="q"><span class="av">김</span><p>플레이스 노출을 시작하고 두 달째부터 예약 전화가 눈에 띄게 늘었습니다. 지금 무엇을 하고 있는지 물어보면 바로 답이 오는 점이 가장 좋았습니다.</p><div class="who"><b>김○○ 대표</b>천안 · 요식업</div></div><div class="q"><span class="av">이</span><p>의료광고 심의 때문에 걱정이 많았는데 원고 작성부터 접수까지 맡아 주셔서 진료에만 집중할 수 있었습니다. 게시 전에 항상 확인을 받는 점도 안심이 됩니다.</p><div class="who"><b>이○○ 원장</b>피부과</div></div><div class="q"><span class="av">박</span><p>대행사를 세 곳 거쳤는데 노출이 안 된 날을 빼고 정산하는 곳은 처음이었습니다. 키워드가 안 되면 바로 바꿔 주는 것도 다른 점입니다.</p><div class="who"><b>박○○ 팀장</b>건강식품 브랜드</div></div><div class="q"><span class="av">최</span><p>블로그 노출을 두 달 진행했더니 문의 전화의 절반이 검색으로 왔다고 답합니다. 어떤 키워드로 왔는지까지 알려 줘서 광고비를 어디에 쓰는지 알겠더군요.</p><div class="who"><b>최○○ 대표</b>인테리어</div></div><div class="q"><span class="av">정</span><p>플레이스 정비만 먼저 해 주셨는데 그것만으로도 지도에서 우리 가게가 보이기 시작했습니다. 억지로 상품을 늘리지 않는 점이 신뢰가 갔습니다.</p><div class="who"><b>정○○ 원장</b>한의원</div></div><div class="q"><span class="av">한</span><p>스마트스토어 신규 유입이 늘지 않아 고민이었는데 키워드를 다시 잡은 뒤 검색 유입이 꾸준히 올라갔습니다. 상세페이지 방향까지 함께 봐 준 게 도움이 됐습니다.</p><div class="who"><b>한○○ 이사</b>화장품 브랜드</div></div><div class="q"><span class="av">오</span><p>카페 후기 노출 이후 "카페에서 보고 왔다"는 손님이 실제로 생겼습니다. 후기 원고를 게시 전에 보여 주고 확인받는 과정이 꼼꼼했습니다.</p><div class="who"><b>오○○ 대표</b>천안 · 카페</div></div><div class="q"><span class="av">윤</span><p>언론보도 한 건으로 기사 링크를 상세페이지와 인스타에 계속 쓰고 있습니다. 매체 선정부터 원고까지 한 번에 진행돼서 편했습니다.</p><div class="who"><b>윤○○ 대표</b>생활용품 브랜드</div></div><div class="q"><span class="av">장</span><p>유동 인구가 적은 자리라 검색으로 손님을 데려와야 했습니다. 지역 키워드 다섯 개로 시작했는데 세 달째 플레이스 첫 화면을 유지하고 있습니다.</p><div class="who"><b>장○○ 대표</b>천안 · 미용실</div></div><div class="q"><span class="av">서</span><p>영상 제작을 외부에 맡기면 수정마다 비용이 붙었는데, 촬영팀이 내부에 있어서 수정이 빠르고 추가 비용 얘기가 없었습니다.</p><div class="who"><b>서○○ 팀장</b>교육 서비스</div></div><div class="q"><span class="av">임</span><p>담당자 한 명이 처음부터 끝까지 맡아 줘서 매번 설명을 반복할 필요가 없었습니다. 카톡으로 물어보면 당일에 답이 옵니다.</p><div class="who"><b>임○○ 대표</b>포장이사</div></div><div class="q"><span class="av">조</span><p>지식iN 답변 노출이 병원 선택 단계에서 이렇게 효과가 있는지 몰랐습니다. 증상 키워드부터 지역 키워드까지 순서대로 잡아 준 설계가 좋았습니다.</p><div class="who"><b>조○○ 원장</b>정형외과</div></div><div class="q"><span class="av">강</span><p>SNS 광고를 Basic으로 작게 시작했는데 소재 제작과 보고서까지 포함돼 있어 부담이 없었습니다. 성과가 나서 Standard로 올렸습니다.</p><div class="who"><b>강○○ 대표</b>수제 디저트</div></div><div class="q"><span class="av">문</span><p>첫 상담만 받고 진행을 미뤘는데도 재촉이 없었습니다. 세 달 뒤에 다시 연락했을 때도 같은 담당자가 기억하고 있어서 놀랐습니다.</p><div class="who"><b>문○○ 대표</b>천안 · 학원</div></div><div class="q"><span class="av">신</span><p>같은 업계 대행사인데 실행을 맡기고 있습니다. 노출 카운팅이 정확하고 정리가 깔끔해서 우리 광고주에게 그대로 전달합니다.</p><div class="who"><b>신○○ 팀장</b>광고 대행사</div></div></div></div>
     <div class="cnav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></div>
@@ -1001,19 +1222,20 @@ footer .bottom{border-top-color:#1B2650}
   <div class="band"><div class="wrap">
     <div class="sh">
       <div><div class="num">05</div><div class="en">Partners</div><h2>수 많은 파트너사의 성공을 돕고 있습니다.</h2></div>
-      <p class="lead">전화 영업 없이 소개와 입소문으로 이어져 온 파트너들입니다.</p>
+      <p class="lead">전화 영업 없이 소개와 입소문으로 이어져 온 파트너들입니다. 대기업 제휴사부터 동네 매장까지, 규모와 상관없이 같은 기준으로 진행합니다.</p>
     </div>
-    <div class="logos">
-      <span><img src="assets/par01.png" alt=""></span><span><img src="assets/par02.png" alt=""></span><span><img src="assets/par03.png" alt=""></span><span><img src="assets/par04.png" alt=""></span><span><img src="assets/par05.png" alt=""></span>
-      <span><img src="assets/par06.png" alt=""></span><span><img src="assets/par07.png" alt=""></span><span><img src="assets/par08.png" alt=""></span><span><img src="assets/par09.png" alt=""></span><span><img src="assets/par10.png" alt=""></span>
-    </div>
+    <div class="logowrap"><div class="logos">
+      <span><img src="assets/par03.png?v=3" alt="네이버"></span><span><img src="assets/par02.png?v=3" alt="구글"></span><span><img src="assets/par01.png?v=3" alt="유튜브"></span><span><img src="assets/par04.png?v=3" alt="다날"></span><span><img src="assets/par05.png?v=3" alt="헥토파이낸셜"></span>
+      <span><img src="assets/par-lanseonpay.png?v=3" alt="랜선페이"></span><span><img src="assets/par06.png?v=3" alt="닥터셀"></span><span><img src="assets/par07.png?v=3" alt="데일리콘"></span><span><img src="assets/par08.png?v=3" alt="법무법인 통"></span><span><img src="assets/par-lawopus.png?v=3" alt="법무법인 로퍼스"></span>
+      <span><img src="assets/par-kimsy.png?v=3" alt="김성연 법률사무소"></span><span><img src="assets/par-uchetalk.png?v=3" alt="우체톡"></span><span><img src="assets/par-ngbiz.png?v=3" alt="엔지비즈"></span>
+    </div></div>
   </div></div>
 
   <div class="cta"><div class="wrap">
     <div class="en">Contact</div>
     <h2>미라클컴퍼니 문의하기</h2>
     <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
-    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">광고 서비스 문의</a></div>
   </div></div>
 </section>
 
@@ -1022,7 +1244,7 @@ footer .bottom{border-top-color:#1B2650}
   <div class="subhero"><div class="wrap">
     <div class="en">Solution</div>
     <h1>같은 비용이어도, 업종에 따라 상품 구성이 달라집니다.</h1>
-    <p class="lead">온라인 브랜드, 오프라인 매장, 병의원. 업종별 맞춤 제안과 진행 순서를 안내합니다.</p>
+    <p class="lead">고객이 검색하는 순서가 업종마다 다릅니다. 온라인 브랜드는 구매 직전 키워드부터, 매장은 지역 키워드부터, 병의원은 증상 키워드부터 잡아야 합니다. 업종별로 어떤 상품을 어떤 순서로 진행하는지 그대로 공개합니다.</p>
   </div></div>
 
   <div class="band osec" id="offer-online"><div class="wrap">
@@ -1050,11 +1272,28 @@ footer .bottom{border-top-color:#1B2650}
     <div class="steps4"><div><b>01</b><h4>증상 인지</h4><p>'무릎 아플 때' 같은 증상 검색에서 블로그·지식iN 답변으로 먼저 만납니다.</p></div><div><b>02</b><h4>해결 방법 검색</h4><p>'○○ 치료 방법' 검색에 정보성 블로그 콘텐츠로 노출합니다.</p></div><div><b>03</b><h4>병원 후보 검색</h4><p>'천안 피부과' 같은 지역 키워드를 플레이스 노출로 잡습니다.</p></div><div><b>04</b><h4>비교와 내원</h4><p>카페 추천 질문에 실제 후기로 노출하고 예약·전화 유입을 보고합니다.</p></div></div>
   </div></div>
 
+<div class="band osec alt" id="offer-meta"><div class="wrap">
+    <div class="ohead">
+      <div><div class="sh" style="margin-bottom:0"><div class="num">04</div><div class="en">Meta Ads</div><h2><span class="thin">보는 사람은 많은데</span><br>문의로 이어지지 않는다면?</h2><ul class="checks"><li>인스타그램 팔로워는 있는데 매출과 연결이 안 된다</li><li>광고비를 써도 누구에게 보이는지 모른다</li><li>소재를 만들 사람이 없어 사진만 올리고 있다</li></ul><p class="recoline"><i></i><span>BEST</span><b>인스타그램·페이스북 게시물 광고 · 소재 제작 · 타깃 운영</b></p><div class="act"><a class="pill black" href="#contact" data-go="contact">이 구성으로 상담 신청</a></div></div></div>
+      <div class="pic"><img src="assets/offer-meta.png" alt="메타(인스타그램·페이스북) 광고"></div>
+    </div>
+    <div class="plan-t">진행 순서</div>
+    <div class="steps4"><div><b>01</b><h4>타깃 설정</h4><p>지역·연령·관심사로 광고를 볼 사람을 정합니다. 매장은 반경, 브랜드는 관심사가 기준입니다.</p></div><div><b>02</b><h4>소재 제작</h4><p>카드뉴스와 짧은 영상을 자체 디자인팀이 만들고, 게시 전에 확인을 받습니다.</p></div><div><b>03</b><h4>광고 집행</h4><p>인스타그램·페이스북에 게시물 광고를 운영합니다. Basic부터 시작해 성과에 따라 늘립니다.</p></div><div><b>04</b><h4>성과 분석과 조정</h4><p>도달·클릭·문의 수를 보고 소재와 예산을 바로 바꿉니다.</p></div></div>
+  </div></div>
+<div class="band osec" id="offer-dev"><div class="wrap">
+    <div class="ohead">
+      <div><div class="sh" style="margin-bottom:0"><div class="num">05</div><div class="en">Web &amp; App</div><h2><span class="thin">광고로 데려온 손님이</span><br>도착할 곳이 없다면?</h2><ul class="checks"><li>명함과 광고에 적을 홈페이지가 없다</li><li>예약과 주문을 전화로만 받고 있다</li><li>외주로 만든 홈페이지가 검색에 잡히지 않는다</li></ul><p class="recoline"><i></i><span>BEST</span><b>홈페이지 제작 · 랜딩페이지 · 예약·주문 앱 개발</b></p><div class="act"><a class="pill black" href="#contact" data-go="contact">이 구성으로 상담 신청</a></div></div></div>
+      <div class="pic"><img src="assets/offer-dev.png" alt="홈페이지·앱 제작 예시"></div>
+    </div>
+    <div class="plan-t">진행 순서</div>
+    <div class="steps4"><div><b>01</b><h4>기획과 구조 설계</h4><p>무엇을 보여주고 어디서 문의를 받을지 화면 흐름을 먼저 그립니다.</p></div><div><b>02</b><h4>디자인</h4><p>브랜드 톤에 맞춰 화면을 디자인하고, 확인 후 개발로 넘깁니다.</p></div><div><b>03</b><h4>개발과 검색 최적화</h4><p>홈페이지·앱을 개발하고, 검색에 잘 잡히는 구조와 속도를 맞춥니다.</p></div><div><b>04</b><h4>오픈과 운영</h4><p>오픈 후 수정과 관리를 같은 팀이 맡습니다. 광고와 함께 운영하면 효과가 큽니다.</p></div></div>
+  </div></div>
+
   <div class="cta"><div class="wrap">
     <div class="en">Contact</div>
     <h2>미라클컴퍼니 문의하기</h2>
     <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
-    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">광고 서비스 문의</a></div>
   </div></div>
 </section>
 
@@ -1064,7 +1303,7 @@ footer .bottom{border-top-color:#1B2650}
   <div class="subhero"><div class="wrap">
     <div class="en">Product</div>
     <h1>바이럴 마케팅의 모든 것, 상품별 과금 기준까지 투명하게.</h1>
-    <p class="lead">무엇을 하는 상품인지, 비용이 어떻게 산정되는지 한 페이지에 정리했습니다.</p>
+    <p class="lead">어떤 상품인지, 비용이 어떤 기준으로 매겨지는지 한 페이지에 정리했습니다. 노출된 날만 세는 상품과 건별로 계산하는 상품을 나눠 두었습니다.</p>
   </div></div>
 
   <div class="band"><div class="wrap">
@@ -1073,11 +1312,11 @@ footer .bottom{border-top-color:#1B2650}
       <p class="lead">고객이 검색하는 바로 그 자리에 노출됩니다. 플레이스, 블로그, 카페, 지식iN, 언론보도까지 검색 결과 전체를 한 곳에서 설계하고 운영합니다.</p>
     </div>
     <div class="rows">
-      <div class="row"><div class="txt"><span class="tag">Place</span><h3>플레이스</h3><p>업종·지역 키워드 검색 시 지도 첫 화면에 우리 매장을 노출합니다. 요식업과 매장형 업종의 기본 상품입니다.</p><dl><dt>과금</dt><dd>노출된 날만 집계해 월 단위 정산</dd><dt>기간</dt><dd>첫 노출까지 보통 1~2주</dd><dt>추천</dt><dd>식당·카페·미용실·병의원</dd></dl></div><div class="pic"><img src="assets/srch-place.jpg" alt=""></div></div>
-      <div class="row"><div class="txt"><span class="tag">Blog</span><h3>블로그</h3><p>SEO 마케팅의 기본이 되는 상품입니다. 예산과 목표에 따라 발행·건별·월보장 중 선택합니다.</p><dl><dt>발행</dt><dd>포스팅 업로드 시 결제</dd><dt>건별</dt><dd>24시간 안에 노출된 건만 결제</dd><dt>월보장</dt><dd>25일 노출 보장, 미달 일수 차감</dd></dl></div><div class="pic"><img src="assets/srch-blog.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Place</span><h3>플레이스</h3><p>지역 키워드로 검색하면 지도 첫 화면에 우리 매장이 나옵니다. 식당·카페·미용실처럼 손님이 직접 찾아오는 업종의 기본 상품입니다.</p><dl><dt>과금</dt><dd>노출된 날만 집계해 월 단위 정산</dd><dt>기간</dt><dd>첫 노출까지 보통 1~2주</dd><dt>추천</dt><dd>식당·카페·미용실·병의원</dd></dl></div><div class="pic"><img src="assets/srch-place.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Blog</span><h3>블로그</h3><p>SEO 마케팅의 기본 상품입니다. 예산과 목표에 따라 발행·건별·월보장 중에서 고릅니다.</p><dl><dt>발행</dt><dd>포스팅 업로드 시 결제</dd><dt>건별</dt><dd>24시간 안에 노출된 건만 결제</dd><dt>월보장</dt><dd>25일 노출 보장, 미달 일수 차감</dd></dl></div><div class="pic"><img src="assets/srch-blog.jpg" alt=""></div></div>
       <div class="row"><div class="txt"><span class="tag">Cafe</span><h3>카페</h3><p>카페 탭 상위에 노출합니다. 블로그와 함께 운영하면 검색 첫 화면 점유율이 높아집니다.</p><dl><dt>과금</dt><dd>건별 24시간 · 월보장 25일 기준</dd><dt>추천</dt><dd>검색량이 많은 상품·업종</dd></dl></div><div class="pic"><img src="assets/srch-cafe.jpg" alt=""></div></div>
-      <div class="row"><div class="txt"><span class="tag">Review</span><h3>카페 후기 노출</h3><p>지역·관심사 카페의 추천 질문에 실제 이용 후기 형태로 노출합니다. 구매 직전 고객에게 가장 가까운 상품입니다.</p><dl><dt>과금</dt><dd>게시글·댓글 건별</dd><dt>원칙</dt><dd>광고 표시 규정 준수</dd><dt>추천</dt><dd>병의원, 매장, 신제품</dd></dl></div><div class="pic"><img src="assets/viral.png" alt=""></div></div>
-      <div class="row"><div class="txt"><span class="tag">Q&amp;A</span><h3>지식iN</h3><p>질문형 검색에 답변 형태로 노출합니다. 정보 신뢰도가 높아 병의원과 전문 서비스에 효과적입니다.</p><dl><dt>과금</dt><dd>노출 확인 후 건별</dd><dt>추천</dt><dd>병의원·법률·전문 서비스</dd></dl></div><div class="pic"><img src="assets/srch-qna.jpg" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Review</span><h3>카페 후기 노출</h3><p>지역·관심사 카페의 추천 질문에 실제 후기로 노출합니다. 구매를 앞둔 고객이 가장 먼저 보는 자리라 문의로 이어지기 쉽습니다.</p><dl><dt>과금</dt><dd>게시글·댓글 건별</dd><dt>원칙</dt><dd>광고 표시 규정 준수</dd><dt>추천</dt><dd>병의원, 매장, 신제품</dd></dl></div><div class="pic"><img src="assets/viral.png" alt=""></div></div>
+      <div class="row"><div class="txt"><span class="tag">Q&amp;A</span><h3>지식iN</h3><p>질문형 검색에 답변으로 노출합니다. 신뢰도가 높아 병의원과 전문 서비스에 잘 맞습니다.</p><dl><dt>과금</dt><dd>노출 확인 후 건별</dd><dt>추천</dt><dd>병의원·법률·전문 서비스</dd></dl></div><div class="pic"><img src="assets/srch-qna.jpg" alt=""></div></div>
       <div class="row"><div class="txt"><span class="tag">Press</span><h3>언론보도</h3><p>언론사 기사 발행으로 뉴스 탭에 노출하고 브랜드 신뢰도를 높입니다. 발행 기사는 블로그·SNS 콘텐츠로 재활용합니다.</p><dl><dt>과금</dt><dd>매체별 건별, 발행 전 원고 확인</dd><dt>추천</dt><dd>신규 오픈, 신제품</dd></dl></div><div class="pic"><img src="assets/srch-press.jpg" alt=""></div></div>
     </div>
   </div></div>
@@ -1085,26 +1324,38 @@ footer .bottom{border-top-color:#1B2650}
   <div class="band grey"><div class="wrap">
     <div class="sh">
       <div><div class="num">B</div><div class="en">Content &amp; Media</div><h2>콘텐츠 · 미디어</h2></div>
-      <p class="lead">기획, 디자인, 촬영, 편집을 자체 팀이 진행합니다. 인스타그램 광고 소재부터 유튜브 채널, 4K·드론 촬영까지 외주 없이 만듭니다.</p>
+      <p class="lead">기획, 디자인, 촬영, 편집을 자체 팀이 진행합니다. 인스타그램 광고 소재부터 유튜브 채널, 4K·드론 촬영까지 외주 없이 만들기 때문에 수정 요청에 추가 비용이 붙지 않습니다.</p>
     </div>
     <div class="cards c3">
-      <div class="card"><div class="body"><span class="tag">SNS</span><h3>SNS 광고 운영</h3><p>인스타그램·페이스북 광고를 기획부터 소재 제작, 운영, 성과 보고까지 원스톱으로 진행합니다.</p><dl><dt>Basic</dt><dd>디자이너 1인 · 콘텐츠 1개</dd><dt>Standard</dt><dd>디자이너+마케터 · 콘텐츠 5개 · 10일 운영</dd><dt>Premium</dt><dd>광고팀 · 콘텐츠 12개 · 4주 운영</dd></dl></div></div>
+      <div class="card"><div class="body"><span class="tag">SNS</span><h3>SNS 광고 운영</h3><p>메타(인스타그램·페이스북) 광고를 기획부터 소재 제작, 타깃 설정, 운영, 성과 보고까지 원스톱으로 진행합니다.</p><dl><dt>Basic</dt><dd>디자이너 1인 · 콘텐츠 1개</dd><dt>Standard</dt><dd>디자이너+마케터 · 콘텐츠 5개 · 10일 운영</dd><dt>Premium</dt><dd>광고팀 · 콘텐츠 12개 · 4주 운영</dd></dl></div></div>
       <div class="card"><div class="body"><span class="tag">YouTube</span><h3>유튜브 마케팅</h3><p>채널 개설부터 광고 집행, 인플루언서 협업까지 예산과 브랜드 콘셉트에 맞춰 기획·운영합니다.</p><dl><dt>과금</dt><dd>광고비 + 운영비 월 단위</dd><dt>추천</dt><dd>신제품 런칭, 브랜드 인지도</dd></dl></div></div>
       <div class="card"><div class="body"><span class="tag">Video</span><h3>영상 제작</h3><p>상담, 기획, 촬영, 편집, 피드백까지 자체 촬영팀이 진행합니다. 중간 수수료가 없고 완료 후 수정도 가능합니다.</p><dl><dt>장비</dt><dd>4K · 스튜디오 · 드론</dd><dt>과금</dt><dd>프로젝트 견적</dd></dl></div></div>
     </div>
   </div></div>
 
+  <div class="band"><div class="wrap">
+    <div class="sh">
+      <div><div class="num">C</div><div class="en">Web &amp; App</div><h2>플랫폼 개발</h2></div>
+      <p class="lead">광고로 데려온 손님이 도착할 홈페이지와 앱을 직접 만듭니다. 기획, 디자인, 개발을 한 팀에서 진행하고, 검색에 잘 잡히는 구조와 빠른 속도를 기본으로 합니다. 오픈 뒤 수정과 관리도 같은 팀이 맡습니다.</p>
+    </div>
+    <div class="cards c3">
+      <div class="card"><div class="body"><span class="tag">Website</span><h3>홈페이지 제작</h3><p>회사 소개부터 문의 접수까지, 검색에 잘 잡히는 구조로 기획·디자인·개발합니다. 모바일 화면부터 설계합니다.</p><dl><dt>범위</dt><dd>기획 · 디자인 · 개발 · 검색 최적화</dd><dt>기간</dt><dd>보통 3~5주</dd><dt>과금</dt><dd>페이지 수 기준 견적</dd></dl></div></div>
+      <div class="card"><div class="body"><span class="tag">Landing</span><h3>랜딩페이지</h3><p>광고 하나에 페이지 하나. 이벤트·신제품·상담 접수처럼 목적이 분명한 한 장짜리 페이지를 빠르게 만듭니다.</p><dl><dt>범위</dt><dd>기획 · 디자인 · 개발 · 문의 폼</dd><dt>기간</dt><dd>보통 1~2주</dd><dt>과금</dt><dd>페이지당 견적</dd></dl></div></div>
+      <div class="card"><div class="body"><span class="tag">App</span><h3>앱 개발</h3><p>예약·주문·회원 관리처럼 반복되는 일을 앱으로 만듭니다. 매장과 브랜드에 필요한 기능만 골라 설계합니다.</p><dl><dt>범위</dt><dd>기획 · 화면 설계 · 개발 · 스토어 등록</dd><dt>기간</dt><dd>기능에 따라 견적</dd><dt>과금</dt><dd>프로젝트 견적</dd></dl></div></div>
+    </div>
+  </div></div>
+
   <div class="band black"><div class="wrap">
     <div class="sh">
-      <div><div class="num">C</div><div class="en">Process</div><h2><span class="thin">상담부터 운영까지,</span> 이렇게 진행합니다</h2></div>
-      <p class="lead">진단과 제안은 무료입니다. 진단만 받고 진행하지 않으셔도 됩니다.</p>
+      <div><div class="num">D</div><div class="en">Process</div><h2><span class="thin">상담부터 운영까지,</span> 이렇게 진행합니다</h2></div>
+      <p class="lead">무엇이 문제인지 먼저 짚고, 필요한 상품만 조합해서 진행합니다. 진단과 제안은 무료이며 진단만 받고 진행하지 않으셔도 됩니다.</p>
     </div>
     <div class="items c5 proc">
-      <div><span class="n">01</span><b>Step 1</b><h3>키워드 진단</h3><p>검색량, 현재 순위, 경쟁 현황을 정리해 드립니다.</p></div>
-      <div><span class="n">02</span><b>Step 2</b><h3>제안과 견적</h3><p>필요한 상품만 구성해 예산과 기간을 제안합니다.</p></div>
-      <div><span class="n">03</span><b>Step 3</b><h3>콘텐츠 제작</h3><p>자체 팀이 만들고, 게시 전 확인을 받습니다.</p></div>
-      <div><span class="n">04</span><b>Step 4</b><h3>노출과 운영</h3><p>순위를 매일 점검하고 즉시 대응합니다.</p></div>
-      <div><span class="n">05</span><b>Step 5</b><h3>성과 관리</h3><p>매주 순위와 유입을 전달하고 키워드를 조정합니다.</p></div>
+      <div><span class="n">01</span><b>Step 1</b><h3>현황 진단</h3><p>지금 어디서 손님을 놓치는지 봅니다. 검색 노출, SNS, 홈페이지 상태를 함께 진단합니다.</p></div>
+      <div><span class="n">02</span><b>Step 2</b><h3>상품 조합 제안</h3><p>검색광고, SNS 광고, 콘텐츠, 홈페이지 중 필요한 것만 묶어 예산과 기간을 제안합니다.</p></div>
+      <div><span class="n">03</span><b>Step 3</b><h3>제작과 검수</h3><p>원고, 소재, 영상, 페이지를 자체 팀이 만들고 검수한 뒤 확인을 받습니다.</p></div>
+      <div><span class="n">04</span><b>Step 4</b><h3>노출과 운영</h3><p>검색 노출과 광고를 시작하고, 순위와 반응을 매일 점검해 바로 대응합니다.</p></div>
+      <div><span class="n">05</span><b>Step 5</b><h3>성과 관리</h3><p>유입과 문의 수를 보며 키워드, 소재, 예산을 조정하고 다음 달 계획을 잡습니다.</p></div>
     </div>
   </div></div>
 
@@ -1112,28 +1363,65 @@ footer .bottom{border-top-color:#1B2650}
     <div class="en">Contact</div>
     <h2>미라클컴퍼니 문의하기</h2>
     <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
-    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">광고 서비스 문의</a></div>
   </div></div>
 </section>
 
 <!-- ================= ABOUT ================= -->
 <section class="page" id="p-about">
-  <div class="subhero"><div class="wrap">
-    <div class="en">About</div>
-    <h1>브랜드의 비전을 현실로, 파트너사의 성장을 함께합니다.</h1>
-    <p class="lead">미라클컴퍼니는 온라인 비즈니스 컨설팅 노하우와 통합 마케팅 역량으로 다양한 파트너사의 성장을 이끌어 가고 있습니다. 전문화된 인력을 통해 브랜드의 비전을 현실화하고, 장기적인 시장 확대와 지속적인 고객 창출을 목표로 움직입니다.</p>
+  <div class="band"><div class="wrap">
+    <div class="ceo">
+      <div class="ceo-pic"><img src="assets/office2.jpg?v=2" alt="미라클컴퍼니 사무실 로고 벽"></div>
+      <div class="ceo-txt">
+        <div class="en">Greeting</div>
+        <h2>안녕하세요.<br>주식회사 미라클컴퍼니 대표 김남기입니다.</h2>
+        <p>미라클컴퍼니를 믿고 광고를 맡겨 주신 광고주와 파트너사 여러분께 깊이 감사드립니다.</p>
+        <p>저희는 충남 천안에서 시작한 종합 온라인광고대행사입니다. 검색 노출부터 SNS 광고, 콘텐츠와 영상 제작까지 온라인 마케팅의 전 과정을 한 팀이 직접 진행합니다. 기획팀·디자인팀·촬영팀을 모두 사무실 안에 두고 외주 없이 만들기 때문에, 수정은 빠르고 비용은 투명합니다.</p>
+        <p>광고는 화려한 말보다 결과로 이야기해야 한다고 생각합니다. 그래서 모든 콘텐츠는 광고주가 먼저 확인한 뒤 게시하고, 진행 상황은 담당자 한 명이 처음부터 끝까지 책임지고 알려드립니다. 필요 없는 상품을 권하지 않는 것도 저희가 지키는 원칙입니다.</p>
+        <p>지금까지 만난 광고주 대부분이 함께 일하던 분의 소개로 찾아오셨습니다. 그 신뢰에 보답하는 길은 결국 우리 매장, 우리 병원, 우리 브랜드가 더 많은 고객에게 닿게 만드는 것뿐이라고 믿습니다. 앞으로도 정직한 광고로 파트너사의 성장을 함께 만들어 가겠습니다.</p>
+        <p>감사합니다.</p>
+        <b class="sign">주식회사 미라클컴퍼니 대표 김남기</b>
+      </div>
+    </div>
   </div></div>
 
-  <div class="band grey"><div class="wrap">
-    <div class="sh">
-      <div><div class="en">Team</div><h2>분야별 전담팀이 함께합니다</h2></div>
-      <p class="lead">기획, 디자인, 촬영, 운영을 한 곳에서 진행합니다. 외주를 거치지 않아 수정이 빠르고 비용이 투명합니다.</p>
+  <div class="band black"><div class="wrap">
+    <div class="gal">
+      <figure class="g2"><img src="assets/office3.jpg" alt="미라클컴퍼니 사무실 업무 공간"></figure>
+      <figure class="g3"><img src="assets/office4.jpg" alt="미라클컴퍼니 사무실 미팅 공간"></figure>
+      <figure class="g4"><img src="assets/office5.jpg" alt="미라클컴퍼니 회의실"></figure>
+      <figure class="g5"><img src="assets/office6.jpg" alt="미라클컴퍼니 라운지"></figure>
     </div>
-    <div class="items c4 team">
-      <div><span class="ic lg"><svg><use href="#i-search"/></svg></span><b>Planning</b><h3>기획</h3><p>검색량 분석, 키워드 선정, 블로그·카페·지식iN 원고</p></div>
-      <div><span class="ic lg"><svg><use href="#i-design"/></svg></span><b>Design</b><h3>디자인</h3><p>SNS 광고 소재, 상세페이지, 썸네일, 인쇄물</p></div>
-      <div><span class="ic lg"><svg><use href="#i-video"/></svg></span><b>Video</b><h3>촬영·편집</h3><p>4K·드론 촬영, 스튜디오, 편집, 유튜브 운영</p></div>
-      <div><span class="ic lg"><svg><use href="#i-report"/></svg></span><b>Operation</b><h3>운영</h3><p>매일 순위 점검, 키워드 교체, 광고주 전담</p></div>
+    <div class="sh center">
+      <div><div class="en">How we work</div><h2>미라클컴퍼니가 지키는 네 가지</h2></div>
+      <p class="lead">오래 함께하는 광고주가 많은 이유는 특별한 기술 때문이 아닙니다. 아래 네 가지를 예외 없이 지켜 왔기 때문입니다.</p>
+    </div>
+    <div class="items c4 proc">
+      <div><span class="n">01</span><b>Direct</b><h3>외주를 쓰지 않습니다</h3><p>원고, 디자인, 촬영, 편집을 모두 내부에서 만듭니다. 수정 요청에 추가 비용이 붙지 않고 당일에도 바꿀 수 있습니다.</p></div>
+      <div><span class="n">02</span><b>Double check</b><h3>두 번 검수하고 올립니다</h3><p>원고와 소재는 오탈자, 사실 관계, 광고 표시 규정을 검수한 뒤 광고주 확인을 받고 게시합니다. 병의원은 심의 기준까지 봅니다.</p></div>
+      <div><span class="n">03</span><b>One manager</b><h3>담당자가 바뀌지 않습니다</h3><p>진단부터 운영까지 담당자 한 명이 끝까지 맡습니다. 매번 처음부터 설명하실 필요가 없습니다.</p></div>
+      <div><span class="n">04</span><b>Right fit</b><h3>필요 없는 상품은 권하지 않습니다</h3><p>플레이스 정비만으로 충분한 매장에는 그것만 제안합니다. 상품 수를 늘려 견적을 키우지 않습니다.</p></div>
+    </div>
+  </div></div>
+
+
+  <div class="band grey"><div class="wrap">
+    <div class="teamwrap">
+      <div class="sh">
+        <div><div class="en">Team</div><h2>분야별 전담팀이 함께합니다</h2></div>
+        <p class="lead">기획부터 운영까지 한 곳에서 진행해 수정이 빠르고 비용이 투명합니다.</p>
+      </div>
+      <ul class="teamrows">
+        <li><span class="ic lg"><svg><use href="#i-search"/></svg></span><div class="tt"><b>Planning</b><h3>기획</h3></div><p>검색량 분석과 키워드 선정, 블로그·카페·지식iN 원고까지 검색 노출의 설계를 맡습니다. 경쟁 업체 현황도 함께 봅니다.</p><span class="no">01</span></li>
+        <li><span class="ic lg"><svg><use href="#i-design"/></svg></span><div class="tt"><b>Design</b><h3>디자인</h3></div><p>SNS 광고 소재와 카드뉴스, 상세페이지, 썸네일, 인쇄물까지 브랜드 톤에 맞춰 만듭니다. 수정은 당일에 반영합니다.</p><span class="no">02</span></li>
+        <li><span class="ic lg"><svg><use href="#i-video"/></svg></span><div class="tt"><b>Video</b><h3>촬영·편집</h3></div><p>4K·드론 촬영과 스튜디오 촬영, 편집, 유튜브 채널 운영까지 자체 장비와 인력으로 진행합니다. 외주 비용이 없습니다.</p><span class="no">03</span></li>
+        <li><span class="ic lg"><svg><use href="#i-report"/></svg></span><div class="tt"><b>Operation</b><h3>운영</h3></div><p>매일 순위를 점검하고 성과가 낮은 키워드는 바로 교체합니다. 광고주 한 곳은 담당자 한 명이 처음부터 끝까지 맡습니다.</p><span class="no">04</span></li>
+        <li><span class="ic lg"><svg><use href="#i-web"/></svg></span><div class="tt"><b>Developer</b><h3>개발자</h3></div><p>홈페이지와 랜딩페이지, 예약·주문 앱까지 기획부터 개발을 한 팀에서 끝냅니다. 검색에 잘 잡히는 구조가 기본입니다.</p><span class="no">05</span></li>
+        <li><span class="ic lg"><svg><use href="#i-ai"/></svg></span><div class="tt"><b>AI Director</b><h3>AI 디렉터</h3></div><p>AI로 키워드 분석, 원고 초안, 광고 소재 제작 속도를 높이고, 검색 결과와 AI 추천에 함께 잡히는 콘텐츠 구조를 설계합니다.</p><span class="no">06</span></li>
+        <li><span class="ic lg"><svg><use href="#i-tune"/></svg></span><div class="tt"><b>Strategy</b><h3>마케팅 전략</h3></div><p>업종과 예산에 맞춰 어떤 상품을 어떤 순서로 진행할지 설계합니다. 광고비를 어디에 얼마나 쓸지도 여기서 정합니다.</p><span class="no">07</span></li>
+        <li><span class="ic lg"><svg><use href="#i-blog"/></svg></span><div class="tt"><b>Content</b><h3>원고·카피</h3></div><p>블로그·카페·지식iN 원고와 광고 문구를 직접 씁니다. 병의원 원고는 의료광고 심의 기준을 먼저 확인하고 작성합니다.</p><span class="no">08</span></li>
+        <li><span class="ic lg"><svg><use href="#i-sns"/></svg></span><div class="tt"><b>Performance</b><h3>광고 운영</h3></div><p>인스타그램·페이스북 광고를 집행하고 도달·클릭·문의 수를 보며 소재와 예산을 바로 바꿉니다. 작게 시작해 늘려 갑니다.</p><span class="no">09</span></li>
+      </ul>
     </div>
   </div></div>
 
@@ -1142,30 +1430,42 @@ footer .bottom{border-top-color:#1B2650}
       <div><div class="en">Partners</div><h2>수 많은 파트너사의 성공을 돕고 있습니다.</h2></div>
       <p class="lead">미라클컴퍼니의 성공이 곧, 광고주의 성공입니다.</p>
     </div>
-    <div class="logos">
-      <span><img src="assets/par01.png" alt=""></span><span><img src="assets/par02.png" alt=""></span><span><img src="assets/par03.png" alt=""></span><span><img src="assets/par04.png" alt=""></span><span><img src="assets/par05.png" alt=""></span>
-      <span><img src="assets/par06.png" alt=""></span><span><img src="assets/par07.png" alt=""></span><span><img src="assets/par08.png" alt=""></span><span><img src="assets/par09.png" alt=""></span><span><img src="assets/par10.png" alt=""></span>
-    </div>
-  </div></div>
-
-  <div class="band grey"><div class="wrap">
-    <div class="sh">
-      <div><div class="en">Location</div><h2>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</h2></div>
-      <p class="lead">충청권은 직접 방문해 상담드립니다.</p>
-    </div>
-    <div class="mapwrap">
-      <div id="daumRoughmapContainer1721991800123" class="root_daum_roughmap root_daum_roughmap_landing" style="width:100%;"></div>
-      <a class="map fallback" href="https://map.kakao.com/?q=%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EC%84%9C%EB%B6%81%EA%B5%AC%20%EC%8C%8D%EC%9A%A9%EB%8C%80%EB%A1%9C%20234" target="_blank" rel="noopener"><img src="assets/map.jpg" alt="오시는 길 지도"><span>카카오맵에서 크게 보기 →</span></a>
-    </div>
-    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js" onload="try{new daum.roughmap.Lander({timestamp:'1721991800123',key:'2k6y9',mapWidth:'100%',mapHeight:'420'}).render();document.querySelector('.mapwrap').classList.add('live')}catch(e){}"></script>
-    <div class="addr"><span><b>E-MAIL</b>help@miraclecompany.co.kr</span></div>
+    <div class="logowrap"><div class="logos">
+      <span><img src="assets/par03.png?v=3" alt="네이버"></span><span><img src="assets/par02.png?v=3" alt="구글"></span><span><img src="assets/par01.png?v=3" alt="유튜브"></span><span><img src="assets/par04.png?v=3" alt="다날"></span><span><img src="assets/par05.png?v=3" alt="헥토파이낸셜"></span>
+      <span><img src="assets/par-lanseonpay.png?v=3" alt="랜선페이"></span><span><img src="assets/par06.png?v=3" alt="닥터셀"></span><span><img src="assets/par07.png?v=3" alt="데일리콘"></span><span><img src="assets/par08.png?v=3" alt="법무법인 통"></span><span><img src="assets/par-lawopus.png?v=3" alt="법무법인 로퍼스"></span>
+      <span><img src="assets/par-kimsy.png?v=3" alt="김성연 법률사무소"></span><span><img src="assets/par-uchetalk.png?v=3" alt="우체톡"></span><span><img src="assets/par-ngbiz.png?v=3" alt="엔지비즈"></span>
+    </div></div>
   </div></div>
 
   <div class="cta"><div class="wrap">
     <div class="en">Contact</div>
     <h2>미라클컴퍼니 문의하기</h2>
     <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
-    <div class="act"><a class="pill white" href="#contact" data-go="contact">무료 진단 신청</a></div>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">광고 서비스 문의</a></div>
+  </div></div>
+</section>
+
+<!-- ================= LOCATION ================= -->
+<section class="page" id="p-location">
+  <div class="band"><div class="wrap">
+    <div class="sh">
+      <div><div class="en">Location</div><h2>오시는 길</h2></div>
+    </div>
+    <dl class="locinfo">
+      <div><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></div>
+      <div><dt>대표번호</dt><dd><a href="tel:1577-6369">1577-6369</a></dd></div>
+      <div><dt>이메일</dt><dd><a href="mailto:miraclecompany567@naver.com">miraclecompany567@naver.com</a></dd></div>
+      <div><dt>상담 시간</dt><dd>평일 09:00 ~ 18:00 · 점심 12:00 ~ 13:00 · 주말·공휴일 휴무</dd></div>
+    </dl>
+    <a class="map" href="https://map.kakao.com/?q=%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EC%84%9C%EB%B6%81%EA%B5%AC%20%EC%8C%8D%EC%9A%A9%EB%8C%80%EB%A1%9C%20234" target="_blank" rel="noopener"><img src="assets/map.jpg" alt="미라클컴퍼니 위치 지도"><span>카카오맵에서 길찾기 →</span></a>
+  </div></div>
+
+
+  <div class="cta"><div class="wrap">
+    <div class="en">Contact</div>
+    <h2>미라클컴퍼니 문의하기</h2>
+    <p>미라클컴퍼니는 나에게는 일어날 것 같지 않은 기적을 만들어드립니다.<br>전문적인 마케팅 전략, 이제는 따라만 오시면 됩니다.</p>
+    <div class="act"><a class="pill white" href="#contact" data-go="contact">광고 서비스 문의</a></div>
   </div></div>
 </section>
 
@@ -1174,7 +1474,7 @@ footer .bottom{border-top-color:#1B2650}
   <div class="subhero"><div class="wrap">
     <div class="en">Contact</div>
     <h1>매출 상승, 답이 보이지 않는다면 문의하세요.</h1>
-    <p class="lead">업종과 예산에 맞는 상품 구성과 예상 마케팅 비용을 구체적으로 제안드립니다. 진단과 상담은 무료이며, 영업일 기준 2일 안에 답변드립니다.</p>
+    <p class="lead">지금 검색하면 우리 매장이 몇 번째에 보이는지, 경쟁 업체는 어떤 키워드를 잡고 있는지 먼저 정리해 드립니다. 그다음 업종과 예산에 맞는 상품 구성과 예상 비용을 제안드립니다. 상담은 무료이며 영업일 기준 2일 안에 답변드립니다.</p>
   </div></div>
   <div class="band"><div class="wrap contact">
     <form class="form" id="diag-form">
@@ -1184,12 +1484,12 @@ footer .bottom{border-top-color:#1B2650}
       <label for="f-tel">연락처<input id="f-tel" name="tel"></label>
       <label class="full" for="f-kw">노출 희망 키워드 (선택)<input id="f-kw" name="kw"></label>
       <label class="full" for="f-msg">현재 고민 (선택)<textarea id="f-msg" name="msg"></textarea></label>
-      <div class="full"><button class="pill black" type="submit">무료 진단 신청</button></div>
+      <div class="full"><button class="pill black" type="submit">문의 남기기</button></div>
     </form>
     <div class="side">
       <span class="cap">Contact</span>
-      <h3>진단은 무료입니다.<br>업종·지역 키워드 검색량과 현재 순위, 추천 상품 구성과 예상 예산을 담아 드립니다.</h3>
-      <dl><dt>이메일</dt><dd>help@miraclecompany.co.kr</dd><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></dl>
+      <h3>상담은 무료입니다.<br>키워드 검색량과 현재 순위, 추천 상품 구성과 예상 예산을 정리해 드립니다.</h3>
+      <dl><dt>대표번호</dt><dd><a href="tel:1577-6369">1577-6369</a></dd><dt>이메일</dt><dd><a href="mailto:miraclecompany567@naver.com">miraclecompany567@naver.com</a></dd><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></dl>
       <div class="ways"><div class="soc">
         <a href="#" title="카카오톡 채널"><svg><use href="#i-kakao"/></svg></a>
         <a href="#" title="인스타그램"><svg><use href="#i-insta"/></svg></a>
@@ -1204,15 +1504,14 @@ footer .bottom{border-top-color:#1B2650}
   <div class="cols">
     <div><img src="assets/footer-logo.png" alt="미라클컴퍼니"><p class="slogan">나에게는 일어날 것 같지 않은 <br>기적을 만들어드립니다.</p></div>
     <div><h4>COMPANY</h4><dl><dt>상호</dt><dd>주식회사 미라클컴퍼니</dd><dt>대표</dt><dd>김남기</dd><dt>사업자등록번호</dt><dd>437-88-03148</dd></dl></div>
-    <div><h4>CONTACT</h4><dl><dt>이메일</dt><dd>help@miraclecompany.co.kr</dd><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></dl></div>
-    <div><h4>MENU</h4><ul><li><a href="#offer" data-go="offer">맞춤 제안</a></li><li><a href="#service" data-go="service">서비스</a></li><li><a href="#about" data-go="about">회사소개</a></li><li><a href="#contact" data-go="contact">문의</a></li></ul></div>
+    <div><h4>CONTACT</h4><dl><dt>대표번호</dt><dd><a href="tel:1577-6369">1577-6369</a></dd><dt>이메일</dt><dd><a href="mailto:miraclecompany567@naver.com">miraclecompany567@naver.com</a></dd><dt>주소</dt><dd>충남 천안시 서북구 쌍용대로 234, 방영학생활건강빌딩 3층</dd></dl></div>
   </div>
   <div class="bottom"><span>© 2026 Miracle Company Co., Ltd. All rights reserved.</span><span>개인정보처리방침 · 이용약관</span></div>
 </div></footer>
 
 <script>
 (function(){
-  var pages=['home','offer','service','about','contact'];
+  var pages=['home','about','offer','service','location','contact'];
   function go(id,tab){
     if(pages.indexOf(id)<0)id='home';
     document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id==='p-'+id)});
@@ -1220,9 +1519,13 @@ footer .bottom{border-top-color:#1B2650}
     var t=tab&&document.getElementById('offer-'+tab);
     if(t){t.scrollIntoView({block:'start'});}else{window.scrollTo(0,0);}
   }
+  var nav=document.querySelector('.nav'),hb=document.querySelector('.hbtn');
+  function closeMenu(){nav.classList.remove('open');if(hb)hb.setAttribute('aria-expanded','false')}
+  if(hb)hb.addEventListener('click',function(){var o=nav.classList.toggle('open');hb.setAttribute('aria-expanded',o)});
   document.addEventListener('click',function(e){
     var a=e.target.closest('[data-go]');
-    if(a){e.preventDefault();go(a.dataset.go,a.dataset.tab);try{history.replaceState(null,'','#'+a.dataset.go)}catch(x){}}
+    if(a){e.preventDefault();go(a.dataset.go,a.dataset.tab);closeMenu();try{history.replaceState(null,'','#'+a.dataset.go)}catch(x){}return;}
+    if(nav.classList.contains('open')&&!e.target.closest('.menu')&&!e.target.closest('.hbtn'))closeMenu();
   });
   var f=document.getElementById('diag-form');
   if(f)f.addEventListener('submit',function(e){e.preventDefault();alert('시안입니다. 실제 사이트에서는 문의 폼으로 연결됩니다.')});
@@ -1243,6 +1546,14 @@ footer .bottom{border-top-color:#1B2650}
     window.addEventListener('resize',function(){move(false)});
     if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))start();
   }
+  /* 파트너 로고 띠: PC는 한 줄(all), 모바일은 두 줄(r1·r2)이 서로 반대 방향으로 */
+  document.querySelectorAll('.logowrap').forEach(function(w){
+    var all=w.querySelector('.logos'),items=Array.prototype.slice.call(all.children),half=Math.ceil(items.length/2);
+    var r1=document.createElement('div'),r2=document.createElement('div');r1.className='logos r1';r2.className='logos r2';
+    items.forEach(function(c,i){(i<half?r1:r2).appendChild(c.cloneNode(true))});
+    all.classList.add('all');w.appendChild(r1);w.appendChild(r2);
+    [all,r1,r2].forEach(function(l){Array.prototype.slice.call(l.children).forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');l.appendChild(k)})});
+  });
   go((location.hash||'#home').slice(1));
 })();
 </script>
